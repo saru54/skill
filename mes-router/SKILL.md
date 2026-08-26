@@ -1,118 +1,112 @@
-﻿---
+---
 name: mes-router
-description: MES全景多项目统一路由器。覆盖D:\mes\mes-major下所有子系统（管理端、PDA端、服务端程序、LCC、上位机、POP采集、设备接口等），自动识别任务所属项目并分发至对应Skill。用于所有MES开发工作。
+description: MES全景多项目统一路由器与智能编排器。覆盖D:\mes\mes-major下管理端、PDA端、工控采集与服务端程序。提供子系统路由矩阵、复合任务配方(Task Recipes)及多智能体(Subagent)协同调度规范。在启动复杂MES任务或跨子系统任务时优先使用。
 ---
 
-# MES 全景多项目统一开发路由器 (mes-router)
+# MES 全景开发路由器与编排器 (mes-router)
 
-本技能是 `D:\mes\mes-major` 全套 MES 体系的**顶层总路由器**。负责准确识别任务所属的子系统、工程目录及前后端对应关系，并分发到对应的专业技能或开发规范。
-
----
-
-## 1. D:\mes\mes-major 核心系统架构与 Skill 映射表
-
-```
-D:\mes\mes-major 架构体系
-│
-├── 📱 【PDA 移动体系】(前后端配对)
-│   ├── 03-PDA\LonSon.Mobile.PrinxChengShan.App          → 前端 (H5 / MUI / Vue2)  👉 🟢 mes-pda-dev
-│   └── 04-服务器端程序\LonSon.Mobile.PrinxChengShan.App.Web → 后端 (ASHX / BLL / DAL) 👉 ⚪ [待建: mes-pda-server-dev]
-│
-├── 🖥️ 【MES 管理端】(独立 PC WinForms C/S 体系)
-│   └── 05-MES管理端 (BUS / VIEW / PUBLIC / PLMES)       → 独立桌面端 C# 系统       👉 🟢 mes-admin-* (三大技能)
-│
-├── 🏭 【现场工控与采集体系】(独立子系统)
-│   ├── 01-硫化上位机                                    → 硫化机台上位机监控       👉 ⚪ [待建: mes-curing-dev]
-│   ├── 02-LCC客户端 / 15-LCC                             → 产线机台现场控制 (LCC)   👉 ⚪ [待建: mes-lcc-dev]
-│   ├── 11-POP                                          → 现场数据采集 / 曲线采集  👉 ⚪ [待建: mes-pop-dev]
-│   ├── 10-设备接口                                      → PLC / RFID / 测厚仪接口  👉 ⚪ [待建: mes-device-interface]
-│   ├── 61-例查系统                                      → 全钢 / 半钢例查检验      👉 ⚪ [待建: mes-inspection-dev]
-│   └── 99-TG现场终端                                    → TG 现场机台专用终端      👉 ⚪ [待建: mes-tg-terminal]
-│
-└── 🌐 【公共服务与接口】
-    ├── 04-服务器端程序 (WebAPI / Restful / 同步服务等)     → 后台 Windows 服务 / API  👉 ⚪ [待建: mes-server-dev]
-    └── 外围系统接口整理 (SAP / WMS / PLM / APS 等)        → 外部系统集成接口         👉 ⚪ [待建: mes-external-api]
-```
+本技能是 `D:\mes\mes-major` MES 全系统的**顶层路由器与任务编排中枢 (Orchestrator)**。
+采用**渐进式分层加载（Progressive Disclosure）**设计，负责子系统定位、复合任务配方组合及多智能体（Subagent）并行协同调度。
 
 ---
 
-## 2. 系统详细职责与前后端对应关系
+## 1. 🏛️ 全景架构与路径速查矩阵 (L1 索引)
 
-| 子系统目录 | 项目定位 | 前后端对应关系 / 架构说明 | 对应 Skill 状态 |
+| 核心子系统 | 物理工程目录 (D:\mes\mes-major) | 技术栈与架构特征 | 挂载专属技能 |
 | :--- | :--- | :--- | :--- |
-| **`03-PDA`** | **PDA 移动端前端** | **前端应用**：H5 / MUI / Vue 2，通过 HTTP/Ajax 请求 `04-服务端` 的 ASHX 接口 | 🟢 **`mes-pda-dev`** |
-| **`04-服务器端程序`**<br>*(LonSon.Mobile...App.Web)* | **PDA 移动端后端** | **PDA 专属后端服务**：包含 ASHX 处理程序、BLL 业务逻辑层、DAL 数据访问层、Model 层 | ⚪ *[待建: mes-pda-server-dev]* |
-| **`05-MES管理端`** | **独立 PC 管理端** | **独立 C/S 桌面系统**：WinForms + DevExpress + BUS 业务层 + VIEW 界面层，直接处理管理业务 | 🟢 **`mes-admin-page-dev`**<br>🟢 **`mes-admin-grid-config`**<br>🟢 **`mes-admin-public-dialog`** |
-| **`04-服务器端程序`**<br>*(其他后台服务)* | **后台通用服务** | 包含 `MES-RestfulAPI`、`WebAPI`、定时结算、邮件推送、动均扫描服务等 Windows/Web 服务 | ⚪ *[待建: mes-server-dev]* |
-| **`01-硫化上位机`** | **现场工控上位机** | 独立 C# 上位机程序，负责硫化机台监控与曲线交互 | ⚪ *[待建: mes-curing-dev]* |
-| **`02/15-LCC`** | **产线机台控制端** | Line Control Client，现场机台操作与控制客户端 | ⚪ *[待建: mes-lcc-dev]* |
-| **`11-POP`** | **现场数据采集** | 胎面重量采集、硫化曲线采集、配方下发/上传 | ⚪ *[待建: mes-pop-dev]* |
-| **`10-设备接口`** | **设备通信接口** | PLC 通信、RFID 读写、测厚仪、出标机协议、输送线接口 | ⚪ *[待建: mes-device-interface]* |
-| **`61-例查系统`** | **质检例查** | 全钢/半钢例查系统 | ⚪ *[待建: mes-inspection-dev]* |
-| **`99-TG现场终端`** | **现场终端** | TG 机台现场操作终端 | ⚪ *[待建: mes-tg-terminal]* |
-| **`外围系统接口整理`**| **企业系统接口** | SAP、WMS、PLM、APS、CRM、SRM、LIMS 等外部接口 | ⚪ *[待建: mes-external-api]* |
+| **📱 PDA 移动端前端** | `03-PDA\LonSon.Mobile.PrinxChengShan.App` | H5 / MUI / Vue 2 (`vue@2.js`) / 硬件扫码 | 🟢 `mes-pda-dev` |
+| **📱 PDA 服务端后端** | `04-服务器端程序\LonSon.Mobile.PrinxChengShan.App.Web` | .NET Web / ASHX 接口 / BLL / DAL / Oracle | ⚪ `mes-pda-server-dev` |
+| **🖥️ MES 管理端** | `05-MES管理端` (BUS / VIEW / PUBLIC / PLMES) | WinForms / DevExpress / C/S 独立桌面架构 | 🟢 `mes-admin-page-dev`<br>🟢 `mes-admin-grid-config`<br>🟢 `mes-admin-public-dialog` |
+| **🏭 工控/上位机/采集** | `01-硫化上位机`、`02/15-LCC`、`11-POP`、`10-设备接口` | 独立 C# 工控程序 / 串口 / PLC / RFID / 采集 | ⚪ 工控子系统专项开发 |
+| **🌐 后台通用服务** | `04-服务器端程序` (RestfulAPI, WebAPI, 调度服务) | Windows Service / WebAPI / 跨系统同步 | ⚪ 后台服务专项开发 |
 
 ---
 
-## 3. 路由分发决策规则
+## 2. 🧩 复合任务流水线配方 (Task Recipes)
 
-### 📱 1. PDA 移动端开发任务
-* **PDA 前端任务 (`03-PDA`)**：
-  * **路径**：`D:\mes\mes-major\03-PDA\LonSon.Mobile.PrinxChengShan.App`
-  * **关键词**：`PDA`、`手持机`、`MUI`、`vue@2.js`、`扫码`、`CheckBarcodeLengthClick`、`.html`
-  * **分发目标** 👉 **`mes-pda-dev`**
-* **PDA 后端服务任务 (`04-服务器端程序\LonSon.Mobile...App.Web`)**：
-  * **路径**：`D:\mes\mes-major\04-服务器端程序\LonSon.Mobile.PrinxChengShan.App.Web`
-  * **关键词**：PDA 的 `.ashx` 接口、`Mobile.PrinxChengShan.Bll`、`Mobile.PrinxChengShan.Dal`
-  * **处理策略** 👉 定位到 PDA Web 后端项目进行 C# 接口与数据层开发
+面对复合型业务开发任务，主 Agent 应当按照以下标准化配方链序贯调用技能：
 
----
+### 📋 配方 A：MES 管理端全流程页面开发
+适用于在 `05-MES管理端` 中新建或重构完整业务模块（如 CKA、STC、STD）：
 
-### 🖥️ 2. MES 管理端开发任务 (`05-MES管理端`)
-* **独立系统**：WinForms C/S 桌面客户端，与 PDA 前端无直接前后端耦合。
-* **路径**：`D:\mes\mes-major\05-MES管理端`
-* **关键词**：`BUS`、`VIEW`、`WinForms`、`DevExpress`、`CKA/STC/STD` 模块、`LSDataGrid`、`IDIALOG`
-* **分发目标**：
-  * 页面与业务开发 👉 **`mes-admin-page-dev`**
-  * 表格列配置与 EditSerializable 👉 **`mes-admin-grid-config`**
-  * 公共对话框 Key 路由 👉 **`mes-admin-public-dialog`**
-
----
-
-### 🏭 3. 其他工控与独立子系统任务
-* **硫化上位机 (`01-硫化上位机`)**：工控监控与曲线
-* **机台控制端 (`02/15-LCC`)**：LCC 现场机台客户端
-* **数据采集 (`11-POP`)**：POP 采集与配方服务
-* **硬件接口 (`10-设备接口`)**：PLC / RFID / 测厚仪通信
-* **通用后台服务 (`04-服务器端程序`)**：RestfulAPI、WebAPI、定时调度服务
-
----
-
-## 4. 智能决策树
-
+```mermaid
+graph LR
+    Step1[1. 骨架构建<br>mes-admin-page-dev] --> Step2[2. 表格与元数据<br>mes-admin-grid-config]
+    Step2 --> Step3[3. 字典与公共弹窗<br>mes-admin-public-dialog]
+    Step3 --> Step4[4. 编译与业务验证]
 ```
-收到开发请求
-    │
-    ├─ ① 涉及 PDA 移动端：
-    │   ├─ 前端 H5 页面 / 扫码 / MUI / vue@2.js (`03-PDA`)
-    │   │   └─ 👉 调度 【mes-pda-dev】
-    │   │
-    │   └─ 后端接口 / ASHX / BLL / DAL (`04-服务器端程序\LonSon.Mobile...App.Web`)
-    │       └─ 👉 定位到 PDA 服务端工程开发接口
-    │
-    ├─ ② 涉及 MES 管理端 (`05-MES管理端` 独立 WinForms 系统)：
-    │   ├─ 涉及 LSDataGrid / EditSerializable / .resx 列配置 ?
-    │   │   └─ 👉 调度 【mes-admin-grid-config】
-    │   │
-    │   ├─ 涉及 IDIALOG / ShowDialog Key / GetIDIALOG ?
-    │   │   └─ 👉 调度 【mes-admin-public-dialog】
-    │   │
-    │   └─ 常规管理端 BUS/VIEW 业务开发
-    │       └─ 👉 调度 【mes-admin-page-dev】
-    │
-    ├─ ③ 涉及现场工控与采集 (`01-上位机` / `02-LCC` / `11-POP` / `10-设备接口`)：
-    │   └─ 👉 定位到具体工控子工程目录开发
-    │
-    └─ ④ 涉及后台公共服务 (`04-服务器端程序` 的 WebAPI / 服务调度)：
-        └─ 👉 定位到通用服务端工程开发
+
+1. **Phase 1 (骨架)**：加载 `mes-admin-page-dev`，创建 BUS 业务类与 VIEW 窗体，搭建查询、按钮、增删改接口。
+2. **Phase 2 (表格)**：加载 `mes-admin-grid-config`，配置 `LSDataGrid` 列绑定、`EditSerializable` 及 `.resx` 资源。
+3. **Phase 3 (弹窗)**：若涉及公共选单，加载 `mes-admin-public-dialog` 查阅 `GetIDIALOG` Key 路由并绑定交互。
+4. **Phase 4 (验证)**：执行编译检查，验证权限、数据绑定与事务回滚。
+
+---
+
+### 📱 配方 B：PDA 端到端全栈功能开发
+适用于新增或改造 PDA 扫码作业功能（如入库、移库、报工）：
+
+1. **Phase 1 (前端)**：加载 `mes-pda-dev`，在 `03-PDA` 构建 HTML/MUI 页面，挂载 Vue2 实例，适配扫码广播监听与软键盘回车。
+2. **Phase 2 (后端)**：进入 `04-服务器端程序\LonSon.Mobile.PrinxChengShan.App.Web`，编写对应的 `.ashx` 接口，在 BLL/DAL 层编写 Oracle SQL 与存储过程调用。
+3. **Phase 3 (联调)**：配置前端 Ajax 请求路径，处理跨域、参数序列化与网络异常提示。
+
+---
+
+### 🔍 配方 C：公共字典与选择框扩展
+适用于管理端新增或调整公共基础选择窗体：
+
+1. **Phase 1 (检索与注册)**：加载 `mes-admin-public-dialog`，运行 `scripts/extract_idialog_routes.py` 检索现有 Key 分布，在 `SysPublic` 中注册新 Key 与 View/Bus 映射。
+2. **Phase 2 (调用绑定)**：在调用方页面使用 `ShowDialog(Key)` 传参，完成多选/单选回传数据赋值。
+
+---
+
+## 3. 🤖 Subagent 多智能体分工协同规范
+
+当任务规模较大、涉及**跨前后端联调**或**批量页面改造**时，主 Agent 应使用 `invoke_subagent` 派发专业子智能体并行作业：
+
+### 🎯 推荐子智能体角色分工
+
+| 子智能体角色 (Role) | 挂载技能 (Skills) | 职责边界 |
+| :--- | :--- | :--- |
+| **`PDA-Frontend-Developer`** | `mes-pda-dev` | 仅负责 `03-PDA` 下的 H5、MUI 布局、Vue 状态管理与硬件扫码适配。 |
+| **`PDA-Backend-Developer`** | `mes-pda-server-dev` | 仅负责 `04-服务器端程序` 下的 ASHX 接口、BLL 业务逻辑与 DAL 数据访问。 |
+| **`Admin-Form-Developer`** | `mes-admin-page-dev`<br>`mes-admin-grid-config` | 负责 `05-MES管理端` 的 WinForms 窗体、BUS 业务层与表格元数据配置。 |
+| **`Dialog-Route-Auditor`** | `mes-admin-public-dialog` | 负责检索公共对话框路由表，提取构造函数契约，提供精确的调用代码片段。 |
+
+### 🔄 多智能体协作流水线范式
+```text
+主 Agent (调度与契约制定)
+   │
+   ├─► 1. 确定前后端 JSON / 接口契约
+   │
+   ├─► 2. 并行派发 Subagent:
+   │      ├─► [PDA-Frontend-Developer] 编写前端 UI 与扫码交互
+   │      └─► [PDA-Backend-Developer] 编写后端 ASHX 与 SQL
+   │
+   └─► 3. 汇总子智能体交付物，执行联调验证
 ```
+
+---
+
+## 4. ⚡ 渐进式分层加载协议 (Progressive Disclosure)
+
+为了最小化 Context Token 消耗并提升响应速度，严格遵循三层加载原则：
+
+```text
+┌────────────────────────────────────────────────────────┐
+│  Level 1: 根路由 (mes-router)                          │
+│  - 仅包含目录矩阵、配方组合与 Subagent 调度规则        │
+└───────────────────────────┬────────────────────────────┘
+                            │ 按需精确下钻
+┌───────────────────────────▼────────────────────────────┐
+│  Level 2: 领域专属技能 (mes-admin-* / mes-pda-dev)     │
+│  - 仅在进入具体子任务时加载，包含代码模板、规范与避坑  │
+└───────────────────────────┬────────────────────────────┘
+                            │ 按需执行
+┌───────────────────────────▼────────────────────────────┐
+│  Level 3: 可执行脚本与字典 (scripts/*)                 │
+│  - extract_idialog_routes.py 等自动化工具按需运行      │
+└────────────────────────────────────────────────────────┘
+```
+
+> 📌 **快速直达规则**：若任务意图已非常明确（如“修改 PDA 扫码逻辑”或“配置 CKA 表格列”），Agent **无需先读 mes-router**，可直接激活目标 L2 技能（如 `mes-pda-dev` 或 `mes-admin-grid-config`），节省推理轮次与上下文。
