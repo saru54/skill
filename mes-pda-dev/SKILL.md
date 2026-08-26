@@ -1,9 +1,12 @@
-﻿---
+---
 name: mes-pda-dev
-description: MES移动端PDA页面开发规范。基于MUI + Vue 2 (vue@2.js)技术栈，涵盖页面脚手架、PDA扫码事件兼容、表单双向绑定、样式布局避坑及接口契约。用于LonSon.Mobile.PrinxChengShan.App及相关MES PDA模块的新建与重构。
+description: MES移动端PDA前端页面开发规范。基于MUI + Vue 2 (vue@2.js)技术栈，专注前端UI脚手架、扫码事件监听与表单双向绑定。若涉及后端ASHX接口/服务端开发，由mes-router配方分发。
 ---
 
 # MES 移动端 PDA 页面开发规范 (mes-pda-dev)
+
+> [!IMPORTANT]
+> **前后端联动提醒**：本技能仅负责移动端前端 H5 应用（`03-PDA`）。若任务同时涉及**后端接口（ASHX / BLL / DAL / Oracle 存储过程）**，必须先阅读 **`mes-router`** 查阅【配方 B：PDA 端到端全栈开发】，定位至 `04-服务器端程序\LonSon.Mobile.PrinxChengShan.App.Web` 进行服务端开发！
 
 本技能定义了 MES 移动端（PDA/手持机）应用的技术规范、标准脚手架、硬件扫码适配流程及避坑指南。
 

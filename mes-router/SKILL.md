@@ -1,6 +1,6 @@
 ---
 name: mes-router
-description: MES全景多项目统一路由器与智能编排器。覆盖D:\mes\mes-major下管理端、PDA端、工控采集与服务端程序。提供子系统路由矩阵、复合任务配方(Task Recipes)及多智能体(Subagent)协同调度规范。在启动复杂MES任务或跨子系统任务时优先使用。
+description: MES系统全景顶层总路由器与第一网关。在启动任何MES开发、新建页面/功能、全栈前后端联动开发、多子系统识别与跨模块任务时【必须首先阅读本技能】进行架构定位与配方编排。
 ---
 
 # MES 全景开发路由器与编排器 (mes-router)
