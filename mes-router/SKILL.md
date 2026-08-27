@@ -15,7 +15,7 @@ description: MES系统全景顶层总路由器与第一网关。在启动任何M
 | 核心子系统 | 物理工程目录 (D:\mes\mes-major) | 技术栈与架构特征 | 挂载专属技能 |
 | :--- | :--- | :--- | :--- |
 | **📱 PDA 移动端前端** | `03-PDA\LonSon.Mobile.PrinxChengShan.App` | H5 / MUI / Vue 2 (`vue@2.js`) / 硬件扫码 | 🟢 `mes-pda-dev` |
-| **📱 PDA 服务端后端** | `04-服务器端程序\LonSon.Mobile.PrinxChengShan.App.Web` | .NET Web / ASHX 接口 / BLL / DAL / Oracle | ⚪ `mes-pda-server-dev` |
+| **📱 PDA 服务端后端** | `04-服务器端程序\LonSon.Mobile.PrinxChengShan.App.Web` | .NET Web / ASHX 接口 / BLL / DAL / Oracle / SQL Server | 🟢 `mes-pda-server-dev` |
 | **🖥️ MES 管理端** | `05-MES管理端` (BUS / VIEW / PUBLIC / PLMES) | WinForms / DevExpress / C/S 独立桌面架构 | 🟢 `mes-admin-page-dev`<br>🟢 `mes-admin-grid-config`<br>🟢 `mes-admin-public-dialog` |
 | **🏭 工控/上位机/采集** | `01-硫化上位机`、`02/15-LCC`、`11-POP`、`10-设备接口` | 独立 C# 工控程序 / 串口 / PLC / RFID / 采集 | ⚪ 工控子系统专项开发 |
 | **🌐 后台通用服务** | `04-服务器端程序` (RestfulAPI, WebAPI, 调度服务) | Windows Service / WebAPI / 跨系统同步 | ⚪ 后台服务专项开发 |
@@ -44,11 +44,21 @@ graph LR
 ---
 
 ### 📱 配方 B：PDA 端到端全栈功能开发
-适用于新增或改造 PDA 扫码作业功能（如入库、移库、报工）：
+适用于新增或改造 PDA 扫码作业功能（如入库、移库、盘点、质检、报工）：
 
-1. **Phase 1 (前端)**：加载 `mes-pda-dev`，在 `03-PDA` 构建 HTML/MUI 页面，挂载 Vue2 实例，适配扫码广播监听与软键盘回车。
-2. **Phase 2 (后端)**：进入 `04-服务器端程序\LonSon.Mobile.PrinxChengShan.App.Web`，编写对应的 `.ashx` 接口，在 BLL/DAL 层编写 Oracle SQL 与存储过程调用。
-3. **Phase 3 (联调)**：配置前端 Ajax 请求路径，处理跨域、参数序列化与网络异常提示。
+```mermaid
+graph LR
+    Step1[1. 契约定义] --> Step2[2. 后端开发<br>mes-pda-server-dev]
+    Step2 --> Step3[3. 前端开发<br>mes-pda-dev]
+    Step3 --> Step4[4. 菜单与权限注册]
+    Step4 --> Step5[5. 质检与真机验收]
+```
+
+1. **Phase 1 (契约制定)**：明确入参（`BARCODE`, `FAC`, `LOGINNAM`, `Token` 等）、Action 动作名及返回的 `TL` 数据集结构。
+2. **Phase 2 (服务端开发)**：加载 `mes-pda-server-dev`，在 `04-服务器端程序\LonSon.Mobile.PrinxChengShan.App.Web` 中创建 `Web/Ashx/Xxx.ashx`，在 BLL 编写 Action 路由分发与多语言解析，在 DAL 使用 `MsSqlHelper` / `OracleHelper` 编写带 `/*PDASQL*/` 标记的 SQL 与事务。
+3. **Phase 3 (前端开发)**：加载 `mes-pda-dev`，在 `03-PDA` 对应业务目录构建 HTML/MUI 页面与 Vue2 实例，适配扫码 5 大硬件规范（`keyCode === 0 || 13`、`v-model.trim`、全局 Focus Lock、`CheckBarcodeLengthClick`）。
+4. **Phase 4 (菜单权限)**：在权限系统配置 `NodeURL` 路径，验证 `SwitchFTY.html` 多工厂切换数据隔离。
+5. **Phase 5 (联调质检)**：执行 PDA 静态质检脚本，验证连续扫码与网络超时等容错边界。
 
 ---
 

@@ -21,7 +21,10 @@ description: MES移动端PDA前端页面开发规范。基于MUI + Vue 2 (vue@2.
 * **文件组织规范**：
   * 页面 HTML：位于业务模块目录（如 `P-Test/p-test.html`、`AllSteelHalf/xxx.html`）。
   * 业务 JS：位于 `js/` 目录（如 `js/p-test.js`）或直接内嵌在 HTML 底部。
-  * 依赖资源：`../css/mui.min.css`、`../css/comStyle.css`、`../JavaScript/vue@2.js`、`../js/mui.min.js`、`../js/utilComm.js`。
+  * 依赖资源：`../css/mui.min.css`、`../css/mui.picker.min.css`、`../css/comStyle.css`、`../JavaScript/vue@2.js`、`../js/mui.min.js`、`../js/utilComm.js`。
+* **画面风格与原生组件规范**：
+  * **与系统整体风格保持绝对一致**：页面必须尽可能使用 MES PDA 原生结构与标准组件，**严禁添加过多的自定义 `<style>` 标签或额外 CSS 修饰**。
+  * **严格复用公共样式**：一律复用 `mui.min.css` 与 `comStyle.css` 提供的标准类（如 `.mui-input-group`、`.mui-input-row`、`.table`、居中按钮组、标准 `#editQtyPopup`），避免页面视觉割裂。
 
 ---
 
@@ -297,6 +300,15 @@ new Vue({
 ### 4.3 安全判空（防御性编程）
 * 调用任何 DOM 方法前（如 `.focus()`），必须使用 `if (this.$refs.xxx)` 进行判空，防止在未挂载或销毁时抛错。
 
+### 4.4 画面风格系统一致性与原生组件使用准则 (严格遵守)
+* **禁止随意编写自定义 `<style>`**：PDA 页面应该尽可能与系统整体风格保持高度一致，杜绝自定义卡片阴影、非标色值、非标标题栏或外加边框。
+* **原生标准结构范式**：
+  * **标题栏**：原生 `<header class="mui-bar mui-bar-nav"><a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a><h1 class="mui-title"><label id="lblTitle">标题</label></h1></header>`
+  * **表单**：原生 `.mui-input-group` + `.mui-input-row`，标签如 `<label id="lbltxtBARCODE">物料条码:</label>`
+  * **表格**：原生 `<table border="1" class="table" id="dList">`，表头采用 `<tr align="center" height="35" bgcolor="#007aff" style="color:#FFFFFF;font-weight:bold;">`，数据行采用 `<tr align="center" height="35" bgcolor="#FFFFFF">`
+  * **操作按钮**：原生 `<div style="text-align: center;"><button type="button" class="mui-btn mui-btn-danger"><label id="lblBack">返回/清空</label></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="btnAdd" type="button" class="mui-btn mui-btn-primary"><label id="lblOK">确定</label></button></div>`
+  * **弹窗**：数量修改等弹窗一律采用系统通用的 `#editQtyPopup` 原生结构与交互，不使用第三方复杂 modal 库。
+
 ---
 
 ## 5. Storage 与接口请求契约
@@ -314,3 +326,23 @@ new Vue({
 ```javascript
 mui.toast("提示信息", { duration: 'short', type: 'div' });
 ```
+
+---
+
+## 6. 自动化工具与脚手架 (Tooling)
+
+技能自带了开箱即用的脚手架与质检脚本，位于 `scripts/` 目录：
+
+### 6.1 一键生成 PDA 全栈代码脚手架 (`scaffold_pda_feature.js`)
+一键创建前端 HTML/JS 与后端 ASHX/BLL/DAL 骨架代码：
+```bash
+node scripts/scaffold_pda_feature.js --module AllSteelHalf --page MoveDemo --title 移库测试 --ashx MoveDemo
+```
+
+### 6.2 PDA 规范合规质检工具 (`lint_pda_feature.js`)
+在提交代码前扫描质量隐患（检查 keyCode 0/13、v-model.trim、Focus Lock、/*PDASQL*/ 注释等）：
+```bash
+# 扫描单个页面或整个模块目录
+node scripts/lint_pda_feature.js "03-PDA/LonSon.Mobile.PrinxChengShan.App/AllSteelHalf/MoveDemo.html"
+```
+
