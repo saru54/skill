@@ -20,6 +20,7 @@ description: MES系统全景顶层总路由器与第一网关。在启动任何M
 | **🖥️ MES 管理端** | `05-MES管理端` (BUS / VIEW / PUBLIC / PLMES) | WinForms / DevExpress / C/S 独立桌面架构 | 🟢 `mes-admin-page-dev`<br>🟢 `mes-admin-grid-config`<br>🟢 `mes-admin-public-dialog` |
 | **🏭 工控/上位机/采集** | `01-硫化上位机`、`02/15-LCC`、`11-POP`、`10-设备接口` | 独立 C# 工控程序 / 串口 / PLC / RFID / 采集 | ⚪ 工控子系统专项开发 |
 | **🌐 后台通用服务** | `04-服务器端程序` (RestfulAPI, WebAPI, 调度服务) | Windows Service / WebAPI / 跨系统同步 | ⚪ 后台服务专项开发 |
+| **🗄️ 数据库全量字典** | `dbo.sql` (1376 张表结构 / 字段 / DDL / 注释) | MS SQL Server / Oracle / 表结构与字段字典 | 🟢 `mes-db-schema` |
 
 ---
 
