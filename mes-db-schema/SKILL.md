@@ -15,16 +15,16 @@ description: MES系统全量数据库表结构与字典速查库。收录全部1
 
 ```bash
 # 1. 查阅指定表的全部字段、类型及注释
-node C:/Users/zhpei/.gemini/config/skills/mes-db-schema/scripts/query_schema.js LTC0001
+node scripts/query_schema.js LTC0001
 
 # 2. 全局搜索包含某个字段的所有表（如寻找 TLOTID 在哪些表出现）
-node C:/Users/zhpei/.gemini/config/skills/mes-db-schema/scripts/query_schema.js --find-column TLOTID
+node scripts/query_schema.js --find-column TLOTID
 
 # 3. 按业务关键词搜索相关表（如搜索“投入”、“硫化”、“盘点”）
-node C:/Users/zhpei/.gemini/config/skills/mes-db-schema/scripts/query_schema.js --search "投入"
+node scripts/query_schema.js --search "投入"
 
 # 4. 按前缀列出表（如列出所有 LTC、STE、WIP、QMA 表）
-node C:/Users/zhpei/.gemini/config/skills/mes-db-schema/scripts/query_schema.js --list LTC
+node scripts/query_schema.js --list LTC
 ```
 
 ---
