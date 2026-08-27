@@ -1,0 +1,53 @@
+---
+name: mes-db-schema
+description: MES系统全量数据库表结构与字典速查库。收录全部1376张表的DDL、字段类型、主键、中文注释与业务字典。在需要查询表结构、定位字段含义、分析关联外键或编写SQL时使用。
+---
+
+# MES 数据库全量表结构与字典速查 (mes-db-schema)
+
+本技能包含 MES 系统 (`PLMES`) 全部 **1376** 张数据库表的完整 DDL、字段类型、中文描述（`MS_Description`）与索引信息。
+
+---
+
+## 1. 🔍 快速检索工具 (CLI)
+
+在需要查阅任何表结构、搜索字段或定位业务表时，运行内置脚本：
+
+```bash
+# 1. 查阅指定表的全部字段、类型及注释
+node C:/Users/zhpei/.gemini/config/skills/mes-db-schema/scripts/query_schema.js LTC0001
+
+# 2. 全局搜索包含某个字段的所有表（如寻找 TLOTID 在哪些表出现）
+node C:/Users/zhpei/.gemini/config/skills/mes-db-schema/scripts/query_schema.js --find-column TLOTID
+
+# 3. 按业务关键词搜索相关表（如搜索“投入”、“硫化”、“盘点”）
+node C:/Users/zhpei/.gemini/config/skills/mes-db-schema/scripts/query_schema.js --search "投入"
+
+# 4. 按前缀列出表（如列出所有 LTC、STE、WIP、QMA 表）
+node C:/Users/zhpei/.gemini/config/skills/mes-db-schema/scripts/query_schema.js --list LTC
+```
+
+---
+
+## 2. 🏛️ 核心业务表前缀与业务域速查表
+
+| 前缀 / 域 | 业务领域 | 代表性核心表 | 主要业务职责 |
+| :--- | :--- | :--- | :--- |
+| **`LTA*`** | **胎胚 / 压出** | `LTA0001` (胎胚明细)<br>`LTA0011` (压出记录) | 胎胚成型产出、压出线记录 |
+| **`LTB*`** | **成型生产** | `LTB0004` (成型投入明细)<br>`LTB0007` (成型主批次) | 成型主机投入、成型工单、成型看板 |
+| **`LTC*`** | **半成品追踪** | `LTC0001` (半成品生产明细)<br>`LTC0004` (半成品投入记录) | 胎面、帘布、带束层、钢丝圈生产与投入 |
+| **`LTD*`** | **胶料 / 混炼** | `LTD0001` (胶料批次)<br>`LTD0004` (胶料投入记录) | 密炼、母胶、终炼胶投料与检验 |
+| **`STE*` / `STC*` | **硫化车间** | `STE0001` (硫化生产记录)<br>`STC0001` (硫化参数/报警) | 硫化机台、锅位、硫化温度压力曲线、胶囊 |
+| **`STA*` / `STB*` | **仓储与物流** | `STA0001` (库位信息)<br>`STB0009` (移库/出入库履历) | 库房、线边库、仓位、转运载具、工装 |
+| **`WIP*`** | **在制品 / 库存** | `WIP0001` (半成品实时库存)<br>`WIP0003` (工装具在架) | 实时线边库存、工装具状态、批次冻结 |
+| **`QMA*` ~ `QMD*` | **质量与质检** | `QMA0014` (物料工序配置)<br>`QMD0005`/`QMD0006` (门尼质检) | 质检项目、复检标准、门尼黏度、废品判级 |
+| **`EDA*` / `EDD*` | **基础工程数据** | `EDD0001` (物料主数据)<br>`EDD0003` (物料区分)<br>`EDD0061` (BOM结构) | 物料编码、版本、规格参数、配方 BOM |
+| **`LSFW*`** | **系统架构与权限** | `LSFW_EMPLOYEE` (员工/工号)<br>`LSFW_FACTORY` (工厂代码) | 用户、权限、工厂隔离（`FAC`）、组织架构 |
+
+---
+
+## 3. 📂 原始资源文件
+
+* **完整 DDL 转储文件**：`resources/dbo.sql`（包含 1376 张表的完整建表语句与注释）
+* **结构化索引文件**：`resources/tables_index.json`（可直接通过程序加载的 JSON 索引）
+* **表清单汇总**：`resources/tables_summary.md`
