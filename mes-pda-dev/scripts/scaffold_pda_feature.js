@@ -1,15 +1,11 @@
 /**
  * MES PDA 脚手架生成器 (scaffold_pda_feature.js)
- * 运行方式: node scaffold_pda_feature.js --module <模块名> --page <页面名> --title <中文标题> [--ashx <接口名>]
+ * 运行方式: node scaffold_pda_feature.js --module <模块名> --page <页面名> --title <中文标题> [--ashx <接口名>] [--root <项目根目录>]
  * 示例: node scaffold_pda_feature.js --module AllSteelHalf --page MoveDemo --title 移库测试
  */
 
 const fs = require('fs');
 const path = require('path');
-
-const MES_ROOT = 'd:\\mes\\mes-major';
-const PDA_FE_DIR = path.join(MES_ROOT, '03-PDA\\LonSon.Mobile.PrinxChengShan.App');
-const PDA_BE_DIR = path.join(MES_ROOT, '04-服务器端程序\\LonSon.Mobile.PrinxChengShan.App.Web');
 
 const args = process.argv.slice(2);
 function getArg(key, defaultValue = '') {
@@ -20,16 +16,47 @@ function getArg(key, defaultValue = '') {
     return defaultValue;
 }
 
+// 动态向上探测 MES 根目录（寻找包含 03-PDA 或 04-服务器端程序 的目录）
+function findMesRoot(startDir) {
+    let current = path.resolve(startDir || process.cwd());
+    while (true) {
+        const pdaExists = fs.existsSync(path.join(current, '03-PDA'));
+        const serverExists = fs.existsSync(path.join(current, '04-服务器端程序'));
+        const adminExists = fs.existsSync(path.join(current, '05-MES管理端'));
+
+        if (pdaExists || serverExists || adminExists) {
+            return current;
+        }
+
+        const parent = path.dirname(current);
+        if (parent === current) {
+            break; // 到达盘符根目录
+        }
+        current = parent;
+    }
+    return null;
+}
+
 const moduleName = getArg('module');
 const pageName = getArg('page');
 const title = getArg('title');
 const ashxName = getArg('ashx') || pageName;
+const customRoot = getArg('root') || process.env.MES_ROOT;
 
 if (!moduleName || !pageName || !title) {
     console.log('❌ 参数缺失！用法:');
-    console.log('node scaffold_pda_feature.js --module <模块名> --page <页面名> --title <中文标题> [--ashx <接口名>]');
+    console.log('node scaffold_pda_feature.js --module <模块名> --page <页面名> --title <中文标题> [--ashx <接口名>] [--root <根目录>]');
     process.exit(1);
 }
+
+// 自动解析根目录
+const detectedRoot = customRoot || findMesRoot(process.cwd()) || findMesRoot(__dirname) || 'd:\\mes\\mes-major';
+const MES_ROOT = path.resolve(detectedRoot);
+
+const PDA_FE_DIR = path.join(MES_ROOT, '03-PDA', 'LonSon.Mobile.PrinxChengShan.App');
+const PDA_BE_DIR = path.join(MES_ROOT, '04-服务器端程序', 'LonSon.Mobile.PrinxChengShan.App.Web');
+
+console.log(`🧭 当前检测到 MES 根目录: ${MES_ROOT}`);
 
 const jsName = `${pageName}.js`;
 
@@ -479,7 +506,11 @@ if (!fs.existsSync(moduleDir)) {
     fs.mkdirSync(moduleDir, { recursive: true });
 }
 const htmlPath = path.join(moduleDir, `${pageName}.html`);
-const jsPath = path.join(PDA_FE_DIR, 'js', jsName);
+const jsDir = path.join(PDA_FE_DIR, 'js');
+if (!fs.existsSync(jsDir)) {
+    fs.mkdirSync(jsDir, { recursive: true });
+}
+const jsPath = path.join(jsDir, jsName);
 
 fs.writeFileSync(htmlPath, HTML_CONTENT, 'utf-8');
 console.log(`[OK] 前端 HTML 写入成功: ${htmlPath}`);
@@ -488,9 +519,17 @@ fs.writeFileSync(jsPath, JS_CONTENT, 'utf-8');
 console.log(`[OK] 前端 JS 写入成功: ${jsPath}`);
 
 // 2. 写入后端文件
-const ashxPath = path.join(PDA_BE_DIR, 'Web', 'Ashx', `${ashxName}.ashx`);
-const bllPath = path.join(PDA_BE_DIR, 'Mobile.PrinxChengShan.Bll', `${ashxName}Bll.cs`);
-const dalPath = path.join(PDA_BE_DIR, 'Mobile.PrinxChengShan.Dal', `${ashxName}Dal.cs`);
+const ashxDir = path.join(PDA_BE_DIR, 'Web', 'Ashx');
+const bllDir = path.join(PDA_BE_DIR, 'Mobile.PrinxChengShan.Bll');
+const dalDir = path.join(PDA_BE_DIR, 'Mobile.PrinxChengShan.Dal');
+
+if (!fs.existsSync(ashxDir)) fs.mkdirSync(ashxDir, { recursive: true });
+if (!fs.existsSync(bllDir)) fs.mkdirSync(bllDir, { recursive: true });
+if (!fs.existsSync(dalDir)) fs.mkdirSync(dalDir, { recursive: true });
+
+const ashxPath = path.join(ashxDir, `${ashxName}.ashx`);
+const bllPath = path.join(bllDir, `${ashxName}Bll.cs`);
+const dalPath = path.join(dalDir, `${ashxName}Dal.cs`);
 
 fs.writeFileSync(ashxPath, ASHX_CONTENT, 'utf-8');
 console.log(`[OK] 后端 ASHX 写入成功: ${ashxPath}`);

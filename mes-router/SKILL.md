@@ -5,14 +5,15 @@ description: MES系统全景顶层总路由器与第一网关。在启动任何M
 
 # MES 全景开发路由器与编排器 (mes-router)
 
-本技能是 `D:\mes\mes-major` MES 全系统的**顶层路由器与任务编排中枢 (Orchestrator)**。
+本技能是 MES 全系统的**顶层路由器与任务编排中枢 (Orchestrator)**。
+以工作区根目录 `<MES_ROOT>` 为基准定位子系统（自动识别包含 `03-PDA`、`04-服务器端程序`、`05-MES管理端` 的根路径）。
 采用**渐进式分层加载（Progressive Disclosure）**设计，负责子系统定位、复合任务配方组合及多智能体（Subagent）并行协同调度。
 
 ---
 
 ## 1. 🏛️ 全景架构与路径速查矩阵 (L1 索引)
 
-| 核心子系统 | 物理工程目录 (D:\mes\mes-major) | 技术栈与架构特征 | 挂载专属技能 |
+| 核心子系统 | 物理工程目录 (相对于 `<MES_ROOT>`) | 技术栈与架构特征 | 挂载专属技能 |
 | :--- | :--- | :--- | :--- |
 | **📱 PDA 移动端前端** | `03-PDA\LonSon.Mobile.PrinxChengShan.App` | H5 / MUI / Vue 2 (`vue@2.js`) / 硬件扫码 | 🟢 `mes-pda-dev` |
 | **📱 PDA 服务端后端** | `04-服务器端程序\LonSon.Mobile.PrinxChengShan.App.Web` | .NET Web / ASHX 接口 / BLL / DAL / Oracle / SQL Server | 🟢 `mes-pda-server-dev` |

@@ -3,15 +3,25 @@
 """
 MES PDA 脚手架生成器 (scaffold_pda_feature.py)
 一键生成符合 mes-pda-dev (前端) 与 mes-pda-server-dev (后端) 规范的完整业务代码骨架。
+支持根据当前工作目录自动探测 MES 项目根目录。
 """
 
 import os
 import sys
 import argparse
 
-MES_ROOT = r"d:\mes\mes-major"
-PDA_FE_DIR = os.path.join(MES_ROOT, r"03-PDA\LonSon.Mobile.PrinxChengShan.App")
-PDA_BE_DIR = os.path.join(MES_ROOT, r"04-服务器端程序\LonSon.Mobile.PrinxChengShan.App.Web")
+def find_mes_root(start_dir=None):
+    current = os.path.abspath(start_dir or os.getcwd())
+    while True:
+        pda_exists = os.path.exists(os.path.join(current, "03-PDA"))
+        server_exists = os.path.exists(os.path.join(current, "04-服务器端程序"))
+        admin_exists = os.path.exists(os.path.join(current, "05-MES管理端"))
+        if pda_exists or server_exists or admin_exists:
+            return current
+        parent = os.path.dirname(current)
+        if parent == current:
+            break
+    return None
 
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html>
@@ -459,6 +469,7 @@ def main():
     parser.add_argument("--page", required=True, help="页面文件名前缀 (如 MOutbound)")
     parser.add_argument("--title", required=True, help="页面中文标题 (如 全钢半部件出库)")
     parser.add_argument("--ashx", required=False, help="ASHX/BLL/DAL 类名前缀 (若未提供则默认与 page 相同)")
+    parser.add_argument("--root", required=False, help="MES 项目根目录 (若未提供则自动探测)")
 
     args = parser.parse_args()
     module = args.module
@@ -467,16 +478,34 @@ def main():
     ashx_name = args.ashx or page
     js_name = f"{page}.js"
 
+    # 动态定位根目录
+    detected_root = args.root or os.environ.get("MES_ROOT") or find_mes_root() or r"d:\mes\mes-major"
+    MES_ROOT = os.path.abspath(detected_root)
+    print(f"🧭 当前检测到 MES 根目录: {MES_ROOT}")
+
+    PDA_FE_DIR = os.path.join(MES_ROOT, "03-PDA", "LonSon.Mobile.PrinxChengShan.App")
+    PDA_BE_DIR = os.path.join(MES_ROOT, "04-服务器端程序", "LonSon.Mobile.PrinxChengShan.App.Web")
+
     # 1. 前端目录与文件路径
     module_dir = os.path.join(PDA_FE_DIR, module)
     os.makedirs(module_dir, exist_ok=True)
     html_path = os.path.join(module_dir, f"{page}.html")
-    js_path = os.path.join(PDA_FE_DIR, "js", js_name)
+    
+    js_dir = os.path.join(PDA_FE_DIR, "js")
+    os.makedirs(js_dir, exist_ok=True)
+    js_path = os.path.join(js_dir, js_name)
 
     # 2. 后端文件路径
-    ashx_path = os.path.join(PDA_BE_DIR, "Web", "Ashx", f"{ashx_name}.ashx")
-    bll_path = os.path.join(PDA_BE_DIR, "Mobile.PrinxChengShan.Bll", f"{ashx_name}Bll.cs")
-    dal_path = os.path.join(PDA_BE_DIR, "Mobile.PrinxChengShan.Dal", f"{ashx_name}Dal.cs")
+    ashx_dir = os.path.join(PDA_BE_DIR, "Web", "Ashx")
+    bll_dir = os.path.join(PDA_BE_DIR, "Mobile.PrinxChengShan.Bll")
+    dal_dir = os.path.join(PDA_BE_DIR, "Mobile.PrinxChengShan.Dal")
+    os.makedirs(ashx_dir, exist_ok=True)
+    os.makedirs(bll_dir, exist_ok=True)
+    os.makedirs(dal_dir, exist_ok=True)
+
+    ashx_path = os.path.join(ashx_dir, f"{ashx_name}.ashx")
+    bll_path = os.path.join(bll_dir, f"{ashx_name}Bll.cs")
+    dal_path = os.path.join(dal_dir, f"{ashx_name}Dal.cs")
 
     # 写入前端 HTML
     with open(html_path, "w", encoding="utf-8") as f:
@@ -504,8 +533,6 @@ def main():
     print(f"[OK] 后端 DAL 生成成功: {dal_path}")
 
     print("\n🎉 PDA 模块全栈脚手架生成完毕！")
-    print(f"👉 前端路径: 03-PDA\\LonSon.Mobile.PrinxChengShan.App\\{module}\\{page}.html")
-    print(f"👉 后端接口: 04-服务器端程序\\LonSon.Mobile.PrinxChengShan.App.Web\\Web\\Ashx\\{ashx_name}.ashx")
 
 if __name__ == "__main__":
     main()

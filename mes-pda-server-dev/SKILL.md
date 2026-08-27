@@ -13,7 +13,7 @@ description: MES移动端PDA服务端/后端接口开发规范。基于.NET 4.0 
 ## 1. 技术栈与解决方案架构
 
 * **开发框架**：.NET Framework 4.0 / C# / ASP.NET Web Handler (`.ashx`)
-* **工程路径**：`d:\mes\mes-major\04-服务器端程序\LonSon.Mobile.PrinxChengShan.App.Web`
+* **工程路径**：`<MES_ROOT>\04-服务器端程序\LonSon.Mobile.PrinxChengShan.App.Web`
 * **解决方案组成**：
   * **`Web\Ashx\`**：HTTP 接口统一入口（负责接收请求并转发给 BLL）。
   * **`Mobile.PrinxChengShan.Bll\`**：业务逻辑层（负责参数解析、Action 路由、多语言读取、权限与异常捕获）。
