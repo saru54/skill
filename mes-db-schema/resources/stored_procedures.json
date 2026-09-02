@@ -1,0 +1,502 @@
+[
+  {
+    "name": "alllc_pro",
+    "description": "例查界面用",
+    "authorizedUser": ""
+  },
+  {
+    "name": "alllc_pro_bg",
+    "description": "半钢例查用",
+    "authorizedUser": ""
+  },
+  {
+    "name": "alllc_pro_xj",
+    "description": "斜交例查存储过程",
+    "authorizedUser": ""
+  },
+  {
+    "name": "BARCODE_CHANGE",
+    "description": "条码替换用",
+    "authorizedUser": ""
+  },
+  {
+    "name": "Barcode_Collection",
+    "description": "条码替换用",
+    "authorizedUser": ""
+  },
+  {
+    "name": "BARCODE_HASCHANGE",
+    "description": "条码替换用",
+    "authorizedUser": ""
+  },
+  {
+    "name": "bg_cx_jxc_rep",
+    "description": "进销存？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "CURE_TECH_CHECK_FIRST",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "CURE_TECH_CHECK_LAST",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "Del_Duplicate_UBTestDat",
+    "description": "半钢动均检测记录删除重复条码",
+    "authorizedUser": ""
+  },
+  {
+    "name": "delete_30oplog",
+    "description": "删除三十天操作表日志",
+    "authorizedUser": ""
+  },
+  {
+    "name": "dotchange_pro",
+    "description": "dot号修改 用",
+    "authorizedUser": ""
+  },
+  {
+    "name": "drp_lh",
+    "description": "硫化进销存结算（废弃）",
+    "authorizedUser": ""
+  },
+  {
+    "name": "drp_lhnew",
+    "description": "硫化进销存结算",
+    "authorizedUser": ""
+  },
+  {
+    "name": "Get_Mes_Tyre_Alarm",
+    "description": "获取报警台信息",
+    "authorizedUser": ""
+  },
+  {
+    "name": "GET_PPB0202_GTPRO",
+    "description": "根据工单号获取规格bom更新投入现况",
+    "authorizedUser": ""
+  },
+  {
+    "name": "GET_PPB0202_GTPRO_BYPLANCOD",
+    "description": "根据工单号获取规格bom更新投入现况",
+    "authorizedUser": ""
+  },
+  {
+    "name": "GET_PPB0202_HALFPRO",
+    "description": "根据工单号获取规格bom更新投入现况",
+    "authorizedUser": ""
+  },
+  {
+    "name": "GET_PPB0202_HALFPRO_BYPLANCOD",
+    "description": "根据工单号获取规格bom更新投入现况",
+    "authorizedUser": ""
+  },
+  {
+    "name": "GET_PPB0202_HALFPRO_test",
+    "description": "根据工单号获取规格bom更新投入现况",
+    "authorizedUser": ""
+  },
+  {
+    "name": "GetRoleAction",
+    "description": "?",
+    "authorizedUser": ""
+  },
+  {
+    "name": "GetShift",
+    "description": "获取班次，MES,LCC,PDA 都有在用",
+    "authorizedUser": ""
+  },
+  {
+    "name": "GetShiftByFac",
+    "description": "根据工厂获取班次，MES,LCC,PDA 都有在用",
+    "authorizedUser": ""
+  },
+  {
+    "name": "GetShiftByTime",
+    "description": "根据时间获取班次，MES,LCC,PDA 都有在用",
+    "authorizedUser": ""
+  },
+  {
+    "name": "GetUserRole",
+    "description": "?",
+    "authorizedUser": ""
+  },
+  {
+    "name": "InsPlan_LH",
+    "description": "五日硫化滚动计划生成用",
+    "authorizedUser": ""
+  },
+  {
+    "name": "InsPlan_LH_BG",
+    "description": "半钢五日硫化滚动计划生成用",
+    "authorizedUser": ""
+  },
+  {
+    "name": "InsPlan_LH_RDERNOISNULL",
+    "description": "五日硫化滚动计划生成用",
+    "authorizedUser": ""
+  },
+  {
+    "name": "LCCGetShift",
+    "description": "获取班次",
+    "authorizedUser": ""
+  },
+  {
+    "name": "LHGetShift",
+    "description": "硫化机取排班",
+    "authorizedUser": ""
+  },
+  {
+    "name": "LHGetShiftByTime",
+    "description": "硫化根据时间机取排班",
+    "authorizedUser": ""
+  },
+  {
+    "name": "OUTSTD",
+    "description": "原材料出库调用，更新申请单。",
+    "authorizedUser": ""
+  },
+  {
+    "name": "p_killspid",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "pr_gettire_sort_PCR",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "pr_gettire_sort_PCR_20231221",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "pr_gettire_sort_PCR1",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "PRO_GTProFailure",
+    "description": "胎坯库存超时置无效。将7*24小时之前的胎坯置无效不显示，记录无效条码，报工将冲销这些数据",
+    "authorizedUser": ""
+  },
+  {
+    "name": "pro_GTWeight",
+    "description": "结算胎坯称重，每个班规格100条平均重量，整点执行，7，15，23",
+    "authorizedUser": ""
+  },
+  {
+    "name": "pro_SettleWip",
+    "description": "结算半成品，胎坯，成品库存。换班时候去执行",
+    "authorizedUser": ""
+  },
+  {
+    "name": "pro_SettleWip_half",
+    "description": "结算半成品，胎坯，成品库存。换班时候去执行",
+    "authorizedUser": ""
+  },
+  {
+    "name": "proBanChengPinChanLiang",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "proBanChengPinJiHuaDaChengLv",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "proBanChengPinJiHuaDaChengLv1",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "Proc_DBA_AlwaysonWarning",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "Proc_Get02Seq",
+    "description": "半钢获取批次获取流水号",
+    "authorizedUser": ""
+  },
+  {
+    "name": "Proc_GetSEQ",
+    "description": "生成批次取流水号",
+    "authorizedUser": ""
+  },
+  {
+    "name": "Proc_GetZADlInfo",
+    "description": "装车？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "PROC_LH_PERSON1",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "Proc_Util_GetLenOverflowColumns",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "proChengXingChanLiang",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "proChengXingJiHuaChanLiang",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "proChengXingJiHuaChanLiangDangRi",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "proInitializeDB",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "proLiuHuaJiHuaDaChengLv",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "proMiLianChanLiang",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "proMiLianDangBanTotal",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "proMiLianKuCunDanBan",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "proShrinkLog",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "proSyncData",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "proSyncQMA1001",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "reBuildIndex",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "Recover_Deleted_Data_Proc",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "Report_BJXC_nodiv_pro",
+    "description": "半成品进销存，不区分分类",
+    "authorizedUser": ""
+  },
+  {
+    "name": "Report_BJXC_nodiv_pro_time",
+    "description": "半成品进销存，不区分分类时间节点",
+    "authorizedUser": ""
+  },
+  {
+    "name": "Report_BJXC_pro",
+    "description": "半成品进销存",
+    "authorizedUser": ""
+  },
+  {
+    "name": "Report_BJXC_pro_time",
+    "description": "半成品进销存，时间节点",
+    "authorizedUser": ""
+  },
+  {
+    "name": "ReportForm_QMB0201",
+    "description": "LROT LROB趋势图 报表，废弃",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SEMI_TYRENO_CHANGE",
+    "description": "胎号变更",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SET_GTPPB0202",
+    "description": "废弃",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SET_LTC0002_HALFPRO",
+    "description": "LCC 规格交替用，获取标准",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SET_LTC0002_PRO",
+    "description": "LCC 规格交替用，获取标准",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SET_LTC0002_PRO_IN",
+    "description": "LCC 规格交替用，获取标准",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SETNEWCARNO",
+    "description": "纠正上架重复流转卡号问题",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SETNEWCARNO_BG",
+    "description": "纠正上架重复流转卡号问题，半钢",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SETQCWIP0001",
+    "description": "结算半成品质量状态，过期，正常，等待",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SETQCWIP0001_pcr",
+    "description": "半钢结算半成品质量状态，过期，正常，等待",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SETQCWIP0002",
+    "description": "结算胎坯质量状态，过期，正常，等待",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SETQCWIP0002_pcr",
+    "description": "半钢结算胎坯质量状态，过期，正常，等待",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SETQCWIP0003",
+    "description": "结算密炼质量状态，过期，正常，等待",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SettleWIP0004_Pro",
+    "description": "原材料库存每日结算",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SP_EXEC_SQL",
+    "description": "LCC调用，执行事务语句",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SP_EXEC_SQL_LIST",
+    "description": "LCC调用，执行事务语句",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SP_FindValueInDB",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SP_LogisticsCirculationCardNumber",
+    "description": "PDA，成品物流 生成流转卡号",
+    "authorizedUser": ""
+  },
+  {
+    "name": "sp_qc_alarm_grind",
+    "description": "pda 质检？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "sp_qc_alarm_repair",
+    "description": "pda 质检？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "sp_qc_alarm_scrap",
+    "description": "pda 质检？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "sp_renamediagram",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SP_Scan_LocalWarehous_Checking",
+    "description": "物流装车检查",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SP_ScanShelfChecking",
+    "description": "轮胎上架检查",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SP_ScanShelfChecking_20240206",
+    "description": "轮胎上架检查测试",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SP_ScanShelfChecking_Test",
+    "description": "轮胎上架检查测试用",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SP_UPDATE_ALL_TABLE_STATISTICS",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "sp_upgraddiagrams",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "SQMB0001_PCR",
+    "description": "质检？调用上面 三个存储过程 sp_qc_alarm_grind，sp_qc_alarm_reparir,sp_qc_alarm_scrap",
+    "authorizedUser": ""
+  },
+  {
+    "name": "StatisticsMCHIDField",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "TEST_PR",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "Transform_CureData_From_Old_MES",
+    "description": "",
+    "authorizedUser": ""
+  },
+  {
+    "name": "tyreno_CHANGE",
+    "description": "胎号变更，废弃",
+    "authorizedUser": ""
+  },
+  {
+    "name": "upd_dot_pro",
+    "description": "周号更新用存储过程",
+    "authorizedUser": ""
+  }
+]

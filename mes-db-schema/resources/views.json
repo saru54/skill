@@ -1,0 +1,367 @@
+[
+  {
+    "name": "balance_view",
+    "description": "动平衡视图？",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "Chengxing_View",
+    "description": "成型生产明细？",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "CX_Schedule",
+    "description": "之前计划用料视图。  无用，可作废",
+    "authorizedUser": ""
+  },
+  {
+    "name": "FTPLAN_APS_View",
+    "description": "MES-APS接口，成型计划状态，计划完成情况",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "GT_InventoryDetail_View",
+    "description": "MES-APS接口，成型库存明细",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "GT_InventorySumly_View",
+    "description": "MES-APS接口，成型库存汇总",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "GT_ProdCompletion_View",
+    "description": "MES-APS接口？",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "GTPLAN_VIEW",
+    "description": "MES-APS接口，成型计划状态，计划完成情况",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "HALF_InventoryDetail_View",
+    "description": "MES-APS接口，半成品库存明细，详细参考接口文档",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "HALF_InventorySumly_View",
+    "description": "MES-APS接口，半成品库存汇总，详细参考接口文档",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "HALFPLAN_VIEW",
+    "description": "MES-APS接口，成型计划状态，计划完成情况",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "homogeneity_view",
+    "description": "均匀性视图？",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "IF_EAM_MACHINE_REPAIR",
+    "description": "EAM停机维修视图？，EAM-MES。从中间表取得",
+    "authorizedUser": ""
+  },
+  {
+    "name": "IF_WMS_GT_INV_VIEW",
+    "description": "10.168.66.115 数据库，WMS 得邀请视图？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "Jiaonang_View",
+    "description": "MES-APS接口？胶囊视图",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "LSLOG_EMPLOYEE",
+    "description": "同表名??",
+    "authorizedUser": ""
+  },
+  {
+    "name": "LSLOG_ROLE",
+    "description": "同表名??",
+    "authorizedUser": ""
+  },
+  {
+    "name": "LSLOG_USERROLE",
+    "description": "同表名??",
+    "authorizedUser": ""
+  },
+  {
+    "name": "MaterialVersion_View",
+    "description": "MES-APS接口，现场使用工艺版本，详细参考接口文档",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "MCHIDVIEW",
+    "description": "MES-APS接口？机台视图",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "MCHPLAN_VIEW",
+    "description": "MES计划视图？",
+    "authorizedUser": "eamuser"
+  },
+  {
+    "name": "MCHWE_VIEW",
+    "description": "MES-APS接口？机台视图",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "Moju_View",
+    "description": "MES-APS接口？模具视图",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "Nonconforming_Inspection_Result",
+    "description": ",胶料不合格检验结果报表",
+    "authorizedUser": ""
+  },
+  {
+    "name": "Nonconforming_Inspection_Result_MN",
+    "description": "胶料不合格检验结果报表",
+    "authorizedUser": ""
+  },
+  {
+    "name": "qcs20702",
+    "description": "设备得系统接口？",
+    "authorizedUser": "MPUSER"
+  },
+  {
+    "name": "qcs20712",
+    "description": "设备得系统接口？",
+    "authorizedUser": "MPUSER"
+  },
+  {
+    "name": "STOPPLAN_View",
+    "description": "MES-APS接口，计划性停机，详细参考接口文档",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "TestTireOut",
+    "description": "MES-检测系统 接口，例查用，出库记录",
+    "authorizedUser": "IFLUSER"
+  },
+  {
+    "name": "UseITCOD_View",
+    "description": "MES-APS接口，现场使用施工号，详细参考接口文档",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "V_AT_BARCODE",
+    "description": "设备得系统接口？",
+    "authorizedUser": "MPUSER"
+  },
+  {
+    "name": "v_BarcodeInfo_PCR",
+    "description": "？？，表tb_PP_CuringOutPut",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_CuringOutPut",
+    "description": "tb_PP_CuringOutPut",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_Get_Sub_Itnbr_Data",
+    "description": "替代料视图",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_HALFenergy_Detail",
+    "description": "？？？直接取表得视图",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_JIASHICANG_EQPFault",
+    "description": "驾驶舱？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_JIASHICANG_SJC0003_PCR",
+    "description": "驾驶舱？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_JIASHICANG_SMS1003",
+    "description": "驾驶舱？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "v_MachineRimMapping_PCR",
+    "description": "设备得系统接口？",
+    "authorizedUser": "MPUSER"
+  },
+  {
+    "name": "V_mdsitnbr",
+    "description": "链接 得接口库 [产成品信息]？10.151.65.118",
+    "authorizedUser": ""
+  },
+  {
+    "name": "v_mes99998_clipping",
+    "description": "设备得系统接口？",
+    "authorizedUser": "MPUSER"
+  },
+  {
+    "name": "V_MESNAC_CK_SHELVES",
+    "description": "STC0009 上架信息？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_MIXenergy",
+    "description": "能源？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_mixperson",
+    "description": "ltd0050",
+    "authorizedUser": "IF_MIX"
+  },
+  {
+    "name": "V_PCRPLAN_TD_SW",
+    "description": "？？",
+    "authorizedUser": "PCRPLAN"
+  },
+  {
+    "name": "V_PLM_PCR_ScheduleSheet",
+    "description": "中间表",
+    "authorizedUser": "PCRPLAN"
+  },
+  {
+    "name": "V_PLM_PCR_ScheduleSheet_V1",
+    "description": "??",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_PLM_PCR_SW",
+    "description": "中间表",
+    "authorizedUser": "PCRPLAN"
+  },
+  {
+    "name": "V_PLM_PCR_TREAD",
+    "description": "中间表",
+    "authorizedUser": "PCRPLAN"
+  },
+  {
+    "name": "V_PLM_TBR_ScheduleSheet",
+    "description": "查中间表",
+    "authorizedUser": ""
+  },
+  {
+    "name": "v_ProductFertPlanForWMS",
+    "description": "开放中间表数据库，ifuserrkj.成品出库计划？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_QMB0001_14",
+    "description": "QMB0001，缺陷代码14 得？？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_QMB0001_75",
+    "description": "？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_QMB0012",
+    "description": "？无法查出数据，效率低",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_QMB004_QMB009",
+    "description": "开放中间表数据库，wmsif，成品胎称重",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_QMB0101",
+    "description": "开放中间表数据库，wmsif，成品胎综合质量",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_STC0017",
+    "description": "上架信息",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_TB_ENVIRONMENT_DETAIL",
+    "description": "？？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "v_UBMachineMaterial_PCR",
+    "description": "",
+    "authorizedUser": "MPUSER"
+  },
+  {
+    "name": "v_UBMachinePriority_PCR",
+    "description": "??",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_WIP0001",
+    "description": "同表名??",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_WIP0010",
+    "description": "同表名??",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_WMS_CK_LogisticsShelves",
+    "description": "出库上架统计",
+    "authorizedUser": ""
+  },
+  {
+    "name": "V_wms2mes",
+    "description": "10.168.66.125服务器IP WMS给mes视图？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "view_FTPRODUCT",
+    "description": "tb_PP_CuringOutPut？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "View_tb_PP_CuringOutPut",
+    "description": "MES-检测系统 接口，例查用，生产信息",
+    "authorizedUser": "IFLUSER"
+  },
+  {
+    "name": "View_WMS",
+    "description": "给软控物流得 半成品库存视图？",
+    "authorizedUser": "IFMESNAC"
+  },
+  {
+    "name": "VQMA1001",
+    "description": "？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "vQMB0101",
+    "description": "？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "vSystimeHour",
+    "description": "？？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "vw_weight",
+    "description": "半钢成品胎重量传软控，视图开放给中间数据库",
+    "authorizedUser": "APSUSER"
+  },
+  {
+    "name": "WMS_GTPLAN",
+    "description": "开放中间表数据库，ifuserrkj.成型计划？",
+    "authorizedUser": ""
+  },
+  {
+    "name": "WMS_HALFSTOCK_VIEW",
+    "description": "开放中间表数据库，ifuserrkj.半成品库存？",
+    "authorizedUser": ""
+  }
+]
