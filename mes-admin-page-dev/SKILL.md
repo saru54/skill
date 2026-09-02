@@ -936,6 +936,119 @@ BUS类中的按钮事件方法必须遵循以下命名规则，才能与VIEW中�
 - 例如：VIEW中 `Name="BtnQuery"` → BUS中 `BtnQuery_Click()`
 - 方法签名必须是 `public void/override void MethodName(object sender, EventArgs e)`
 
+## 数据字典映射与下拉框数据源规范
+
+MES管理端中绝大部分业务数据在数据库中存储为精简代码（如 `1/2/3`、`Y/N/B`、`A/B/C`），在前端展示及下拉筛选时必须遵循系统标准字典映射体系。
+
+### 1. 核心常用数据字典对照表（EDA0004）
+
+系统通用代码表为 `EDA0004`（`DIV` 为分类标识，`DCOD` 为业务代码，`DNAM` 为中文名称）：
+
+| 业务含义 | 常见物理字段 | EDA0004 `DIV` 分类 | 核心代码与中文映射对照 |
+| :--- | :--- | :--- | :--- |
+| **生产类型** | `ASTATE` / `PLAN_STATE` | **`PLAN_STATE`** | `1` $\rightarrow$ **量产**、`2` $\rightarrow$ **试产**、`3` $\rightarrow$ **首件**、`4` $\rightarrow$ **返修**、`5` $\rightarrow$ **补录** |
+| **上传方式** | `NORMALSTA` / `AUTOUPLOAD` | **`NORMALSTA`** | `B` $\rightarrow$ **扫描枪上传**、`Y` $\rightarrow$ **自动上传**、`N` $\rightarrow$ **MES上传**、`P` $\rightarrow$ **PDA上传**、`L` $\rightarrow$ **LCC手动上传** |
+| **生产班次** | `AUSHT` / `WSHT` | **`SHT`** | `1` $\rightarrow$ **早班**、`2` $\rightarrow$ **中班**、`3` $\rightarrow$ **夜班** |
+| **生产班组** | `AUBAN` / `WBAN` | *(现场字母规范)* | **原生展示字母 `A`、`B`、`C`、`D`**（部分车间展示为甲/乙/丙/丁） |
+| **物料状态** | `STYN` / `STATUS` | **`QC_HRESULT`** | `A`/`1` $\rightarrow$ **正常/合格**、`B`/`2` $\rightarrow$ **冻结**、`C`/`3` $\rightarrow$ **报废** |
+| **物料分类** | `DIV` / `ITTYPECOD` | `EDD0003` (主数据) | `WHERE ITGRPCOD='HALF' AND IS_USE='1'` $\rightarrow$ `ITTYPENAM` |
+
+---
+
+### 2. 字段字典映射实现方式（首选 SQL 关联）
+
+**最佳实践**：优先在 SQL 查询层通过 `LEFT JOIN EDA0004` 完成字典转换，确保**界面呈现、列头排序、以及导出 Excel** 三者结果 100% 保持为业务中文。
+
+```sql
+SELECT 
+    A.LOTID,
+    -- 班次映射
+    CASE 
+        WHEN D_SHT.DNAM IS NOT NULL THEN D_SHT.DNAM
+        WHEN A.AUSHT = '1' THEN '早班' 
+        WHEN A.AUSHT = '2' THEN '中班' 
+        WHEN A.AUSHT = '3' THEN '夜班' 
+        ELSE ISNULL(A.AUSHT, '') 
+    END AS WSHT,
+    -- 班组直接显示字母
+    ISNULL(A.AUBAN, '') AS WBAN,
+    -- 生产类型映射
+    CASE 
+        WHEN D_STATE.DNAM IS NOT NULL THEN D_STATE.DNAM
+        WHEN A.ASTATE = '1' THEN '量产'
+        ELSE ISNULL(A.ASTATE, '量产') 
+    END AS PROD_TYPE,
+    -- 上传方式映射
+    CASE 
+        WHEN D_NORM.DNAM IS NOT NULL THEN D_NORM.DNAM
+        WHEN A.NORMALSTA = 'B' THEN '扫描枪上传'
+        WHEN A.NORMALSTA = 'Y' THEN '自动上传'
+        ELSE ISNULL(A.NORMALSTA, '自动上传') 
+    END AS UPLOAD_MODE
+FROM LTC0001 A WITH(NOLOCK)
+LEFT JOIN EDA0004 D_SHT WITH(NOLOCK) ON A.AUSHT = D_SHT.DCOD AND D_SHT.DIV = 'SHT'
+LEFT JOIN EDA0004 D_STATE WITH(NOLOCK) ON A.ASTATE = D_STATE.DCOD AND D_STATE.DIV = 'PLAN_STATE'
+LEFT JOIN EDA0004 D_NORM WITH(NOLOCK) ON A.NORMALSTA = D_NORM.DCOD AND D_NORM.DIV = 'NORMALSTA'
+```
+
+---
+
+### 3. 下拉筛选框标准构建规范（严格带“全部”首选项）
+
+所有筛选下拉框（ComboBox）初始化时必须满足以下规范：
+1. **严禁硬编码字符串简单追加**；
+2. **采用 DataTable 构建 `DisplayMember` 与 `ValueMember` 键值对**；
+3. **首行必须插入【全部】（值为 `%`），并设置 `SelectedIndex = 0` 作为默认值**。
+
+**标准示例代码**：
+```csharp
+private void FillShiftAndGroup()
+{
+    // 1. 班次下拉框 (全部 / 早班 / 中班 / 夜班)
+    DataTable dtSht = new DataTable();
+    dtSht.Columns.Add("Name", typeof(string));
+    dtSht.Columns.Add("Value", typeof(string));
+    dtSht.Rows.Add("全部", "%");
+    dtSht.Rows.Add("早班", "1");
+    dtSht.Rows.Add("中班", "2");
+    dtSht.Rows.Add("夜班", "3");
+
+    CmbWSHT.DataSource = dtSht;
+    CmbWSHT.DisplayMember = "Name";
+    CmbWSHT.ValueMember = "Value";
+    CmbWSHT.SelectedIndex = 0;
+
+    // 2. 班组下拉框 (全部 / A / B / C / D)
+    DataTable dtBan = new DataTable();
+    dtBan.Columns.Add("Name", typeof(string));
+    dtBan.Columns.Add("Value", typeof(string));
+    dtBan.Rows.Add("全部", "%");
+    dtBan.Rows.Add("A", "A");
+    dtBan.Rows.Add("B", "B");
+    dtBan.Rows.Add("C", "C");
+    dtBan.Rows.Add("D", "D");
+
+    CmbWBAN.DataSource = dtBan;
+    CmbWBAN.DisplayMember = "Name";
+    CmbWBAN.ValueMember = "Value";
+    CmbWBAN.SelectedIndex = 0;
+}
+```
+
+**SQL 查询条件过滤逻辑**：
+```csharp
+// 当用户选择了非“全部”选项时，追加精确筛选或双向兼容过滤
+if (CmbWSHT != null && CmbWSHT.SelectedValue != null && CmbWSHT.SelectedValue.ToString() != "%")
+{
+    sbWhere.AppendFormat(" AND (A.AUSHT = '{0}' OR A.AUSHT = '{1}')", CmbWSHT.SelectedValue, CmbWSHT.Text);
+}
+
+if (CmbWBAN != null && CmbWBAN.SelectedValue != null && CmbWBAN.SelectedValue.ToString() != "%")
+{
+    sbWhere.AppendFormat(" AND A.AUBAN = '{0}'", CmbWBAN.SelectedValue);
+}
+```
+
 ## 常见问题和注意事项
 
 ### 1. 控件获取失败

@@ -15,13 +15,23 @@
 | **`mes-admin-page-dev`** | [`mes-admin-page-dev/`](./mes-admin-page-dev/) | **管理端页面开发**：WinForms 架构下的 BUS/VIEW 职责分离、主窗体与子对话框开发、权限控制与数据事务。 |
 | **`mes-admin-grid-config`** | [`mes-admin-grid-config/`](./mes-admin-grid-config/) | **管理端表格元数据配置**：`LSDataGrid` 和 `EditSerializable` 属性序列化、表格列绑定、字段对齐及 `.resx` 资源生成与校验。 |
 | **`mes-admin-public-dialog`** | [`mes-admin-public-dialog/`](./mes-admin-public-dialog/) | **公共对话框系统**：`IDIALOG` 的 Key 路由分析、View/Bus 映射、构造函数契约与自动化提取工具脚本。 |
+| **`mes-db-schema`** | [`mes-db-schema/`](./mes-db-schema/) | **数据库表结构速查**：MES 系统全量 1376 张表的 DDL、字段类型、主键、中文注释与业务字典快速检索 CLI。 |
 
 ---
 
 ## 🛠️ 配套自动化工具链 (Scripts)
 
-在各技能目录的 `scripts/` 下提供了开箱即用的 Node.js 脚本工具，可在终端直接执行：
+在各技能目录的 `scripts/` 下提供了开箱即用的 Node.js / Python 脚本工具，可在终端直接执行：
 
+* **全量数据库表结构速查 CLI**（`mes-db-schema/scripts/query_schema.js`）：
+  ```bash
+  # 查阅指定表全部字段与注释
+  node mes-db-schema/scripts/query_schema.js LTC0001
+  # 全局搜索字段所在的全部表
+  node mes-db-schema/scripts/query_schema.js --find-column TLOTID
+  # 按业务关键词搜索相关表
+  node mes-db-schema/scripts/query_schema.js --search "投入"
+  ```
 * **PDA 全栈脚手架生成器**（`mes-pda-dev/scripts/scaffold_pda_feature.js`）：
   ```bash
   # 一键生成 前端 HTML/JS 与 后端 ASHX/BLL/DAL 5个标准骨架文件
