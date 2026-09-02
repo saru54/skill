@@ -35,10 +35,24 @@ this.GrdMain.EditSerializable = resources.GetString("GrdMain.EditSerializable");
 - **Cells** - 数据绑定（必须与BUS返回的列名匹配）
   - `DataColumn`: 绑定字段名
   - `DataType`: 数据类型（Text, Number, Date等）
+  - `TextAlign`: **对齐方式（统一显式设置为 `Center` 居中）**
   
 - **Columns** - 视觉布局（索引、宽度、可见性、冻结、对齐、表头文本）
+  - `Text`: 表头列名
+  - `TextAlign`: **表头对齐方式（统一显式设置为 `Center` 居中）**
+  - `SummlyAlign`: **合计对齐方式（统一显式设置为 `Center` 居中）**
 
 `Cells.DataColumn`必须匹配BUS的`DataTable`返回的列，包括SQL别名。
+
+## 列对齐与属性设置规范（★核心规范）
+
+1. **默认居中原则**：
+   - MES 管理端表格的所有列默认一律为 **居中对齐（`Center`）**。
+
+2. **双向显式设置规范（必须严格遵守）**：
+   - **【列名】（`Columns.Column`）**：必须显式设置 `<TextAlign><![CDATA[Center]]></TextAlign>` 与 `<SummlyAlign><![CDATA[Center]]></SummlyAlign>`；
+   - **【属性/单元格】（`Cells.Cell`）**：必须显式设置 `<TextAlign><![CDATA[Center]]></TextAlign>`；
+   - **原因**：WinForms `LSDataGrid` 控件在反序列化 `Cells` 集合时，如果 `TextAlign` 节点为空或缺失可能导致类型转换异常或被默认左对齐覆盖；因此在生成 `.resx` 时，**表头（Column）和单元格（Cell）必须统一显式填充 `Center`**。
 
 ## 配置来源优先级
 
@@ -160,25 +174,29 @@ private void InitializeComponent()
 
 ## 常见问题
 
-### 1. Grid列不显示或显示错误
+### 1. Grid居中对齐失效或被覆盖
+**原因**: 在`Cells`（单元格属性）中设置了`TextAlign`（如Left/Right），导致覆盖了`Columns`（列名）的居中设置。
+**解决**: `Cells.Cell.TextAlign`必须留空（`<![CDATA[]]>`），对齐方式只在`Columns.Column.TextAlign`中统一设置为`Center`。
+
+### 2. Grid列不显示或显示错误
 **原因**: `Cells.DataColumn`与SQL返回列名不匹配
 **解决**: 
 - 检查BUS的SQL查询返回列
 - 确保DataColumn与列名完全一致（包括别名）
 
-### 2. Designer中未加载EditSerializable
+### 3. Designer中未加载EditSerializable
 **原因**: Designer.cs中缺少资源加载代码
 **解决**: 添加 `this.GrdMain.EditSerializable = resources.GetString("GrdMain.EditSerializable");`
 
-### 3. .resx文件中缺少资源
+### 4. .resx文件中缺少资源
 **原因**: 资源名称不是`GrdMain.EditSerializable`或资源不存在
 **解决**: 在Visual Studio资源编辑器中添加字符串资源
 
-### 4. XML格式错误
+### 5. XML格式错误
 **原因**: EditSerializable内容不是有效的转义XML
 **解决**: 使用PowerShell验证XML格式
 
-### 5. 列顺序混乱
+### 6. 列顺序混乱
 **原因**: `Columns`的索引与`Cells`顺序不对应
 **解决**: 确保Columns条目与Cells条目按相同顺序排列
 
@@ -189,6 +207,8 @@ private void InitializeComponent()
 - [ ] BUS的SQL查询已确认返回列
 - [ ] `.resx`包含`GrdMain.EditSerializable`资源
 - [ ] `Cells.DataColumn`与SQL列名完全匹配
+- [ ] `Columns.Column.TextAlign` 与 `SummlyAlign` 统一显式设置为 `Center`（默认全部居中）
+- [ ] `Cells.Cell.TextAlign` 统一显式设置为 `Center`（与Column双向保持一致，防止反序列化异常或被覆盖）
 - [ ] `Columns`条目与`Cells`顺序一致
 - [ ] Designer.cs加载了EditSerializable资源
 - [ ] XML格式有效（无转义错误）

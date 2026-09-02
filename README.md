@@ -15,13 +15,23 @@
 | **`mes-admin-page-dev`** | [`mes-admin-page-dev/`](./mes-admin-page-dev/) | **管理端页面开发**：WinForms 架构下的 BUS/VIEW 职责分离、主窗体与子对话框开发、权限控制与数据事务。 |
 | **`mes-admin-grid-config`** | [`mes-admin-grid-config/`](./mes-admin-grid-config/) | **管理端表格元数据配置**：`LSDataGrid` 和 `EditSerializable` 属性序列化、表格列绑定、字段对齐及 `.resx` 资源生成与校验。 |
 | **`mes-admin-public-dialog`** | [`mes-admin-public-dialog/`](./mes-admin-public-dialog/) | **公共对话框系统**：`IDIALOG` 的 Key 路由分析、View/Bus 映射、构造函数契约与自动化提取工具脚本。 |
+| **`mes-db-schema`** | [`mes-db-schema/`](./mes-db-schema/) | **数据库表结构速查**：MES 系统全量 1376 张表的 DDL、字段类型、主键、中文注释与业务字典快速检索 CLI。 |
 
 ---
 
 ## 🛠️ 配套自动化工具链 (Scripts)
 
-在各技能目录的 `scripts/` 下提供了开箱即用的 Node.js 脚本工具，可在终端直接执行：
+在各技能目录的 `scripts/` 下提供了开箱即用的 Node.js / Python 脚本工具，可在终端直接执行：
 
+* **全量数据库表结构速查 CLI**（`mes-db-schema/scripts/query_schema.js`）：
+  ```bash
+  # 查阅指定表全部字段与注释
+  node mes-db-schema/scripts/query_schema.js LTC0001
+  # 全局搜索字段所在的全部表
+  node mes-db-schema/scripts/query_schema.js --find-column TLOTID
+  # 按业务关键词搜索相关表
+  node mes-db-schema/scripts/query_schema.js --search "投入"
+  ```
 * **PDA 全栈脚手架生成器**（`mes-pda-dev/scripts/scaffold_pda_feature.js`）：
   ```bash
   # 一键生成 前端 HTML/JS 与 后端 ASHX/BLL/DAL 5个标准骨架文件
@@ -44,7 +54,6 @@
 
 本技能库采用标准 Markdown（带 YAML Frontmatter 元数据）编写，能够无缝兼容各类 AI 编程助手与 Agent 工具：
 
-### 1. 🌟 Google Gemini / Antigravity / AGY
 在 `~/.gemini/config/skills.json` 中配置本目录即可实现自动发现与按需加载：
 ```json
 {
@@ -55,56 +64,39 @@
   ]
 }
 ```
+
+### 🔌 不同工具的接入方式
+
+各工具的技能目录名称可能不同，但接入原则一致：将本项目的技能文件夹（保留其中的 `SKILL.md` 和 `scripts/`）复制到工具的 Skills 目录，或使用目录链接指向本项目。推荐把整个仓库作为技能根目录，避免破坏各技能之间的相对路径。
+
+| 工具 / Agent | 技能目录 | 接入说明 |
+| :--- | :--- | :--- |
+| **Google Gemini** | `~/.gemini/skills/` | 在 `~/.gemini/config/skills.json` 的 `entries` 中添加本仓库路径（见上方示例）。 |
+| **Claude Code** | `~/.claude/skills/` | 将本仓库中的各技能文件夹复制或链接到该目录；项目级技能也可放在项目根目录 `.claude/skills/`。 |
+| **OpenAI Codex** | `~/.codex/skills/` | 将本仓库中的各技能文件夹复制或链接到该目录；项目级技能可放在项目根目录 `.codex/skills/`。 |
+| **Cursor** | `.cursor/skills/` | 在项目根目录创建该目录，并将需要的技能文件夹导入；也可以配置为全局技能目录（以当前版本设置为准）。 |
+| **Windsurf** | `.windsurf/skills/` | 在项目根目录创建该目录，并将需要的技能文件夹导入；也可以配置为全局技能目录（以当前版本设置为准）。 |
+| **Aider / 其他 Agent** | 自定义 `skills/` 或提示词目录 | 不支持原生 Skills 时，将对应 `SKILL.md` 内容作为系统提示词或项目约定加载，并保留 `scripts/` 供终端调用。 |
+
+#### Windows 导入示例
+
+在 PowerShell 中，可以把整个技能库复制到目标工具的技能目录：
+
+```powershell
+$source = "D:\skill\skill-workflow"
+Copy-Item $source "$HOME\.claude\skills\mes-skill-workflow" -Recurse -Force
+```
+
+也可以只导入需要的技能，例如：
+
+```powershell
+Copy-Item "$source\mes-router" "$HOME\.claude\skills\mes-router" -Recurse -Force
+Copy-Item "$source\mes-pda-dev" "$HOME\.claude\skills\mes-pda-dev" -Recurse -Force
+```
+
+导入后，主 Agent 应先加载 `mes-router/SKILL.md`，再按任务路由加载 `mes-pda-dev`、`mes-admin-page-dev` 等对应技能。
+
 * **使用方式**：主 Agent 会在接收到 MES 相关任务时自动阅读 `mes-router` 并动态激活对应的子技能。
-
----
-
-### 2. 🧠 OpenAI Codex / ChatGPT / GPT-4o / GPTs
-* **方法 A：作为 Custom GPTs / Agent Knowledge**
-  * 在 ChatGPT 创建自定义 GPTs 时，将相关技能的 `SKILL.md` 打包上传至 **Knowledge**。
-  * 在 **Instructions** 中添加引导指令：
-    > “你是一个 MES 系统全栈开发专家。在编写 PDA 代码时必须遵循 `mes-pda-dev` 与 `mes-pda-server-dev` 中的规范；在编写管理端代码时必须遵循 `mes-admin-*` 规范。”
-* **方法 B：作为 Codex / OpenAI API System Prompt**
-  * 将 `mes-router/SKILL.md` 和目标子技能的 Markdown 文本直接拼接到 Prompt 的 `system` 消息中作为上下文提示词。
-
----
-
-### 3. 🟣 Claude / Anthropic Claude Code
-* **方法 A：Claude Code CLI / Desktop**
-  * 在项目根目录的 `CLAUDE.md` 或 `.claude/` 中建立软链接或直接引入本技能库：
-    ```markdown
-    # MES 开发规范引用
-    详细开发规约请查阅：
-    - PDA 端开发规约: ~/.gemini/config/skills/mes-pda-dev/SKILL.md
-    - 服务端接口规约: ~/.gemini/config/skills/mes-pda-server-dev/SKILL.md
-    ```
-* **方法 B：Claude Projects**
-  * 将本仓库所有 `SKILL.md` 添加到 Claude Project 的 **Project Knowledge** 中，Claude 在回复与编写代码时会自动对齐架构与命名规范。
-
----
-
-### 4. ⚡ Cursor / Windsurf / GitHub Copilot
-* **方法 A：配置 `.cursorrules` (Cursor)**
-  在代码仓库根目录创建 `.cursorrules`，引入技能索引：
-  ```markdown
-  # MES 开发规则
-  - 遇到 PDA 页面开发：必须采用 MUI + Vue 2，扫码输入框必须绑定 v-model.trim 并监听 keyCode === 0 || 13。
-  - 遇到后端 ASHX 开发：必须采用 Messaging<T> 返回结构，SQL 必须包含 /*PDASQL*/。
-  - 详细规则请查阅 skills/mes-pda-dev/SKILL.md 及 skills/mes-pda-server-dev/SKILL.md。
-  ```
-* **方法 B：Cursor `@` 符号直接引用**
-  在 Cursor Chat 对话框中直接输入 `@mes-pda-dev/SKILL.md`，让 AI 精确基于技能规范生成代码。
-
----
-
-### 5. 🤖 Aider / Continue.dev / CLI 编程助手
-* **Aider**：通过 `/read-only` 指令加载规范文件：
-  ```bash
-  aider --read mes-pda-dev/SKILL.md --read mes-pda-server-dev/SKILL.md
-  ```
-* **Continue.dev**：在 `.continue/config.json` 中将 `skills/` 添加到 `docs` 或 Context Providers 中，在聊天中通过 `@docs` 检索调用。
-
----
 
 ## 📄 规范版本与维护
 
