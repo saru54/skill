@@ -1,0 +1,4722 @@
+{
+  "ALA0001": {
+    "tableName": "ALA0001",
+    "fileName": "ALA0001_报警配置主表.xlsx",
+    "module": "Alarm-配置报警",
+    "rules": [
+      {
+        "column": "trigger_type",
+        "description": "触发类型",
+        "rule": "1=差值触发，2=阈值触发",
+        "source": "comment"
+      },
+      {
+        "column": "notify_channel",
+        "description": "通知渠道",
+        "rule": "1=钉钉",
+        "source": "comment"
+      },
+      {
+        "column": "enable_flag",
+        "description": "是否启用",
+        "rule": "1=启用，0=禁用",
+        "source": "comment"
+      },
+      {
+        "column": "is_spec_filter",
+        "description": "是否区分规格",
+        "rule": "1=区分，0=不区分",
+        "source": "comment"
+      }
+    ]
+  },
+  "ALA0002": {
+    "tableName": "ALA0002",
+    "fileName": "ALA0002_报警内部参数计算.xlsx",
+    "module": "Alarm-配置报警",
+    "rules": [
+      {
+        "column": "item_type",
+        "description": "计算项类型",
+        "rule": "1=工艺值，2=常量",
+        "source": "comment"
+      }
+    ]
+  },
+  "ALA0003": {
+    "tableName": "ALA0003",
+    "fileName": "ALA0003_报警外层公式配置.xlsx",
+    "module": "Alarm-配置报警",
+    "rules": [
+      {
+        "column": "calc_mode",
+        "description": "计算模式",
+        "rule": "0=无计算，1=绝对值计算",
+        "source": "comment"
+      }
+    ]
+  },
+  "ALA0004": {
+    "tableName": "ALA0004",
+    "fileName": "ALA0004_报警阈值比较.xlsx",
+    "module": "Alarm-配置报警",
+    "rules": [
+      {
+        "column": "rule_id",
+        "description": "阈值规则ID",
+        "rule": "阈值规则ID",
+        "source": "description"
+      },
+      {
+        "column": "compare_op",
+        "description": "比较运算符",
+        "rule": ">、<、>=、<=、OUT=区间外、IN=区间内",
+        "source": "comment"
+      },
+      {
+        "column": "enable_flag",
+        "description": "是否启用",
+        "rule": "1=启用，0=禁用",
+        "source": "comment"
+      }
+    ]
+  },
+  "CKA0001": {
+    "tableName": "CKA0001",
+    "fileName": "CKA0001-成品检查策略.xlsx",
+    "module": "CK-成品检查管理",
+    "rules": [
+      {
+        "column": "PRINTSETA",
+        "description": "打标方式 A实心，B空心，C不打标",
+        "rule": "打标方式【1=实心，2=空心，3=不打标】",
+        "source": "comment"
+      },
+      {
+        "column": "PRINTSETB",
+        "description": "B等级打标方式",
+        "rule": "打标方式【1=实心，2=空心，4=不打标】",
+        "source": "comment"
+      },
+      {
+        "column": "PRINTSETC",
+        "description": "C等级打标方式",
+        "rule": "打标方式【1=实心，2=空心，5=不打标】",
+        "source": "comment"
+      },
+      {
+        "column": "PRINTSETD",
+        "description": "D等级打标方式",
+        "rule": "打标方式【1=实心，2=空心，6=不打标】",
+        "source": "comment"
+      },
+      {
+        "column": "ISNGCHECK",
+        "description": "B等级不合格是否再次检测",
+        "rule": "B等级不合格是否再次检测",
+        "source": "description"
+      },
+      {
+        "column": "ISNGCHECKC",
+        "description": "C等级不合格是否再次检测",
+        "rule": "C等级不合格是否再次检测",
+        "source": "description"
+      },
+      {
+        "column": "ISNGCHECKD",
+        "description": "D等级不合格是否再次检测",
+        "rule": "D等级不合格是否再次检测",
+        "source": "description"
+      }
+    ]
+  },
+  "CKA0002": {
+    "tableName": "CKA0002",
+    "fileName": "CKA0002-成品检查策略分配.xlsx",
+    "module": "CK-成品检查管理",
+    "rules": [
+      {
+        "column": "PRINTSETA",
+        "description": "A级打标方式",
+        "rule": "A级打标方式",
+        "source": "description"
+      },
+      {
+        "column": "PRINTSETB",
+        "description": "B级打标方式",
+        "rule": "B级打标方式",
+        "source": "description"
+      },
+      {
+        "column": "PRINTSETC",
+        "description": "C级打标方式",
+        "rule": "C级打标方式",
+        "source": "description"
+      },
+      {
+        "column": "PRINTSETD",
+        "description": "D级打标方式",
+        "rule": "D级打标方式",
+        "source": "description"
+      }
+    ]
+  },
+  "EDB0001": {
+    "tableName": "EDB0001",
+    "fileName": "EDB0001-班次时间管理.xlsx",
+    "module": "ED-基础数据\\EDB-排班管理",
+    "rules": [
+      {
+        "column": "WTIM1",
+        "description": "二班早班时间",
+        "rule": "二班早班时间",
+        "source": "description"
+      },
+      {
+        "column": "WTIM2",
+        "description": "二班夜班时间",
+        "rule": "二班夜班时间",
+        "source": "description"
+      },
+      {
+        "column": "WTIMA",
+        "description": "三班早班时间",
+        "rule": "三班早班时间",
+        "source": "description"
+      },
+      {
+        "column": "WTIMB",
+        "description": "三班中班时间",
+        "rule": "三班中班时间",
+        "source": "description"
+      },
+      {
+        "column": "WTIMC",
+        "description": "三班夜班时间",
+        "rule": "三班夜班时间",
+        "source": "description"
+      }
+    ]
+  },
+  "EDB0003": {
+    "tableName": "EDB0003",
+    "fileName": "EDB0003-作业排班日程.xlsx",
+    "module": "ED-基础数据\\EDB-排班管理",
+    "rules": [
+      {
+        "column": "TIM1",
+        "description": "早班上班时间",
+        "rule": "早班上班时间",
+        "source": "description"
+      },
+      {
+        "column": "TIM2",
+        "description": "中班上班时间",
+        "rule": "中班上班时间",
+        "source": "description"
+      },
+      {
+        "column": "TIM3",
+        "description": "夜班上班时间",
+        "rule": "夜班上班时间",
+        "source": "description"
+      }
+    ]
+  },
+  "EDB0004": {
+    "tableName": "EDB0004",
+    "fileName": "EDB0004-硫化班次时间管理.xlsx",
+    "module": "ED-基础数据\\EDB-排班管理",
+    "rules": [
+      {
+        "column": "WTIM1",
+        "description": "二班早班时间",
+        "rule": "二班早班时间",
+        "source": "description"
+      },
+      {
+        "column": "WTIM2",
+        "description": "二班夜班时间",
+        "rule": "二班夜班时间",
+        "source": "description"
+      },
+      {
+        "column": "WTIMA",
+        "description": "三班早班时间",
+        "rule": "三班早班时间",
+        "source": "description"
+      },
+      {
+        "column": "WTIMB",
+        "description": "三班中班时间",
+        "rule": "三班中班时间",
+        "source": "description"
+      },
+      {
+        "column": "WTIMC",
+        "description": "三班夜班时间",
+        "rule": "三班夜班时间",
+        "source": "description"
+      }
+    ]
+  },
+  "EDB0005": {
+    "tableName": "EDB0005",
+    "fileName": "EDB0005-硫化作业排班日程.xlsx",
+    "module": "ED-基础数据\\EDB-排班管理",
+    "rules": [
+      {
+        "column": "TIM1",
+        "description": "早班上班时间",
+        "rule": "早班上班时间",
+        "source": "description"
+      },
+      {
+        "column": "TIM2",
+        "description": "中班上班时间",
+        "rule": "中班上班时间",
+        "source": "description"
+      },
+      {
+        "column": "TIM3",
+        "description": "夜班上班时间",
+        "rule": "夜班上班时间",
+        "source": "description"
+      }
+    ]
+  },
+  "EDC0001": {
+    "tableName": "EDC0001",
+    "fileName": "EDC0001-设备信息管理.xlsx",
+    "module": "ED-基础数据\\EDC-设备基础",
+    "rules": [
+      {
+        "column": "SCRAPVALUE",
+        "description": "报废预警值",
+        "rule": "报废预警值",
+        "source": "description"
+      },
+      {
+        "column": "QUSTATE",
+        "description": "质量状态1.完好 2.报废 3.待大修 4.待改造",
+        "rule": "质量状态1.完好 2.报废 3.待大修 4.待改造",
+        "source": "description"
+      }
+    ]
+  },
+  "EDC0008": {
+    "tableName": "EDC0008",
+    "fileName": "EDC0008-点检项目管理.xlsx",
+    "module": "ED-基础数据\\EDC-设备基础",
+    "rules": [
+      {
+        "column": "CHKMODE",
+        "description": "模式",
+        "rule": "1=日检\r\n2=周检\r\n3=月检",
+        "source": "comment"
+      }
+    ]
+  },
+  "EDC0015": {
+    "tableName": "EDC0015",
+    "fileName": "EDC0015-设备属性修改履历.xlsx",
+    "module": "ED-基础数据\\EDC-设备基础",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分",
+        "rule": "1、新增 \r\n2、修改 \r\n3、删除",
+        "source": "comment"
+      }
+    ]
+  },
+  "EDD0007": {
+    "tableName": "EDD0007",
+    "fileName": "EDD0007-配方项目基础项.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "分类",
+        "rule": "UF 动平衡 \r\nDB 均匀性 \r\nFT 硫化 \r\nGT 成型 \r\nHF半成品  \r\nMX密炼",
+        "source": "comment"
+      }
+    ]
+  },
+  "EDD0008": {
+    "tableName": "EDD0008",
+    "fileName": "EDD0008-配方主表.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "分类",
+        "rule": "UF 动平衡 \r\nDB 均匀性 \r\nFT 硫化 \r\nGT 成型 \r\nHF半成品  \r\nMX密炼",
+        "source": "comment"
+      }
+    ]
+  },
+  "EDD0014": {
+    "tableName": "EDD0014",
+    "fileName": "EDD0014-施工表文件路径.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据",
+    "rules": [
+      {
+        "column": "FILEDIV",
+        "description": "工序分类",
+        "rule": "半成品\r\n主辅机\r\n成型\r\n硫化",
+        "source": "comment"
+      }
+    ]
+  },
+  "EDD0015": {
+    "tableName": "EDD0015",
+    "fileName": "EDD0015-PLM物料分类管理.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据",
+    "rules": [
+      {
+        "column": "State",
+        "description": "有效性 0:生效 1:停用 2:失效",
+        "rule": "0:生效 1:停用 2:失效",
+        "source": "comment"
+      }
+    ]
+  },
+  "EDD0022": {
+    "tableName": "EDD0022",
+    "fileName": "EDD0022-静音棉配方主表.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据",
+    "rules": [
+      {
+        "column": "TyreDirection",
+        "description": "加工方式",
+        "rule": "1:自愈合2:静音棉,3:综合4.其他",
+        "source": "comment"
+      }
+    ]
+  },
+  "EDD0031": {
+    "tableName": "EDD0031",
+    "fileName": "EDD0031-氮气保压等级.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据",
+    "rules": [
+      {
+        "column": "GRADE",
+        "description": "氮气保压差值等级",
+        "rule": "氮气保压差值等级",
+        "source": "description"
+      },
+      {
+        "column": "DIFMAX",
+        "description": "氮气保压差值上限",
+        "rule": "氮气保压差值上限",
+        "source": "description"
+      },
+      {
+        "column": "DIFMIN",
+        "description": "氮气保压差值下限",
+        "rule": "氮气保压差值下限",
+        "source": "description"
+      }
+    ]
+  },
+  "EDD0071": {
+    "tableName": "EDD0071",
+    "fileName": "EDD0071-密炼主配方.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据",
+    "rules": [
+      {
+        "column": "ReuseFlag",
+        "description": "炭黑回收标识",
+        "rule": "1 启用 0 不启用  启用下面2个必须有值，默认值0",
+        "source": "comment"
+      },
+      {
+        "column": "EPOil",
+        "description": "是否环保油",
+        "rule": "1 是 0 否，默认值0",
+        "source": "comment"
+      },
+      {
+        "column": "ReuseFlagC",
+        "description": "炭黑卸料回收标识,四期密炼专用字段1 启用 0 不启用  启用下面2个必须有值，默认值0",
+        "rule": "炭黑卸料回收标识,四期密炼专用字段1 启用 0 不启用  启用下面2个必须有值，默认值0",
+        "source": "description"
+      }
+    ]
+  },
+  "EDD0072": {
+    "tableName": "EDD0072",
+    "fileName": "EDD0072-密炼称重配方.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据",
+    "rules": [
+      {
+        "column": "IsUseRubberCutter",
+        "description": "是否使用供胶机",
+        "rule": "四期密炼专用字段 母炼一台供胶机，终炼两台供胶机，0:不使用 1：使用一台(母炼，终炼一号供胶机) 2: 使用第二台供胶机(终炼2号供胶机) 3: 两台供胶机一起使用（终炼），默认0",
+        "source": "comment"
+      }
+    ]
+  },
+  "EDD0073": {
+    "tableName": "EDD0073",
+    "fileName": "EDD0073-密炼步序配方.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据",
+    "rules": [
+      {
+        "column": "Div",
+        "description": "部件区分",
+        "rule": "四期密炼专用字段 0：上密炼机 1：下密炼机：2：其他，默认值0",
+        "source": "comment"
+      }
+    ]
+  },
+  "EDD0074": {
+    "tableName": "EDD0074",
+    "fileName": "EDD0074-密炼主配方接收.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据",
+    "rules": [
+      {
+        "column": "ReuseFlag",
+        "description": "炭黑回收标识",
+        "rule": "1 启用 0 不启用  启用下面2个必须有值，默认值0",
+        "source": "comment"
+      },
+      {
+        "column": "EPOil",
+        "description": "是否环保油",
+        "rule": "1 是 0 否，默认值0",
+        "source": "comment"
+      },
+      {
+        "column": "ReuseFlagC",
+        "description": "炭黑卸料回收标识,四期密炼专用字段1 启用 0 不启用  启用下面2个必须有值，默认值0",
+        "rule": "炭黑卸料回收标识,四期密炼专用字段1 启用 0 不启用  启用下面2个必须有值，默认值0",
+        "source": "description"
+      }
+    ]
+  },
+  "EDD0075": {
+    "tableName": "EDD0075",
+    "fileName": "EDD0075-密炼称重配方接收.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据",
+    "rules": [
+      {
+        "column": "IsUseRubberCutter",
+        "description": "是否使用供胶机",
+        "rule": "四期密炼专用字段 母炼一台供胶机，终炼两台供胶机，0:不使用 1：使用一台(母炼，终炼一号供胶机) 2: 使用第二台供胶机(终炼2号供胶机) 3: 两台供胶机一起使用（终炼），默认0",
+        "source": "comment"
+      }
+    ]
+  },
+  "EDD0076": {
+    "tableName": "EDD0076",
+    "fileName": "EDD0076-密炼步序配方接收.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据",
+    "rules": [
+      {
+        "column": "Div",
+        "description": "部件区分",
+        "rule": "四期密炼专用字段 0：上密炼机 1：下密炼机：2：其他，默认值0",
+        "source": "comment"
+      }
+    ]
+  },
+  "EDD0077": {
+    "tableName": "EDD0077",
+    "fileName": "EDD0077-密炼设备动作配置.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据",
+    "rules": [
+      {
+        "column": "Div",
+        "description": "部件区分",
+        "rule": "四期密炼专用字段 0：上密炼机，1：下密炼机 2：其他，默认值0",
+        "source": "comment"
+      }
+    ]
+  },
+  "EDD0084": {
+    "tableName": "EDD0084",
+    "fileName": "EDD0084-成型规格PLM结算表.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据",
+    "rules": [
+      {
+        "column": "CODE",
+        "description": "制造件/外胎名",
+        "rule": "制造件:3383-Y-Y;\r\n外胎:9265020229;\r\n胎胚：3383 类似格式",
+        "source": "comment"
+      },
+      {
+        "column": "PCSIdentification",
+        "description": "PLM写入标识",
+        "rule": "新增外胎:1;\r\n新增胎胚:2;\r\n新增制造件:3;",
+        "source": "comment"
+      }
+    ]
+  },
+  "EDD0663": {
+    "tableName": "EDD0663",
+    "fileName": "EDD0663-BOM全局替代料.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据",
+    "rules": [
+      {
+        "column": "State",
+        "description": "有效性0:生效 1:停用 2:失效",
+        "rule": "有效性0:生效 1:停用 2:失效",
+        "source": "description"
+      }
+    ]
+  },
+  "PLM_MCUTTING_PROCESS": {
+    "tableName": "PLM_MCUTTING_PROCESS",
+    "fileName": "PLM_MCUTTING_PROCESS-全钢多刀纵裁工艺路线.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "description"
+      }
+    ]
+  },
+  "BDR_EDD02": {
+    "tableName": "BDR_EDD02",
+    "fileName": "BDR_EDD02-全钢钢丝圈工艺路线(首末件).xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "comment"
+      }
+    ]
+  },
+  "BDW_EDD02": {
+    "tableName": "BDW_EDD02",
+    "fileName": "BDW_EDD02-全钢成品钢丝圈(首末件) - 副本.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否",
+        "rule": "1=审核",
+        "source": "comment"
+      }
+    ]
+  },
+  "BD_EDD02": {
+    "tableName": "BD_EDD02",
+    "fileName": "BD_EDD02-全钢胎圈工艺路线(首末件).xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "comment"
+      }
+    ]
+  },
+  "CCF_EDD02": {
+    "tableName": "CCF_EDD02",
+    "fileName": "CCF_EDD02-全钢胶帘布工艺路线(首末件).xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "1=审核",
+        "source": "comment"
+      }
+    ]
+  },
+  "CC_EDD02": {
+    "tableName": "CC_EDD02",
+    "fileName": "CC_EDD02-全钢胎体工艺路线(首末件).xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "1=审核",
+        "source": "comment"
+      }
+    ]
+  },
+  "IL_EDD02": {
+    "tableName": "IL_EDD02",
+    "fileName": "IL_EDD02-全钢内衬工艺路线(首末件).xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "comment"
+      }
+    ]
+  },
+  "PD_EDD02": {
+    "tableName": "PD_EDD02",
+    "fileName": "PD_EDD02-全钢肩垫工艺路线.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "description"
+      }
+    ]
+  },
+  "PLM_TBR_PCSTBRMULTICUTCUTTINGVERIFICATIONROUTINE": {
+    "tableName": "PLM_TBR_PCSTBRMULTICUTCUTTINGVERIFICATIONROUTINE",
+    "fileName": "PLM_TBR_PCSTBRMulticutCuttingVerificationRoutine-多刀纵裁.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "comment"
+      }
+    ]
+  },
+  "PLM_TBR_PCSTBRRUBBEREXTRUSIONVERIFICATIONROUTINE": {
+    "tableName": "PLM_TBR_PCSTBRRUBBEREXTRUSIONVERIFICATIONROUTINE",
+    "fileName": "PLM_TBR_PCSTBRRubberExtrusionVerificationRoutine-全钢胶片挤出工艺路线(首末件) - 副本.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "comment"
+      }
+    ]
+  },
+  "PLM_TBR_SCHEDULESHEET": {
+    "tableName": "PLM_TBR_SCHEDULESHEET",
+    "fileName": "PLM_TBR_ScheduleSheet-工艺施工大表.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "comment"
+      }
+    ]
+  },
+  "SB_EDD02": {
+    "tableName": "SB_EDD02",
+    "fileName": "SB_EDD02-全钢带束工艺路线(首末件).xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "comment"
+      }
+    ]
+  },
+  "SC_EDD02": {
+    "tableName": "SC_EDD02",
+    "fileName": "SC_EDD02-全钢帘布工艺路线.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "comment"
+      },
+      {
+        "column": "PCSPrevulMarkSpace",
+        "description": "半钢纤维帘布:预硫化打标间距(±5mm)",
+        "rule": "半钢纤维帘布:预硫化打标间距(±5mm)",
+        "source": "comment"
+      },
+      {
+        "column": "PCSPrevulMarkPress",
+        "description": "半钢纤维帘布:预硫化打标压力(±0.1)",
+        "rule": "半钢纤维帘布:预硫化打标压力(±0.1)",
+        "source": "comment"
+      },
+      {
+        "column": "PCSGlueExtrusionTempHeadDiameter",
+        "description": "拼接工艺路线属性：挤出温控:挤出,挤出温控:塑化1,挤出温控:塑化2,供胶挤出机温控:螺杆",
+        "rule": "拼接工艺路线属性：挤出温控:挤出,挤出温控:塑化1,挤出温控:塑化2,供胶挤出机温控:螺杆",
+        "source": "comment"
+      }
+    ]
+  },
+  "SK_EDD02": {
+    "tableName": "SK_EDD02",
+    "fileName": "SK_EDD02-全钢胶片工艺路线(首末件).xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "comment"
+      }
+    ]
+  },
+  "SW_EDD02": {
+    "tableName": "SW_EDD02",
+    "fileName": "SW_EDD02-全钢胎侧工艺路线(首末件).xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "description"
+      }
+    ]
+  },
+  "TC_EDD02": {
+    "tableName": "TC_EDD02",
+    "fileName": "TC_EDD02-全钢压延胶片工艺路线(首末件).xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "description"
+      }
+    ]
+  },
+  "TD_EDD02": {
+    "tableName": "TD_EDD02",
+    "fileName": "TD_EDD02-全钢胎面工艺路线 (首末件).xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "comment"
+      }
+    ]
+  },
+  "TR_EDD02": {
+    "tableName": "TR_EDD02",
+    "fileName": "TR_EDD02-全钢三角胶工艺路线(首末件).xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "comment"
+      }
+    ]
+  },
+  "WG_EDD02": {
+    "tableName": "WG_EDD02",
+    "fileName": "WG_EDD02-全钢肩垫卷工艺路线(首末件).xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "comment"
+      }
+    ]
+  },
+  "ZB_EDD02": {
+    "tableName": "ZB_EDD02",
+    "fileName": "ZB_EDD02-全钢冠带工艺路线(首末件).xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\全钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "description"
+      }
+    ]
+  },
+  "PBW_EDD02": {
+    "tableName": "PBW_EDD02",
+    "fileName": "PBW_EDD02-半钢钢丝圈工艺路线.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\半钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "description"
+      }
+    ]
+  },
+  "PCC_EDD02": {
+    "tableName": "PCC_EDD02",
+    "fileName": "PCC_EDD02-半钢帘布工艺路线.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\半钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "description"
+      }
+    ]
+  },
+  "PDE_EDD02": {
+    "tableName": "PDE_EDD02",
+    "fileName": "PDE_EDD02-半钢加强层工艺路线.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\半钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "description"
+      }
+    ]
+  },
+  "PFC_EDD02": {
+    "tableName": "PFC_EDD02",
+    "fileName": "PFC_EDD02-半钢纤维帘布压延工艺路线.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\半钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "description"
+      },
+      {
+        "column": "PCSRoutePreCureMarkSpacing",
+        "description": "半钢纤维帘布:预硫化打标间距(±5mm)",
+        "rule": "半钢纤维帘布:预硫化打标间距(±5mm)",
+        "source": "description"
+      },
+      {
+        "column": "PCSRoutePreCureMarkPressure",
+        "description": "半钢纤维帘布:预硫化打标压力(±0.1)",
+        "rule": "半钢纤维帘布:预硫化打标压力(±0.1)",
+        "source": "description"
+      },
+      {
+        "column": "PCSGlueExtrusionTempHeadDiameter",
+        "description": "拼接工艺路线属性：挤出温控:挤出,挤出温控:塑化1,挤出温控:塑化2,供胶挤出机温控:螺杆",
+        "rule": "拼接工艺路线属性：挤出温控:挤出,挤出温控:塑化1,挤出温控:塑化2,供胶挤出机温控:螺杆",
+        "source": "description"
+      }
+    ]
+  },
+  "PGT_EDD02": {
+    "tableName": "PGT_EDD02",
+    "fileName": "PGT_EDD02-半钢成型工艺路线.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\半钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "description"
+      }
+    ]
+  },
+  "PILR_EDD02": {
+    "tableName": "PILR_EDD02",
+    "fileName": "PILR_EDD02-半钢预复合卷工艺路线.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\半钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "description"
+      }
+    ]
+  },
+  "PIL_EDD02": {
+    "tableName": "PIL_EDD02",
+    "fileName": "PIL_EDD02-半钢内衬层压延工艺路线.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\半钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "description"
+      }
+    ]
+  },
+  "PKT_EDD02": {
+    "tableName": "PKT_EDD02",
+    "fileName": "PKT_EDD02-半钢纤维帘布中卷工艺路线.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\半钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "description"
+      }
+    ]
+  },
+  "PPZ_EDD02": {
+    "tableName": "PPZ_EDD02",
+    "fileName": "PPZ_EDD02-半钢支撑胶工艺路线.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\半钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "description"
+      }
+    ]
+  },
+  "PSC_EDD02": {
+    "tableName": "PSC_EDD02",
+    "fileName": "PSC_EDD02-半钢钢丝压延工艺路线.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\半钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "description"
+      },
+      {
+        "column": "PCSGlueExtrusionTempHeadDiameter",
+        "description": "拼接工艺路线属性：挤出温控:挤出,挤出温控:塑化1,挤出温控:塑化2,供胶挤出机温控:螺杆",
+        "rule": "拼接工艺路线属性：挤出温控:挤出,挤出温控:塑化1,挤出温控:塑化2,供胶挤出机温控:螺杆",
+        "source": "description"
+      }
+    ]
+  },
+  "PSK_EDD02": {
+    "tableName": "PSK_EDD02",
+    "fileName": "PSK_EDD02-半钢胶片工艺路线.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\半钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "description"
+      }
+    ]
+  },
+  "PSW_EDD02": {
+    "tableName": "PSW_EDD02",
+    "fileName": "PSW_EDD02-半钢胎侧路线.xlsx",
+    "module": "ED-基础数据\\EDD-技术基础数据\\工艺路线EDD02\\半钢工艺路线",
+    "rules": [
+      {
+        "column": "AUDITYN",
+        "description": "审核否，1=审核",
+        "rule": "审核否，1=审核",
+        "source": "description"
+      }
+    ]
+  },
+  "EDE0010": {
+    "tableName": "EDE0010",
+    "fileName": "EDE0010-胎圈需求计划.xlsx",
+    "module": "ED-基础数据\\EDE-计划基础信息",
+    "rules": [
+      {
+        "column": "PLQTY",
+        "description": "早班计划量",
+        "rule": "早班计划量",
+        "source": "description"
+      }
+    ]
+  },
+  "EQA0007": {
+    "tableName": "EQA0007",
+    "fileName": "EQA0007-报废管理.xlsx",
+    "module": "EQ-设备管理\\EQA-设备管理",
+    "rules": [
+      {
+        "column": "SCRDIV",
+        "description": "报废类型 1.整机报废 2.部位报废",
+        "rule": "1.整机报废 2.部位报废",
+        "source": "comment"
+      },
+      {
+        "column": "IS_SCRAPY",
+        "description": "是否可报废",
+        "rule": "是否可报废",
+        "source": "description"
+      }
+    ]
+  },
+  "ITA0004": {
+    "tableName": "ITA0004",
+    "fileName": "ITA0004-RFID功能启停记录.xlsx",
+    "module": "EQ-设备管理\\EQA-设备管理",
+    "rules": [
+      {
+        "column": "SDIV",
+        "description": "区分",
+        "rule": "0:启用验证 1:停用验证 …",
+        "source": "comment"
+      }
+    ]
+  },
+  "EQF0001": {
+    "tableName": "EQF0001",
+    "fileName": "EQF0001-物流报警记录.xlsx",
+    "module": "EQ-设备管理\\EQF-设备报警",
+    "rules": [
+      {
+        "column": "MCHTYPE",
+        "description": "设备区分",
+        "rule": "JT 巨通  HS 华晟  LG 临工",
+        "source": "comment"
+      }
+    ]
+  },
+  "GY": {
+    "tableName": "GY",
+    "fileName": "钢丝压延生产工艺信息-表名：GY+机台号+年份（两位）+季度（1、2、3、4）.xlsx",
+    "module": "GY-工艺数据管理\\E_压延",
+    "rules": [
+      {
+        "column": "PRBVVAL2",
+        "description": "Pressure roll bending 2 vertical",
+        "rule": "Pressure roll bending 2 vertical",
+        "source": "comment"
+      },
+      {
+        "column": "PRBSVAL2",
+        "description": "Pressure roll bending 2 slanted",
+        "rule": "Pressure roll bending 2 slanted",
+        "source": "comment"
+      },
+      {
+        "column": "PRBVVAL3",
+        "description": "Pressure roll bending 3 vertical",
+        "rule": "Pressure roll bending 3 vertical",
+        "source": "comment"
+      },
+      {
+        "column": "PRBSVAL3",
+        "description": "Pressure roll bending 3 slanted",
+        "rule": "Pressure roll bending 3 slanted",
+        "source": "comment"
+      }
+    ]
+  },
+  "GYA0005": {
+    "tableName": "GYA0005",
+    "fileName": "GYA0005-排胶履历 .xlsx",
+    "module": "GY-工艺数据管理",
+    "rules": [
+      {
+        "column": "QCTIM",
+        "description": "外观合格时间",
+        "rule": "外观合格时间",
+        "source": "comment"
+      }
+    ]
+  },
+  "GYC0003": {
+    "tableName": "GYC0003",
+    "fileName": "GYC0003-胎面重量曲线.xlsx",
+    "module": "GY-工艺数据管理",
+    "rules": [
+      {
+        "column": "IS_OK",
+        "description": "是否合格",
+        "rule": "是否合格",
+        "source": "comment"
+      },
+      {
+        "column": "LENGTH_OK",
+        "description": "长度合格",
+        "rule": "长度合格",
+        "source": "comment"
+      },
+      {
+        "column": "WIDTH_OK",
+        "description": "总宽合格",
+        "rule": "总宽合格",
+        "source": "comment"
+      },
+      {
+        "column": "M14_OK",
+        "description": "肩厚合格",
+        "rule": "肩厚合格",
+        "source": "comment"
+      },
+      {
+        "column": "M15_OK",
+        "description": "肩宽合格",
+        "rule": "肩宽合格",
+        "source": "comment"
+      },
+      {
+        "column": "MID_OK",
+        "description": "中厚合格",
+        "rule": "中厚合格",
+        "source": "comment"
+      },
+      {
+        "column": "M16_OK",
+        "description": "左外肩厚合格",
+        "rule": "左外肩厚合格",
+        "source": "comment"
+      },
+      {
+        "column": "M17_OK",
+        "description": "左内肩厚合格",
+        "rule": "左内肩厚合格",
+        "source": "comment"
+      },
+      {
+        "column": "M18_OK",
+        "description": "右内肩厚合格",
+        "rule": "右内肩厚合格",
+        "source": "comment"
+      },
+      {
+        "column": "M19_OK",
+        "description": "右外肩厚合格",
+        "rule": "右外肩厚合格",
+        "source": "comment"
+      }
+    ]
+  },
+  "GYC0004": {
+    "tableName": "GYC0004",
+    "fileName": "GYC0004-内衬曲线 .xlsx",
+    "module": "GY-工艺数据管理",
+    "rules": [
+      {
+        "column": "TOTWIDLINOK",
+        "description": "内衬总宽合格",
+        "rule": "内衬总宽合格",
+        "source": "comment"
+      },
+      {
+        "column": "IS_OK",
+        "description": "是否合格",
+        "rule": "是否合格",
+        "source": "comment"
+      },
+      {
+        "column": "GASWIDOK",
+        "description": "气密层宽度合格",
+        "rule": "气密层宽度合格",
+        "source": "comment"
+      },
+      {
+        "column": "TRANSWIDOK",
+        "description": "过渡层宽度合格",
+        "rule": "过渡层宽度合格",
+        "source": "comment"
+      },
+      {
+        "column": "COINOK",
+        "description": "吻合度合格",
+        "rule": "吻合度合格",
+        "source": "comment"
+      },
+      {
+        "column": "MIDTHICOK",
+        "description": "中厚合格",
+        "rule": "中厚合格",
+        "source": "comment"
+      },
+      {
+        "column": "LITHICOK",
+        "description": "左边厚合格",
+        "rule": "左边厚合格",
+        "source": "comment"
+      },
+      {
+        "column": "RITHICOK",
+        "description": "右边厚合格",
+        "rule": "右边厚合格",
+        "source": "comment"
+      },
+      {
+        "column": "LIGLUETHICOK",
+        "description": "单层胶左边厚合格",
+        "rule": "单层胶左边厚合格",
+        "source": "comment"
+      },
+      {
+        "column": "RIGLUETHICOK",
+        "description": "单层胶右边厚合格",
+        "rule": "单层胶右边厚合格",
+        "source": "comment"
+      }
+    ]
+  },
+  "GYC0010": {
+    "tableName": "GYC0010",
+    "fileName": "GYC0010-内衬测厚数据采集.xlsx",
+    "module": "GY-工艺数据管理",
+    "rules": [
+      {
+        "column": "widthQC",
+        "description": "总宽合格性",
+        "rule": "总宽合格性",
+        "source": "comment"
+      },
+      {
+        "column": "linerAWidthQC",
+        "description": "气密层宽度合格性",
+        "rule": "气密层宽度合格性",
+        "source": "comment"
+      },
+      {
+        "column": "linerBWidthQC",
+        "description": "过渡层宽度合格性",
+        "rule": "过渡层宽度合格性",
+        "source": "comment"
+      },
+      {
+        "column": "symmetryLinerAQC",
+        "description": "气密层宽度对称合格性",
+        "rule": "气密层宽度对称合格性",
+        "source": "comment"
+      },
+      {
+        "column": "symmetryLinerBQC",
+        "description": "过渡层宽度对称合格性",
+        "rule": "过渡层宽度对称合格性",
+        "source": "comment"
+      },
+      {
+        "column": "symmetryQC",
+        "description": "对称性差级合格性",
+        "rule": "对称性差级合格性",
+        "source": "comment"
+      },
+      {
+        "column": "goodnessOfFitQC",
+        "description": "吻合度合格性",
+        "rule": "吻合度合格性",
+        "source": "comment"
+      },
+      {
+        "column": "thicknessCenterQC",
+        "description": "中厚合格性",
+        "rule": "中厚合格性",
+        "source": "comment"
+      },
+      {
+        "column": "thicknessLeftQC",
+        "description": "左边厚合格性",
+        "rule": "左边厚合格性",
+        "source": "comment"
+      },
+      {
+        "column": "thicknessRightQC",
+        "description": "右边厚合格性",
+        "rule": "右边厚合格性",
+        "source": "comment"
+      },
+      {
+        "column": "singleThicknessLeftQC",
+        "description": "单层胶左边厚合格性",
+        "rule": "单层胶左边厚合格性",
+        "source": "comment"
+      },
+      {
+        "column": "singleThicknessRightQC",
+        "description": "单层胶右边厚合格性",
+        "rule": "单层胶右边厚合格性",
+        "source": "comment"
+      },
+      {
+        "column": "stripAWidthQC",
+        "description": "左胶片宽度合格性",
+        "rule": "左胶片宽度合格性",
+        "source": "comment"
+      },
+      {
+        "column": "stripAThicknessQC",
+        "description": "左胶片厚度合格性",
+        "rule": "左胶片厚度合格性",
+        "source": "comment"
+      },
+      {
+        "column": "stripALocationQC",
+        "description": "左胶片位置合格性",
+        "rule": "左胶片位置合格性",
+        "source": "comment"
+      },
+      {
+        "column": "stripBWidthQC",
+        "description": "右胶片宽度合格性",
+        "rule": "右胶片宽度合格性",
+        "source": "comment"
+      },
+      {
+        "column": "stripBThicknessQC",
+        "description": "右胶片厚度合格性",
+        "rule": "右胶片厚度合格性",
+        "source": "comment"
+      },
+      {
+        "column": "stripBLocationQC",
+        "description": "右胶片位置合格性",
+        "rule": "右胶片位置合格性",
+        "source": "comment"
+      },
+      {
+        "column": "areaQC",
+        "description": "总面积合格性",
+        "rule": "总面积合格性",
+        "source": "comment"
+      },
+      {
+        "column": "areaLeftQC",
+        "description": "左边面积合格性",
+        "rule": "左边面积合格性",
+        "source": "comment"
+      },
+      {
+        "column": "areaRightQC",
+        "description": "右边面积合格性",
+        "rule": "右边面积合格性",
+        "source": "comment"
+      },
+      {
+        "column": "areaDifferenceQC",
+        "description": "左右面积差异合格性",
+        "rule": "左右面积差异合格性",
+        "source": "comment"
+      },
+      {
+        "column": "linerALeftWidthQC",
+        "description": "气密层左边宽度合格性",
+        "rule": "气密层左边宽度合格性",
+        "source": "comment"
+      },
+      {
+        "column": "linerARightWidthQC",
+        "description": "气密层右边宽度合格性",
+        "rule": "气密层右边宽度合格性",
+        "source": "comment"
+      },
+      {
+        "column": "linerBLeftWidthQC",
+        "description": "过渡层右边宽度合格性",
+        "rule": "过渡层右边宽度合格性",
+        "source": "comment"
+      },
+      {
+        "column": "symmetryLeftQC",
+        "description": "左边对称合格性",
+        "rule": "左边对称合格性",
+        "source": "comment"
+      },
+      {
+        "column": "symmetryRightQC",
+        "description": "右边对称合格性",
+        "rule": "右边对称合格性",
+        "source": "comment"
+      }
+    ]
+  },
+  "GYT0001": {
+    "tableName": "GYT0001",
+    "fileName": "GYT0001-全钢钢丝帘布测厚数据采集（GYPLMES）.xlsx",
+    "module": "GY-工艺数据管理",
+    "rules": [
+      {
+        "column": "DataFlag",
+        "description": "总胶片/下胶片数据",
+        "rule": "1:总胶片数据\r\n2:下胶片数据",
+        "source": "comment"
+      }
+    ]
+  },
+  "EHR_EMPLOYEE": {
+    "tableName": "EHR_EMPLOYEE",
+    "fileName": "EHR_Employee-HR人员中间表.xlsx",
+    "module": "IF-接口\\HR传入记录",
+    "rules": [
+      {
+        "column": "A0191",
+        "description": "人员类别",
+        "rule": "01 在岗、02待入职、03 特殊、07 离职",
+        "source": "comment"
+      },
+      {
+        "column": "STATE",
+        "description": "推送状态",
+        "rule": "1 新增、2 修改、3 逻辑删除、4 物理删除",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTA0001": {
+    "tableName": "LTA0001",
+    "fileName": "LTA0001-硫化成型生产追踪.xlsx",
+    "module": "LT-LOT追溯管理\\LTAB-硫化成型追溯",
+    "rules": [
+      {
+        "column": "NORMALSTA",
+        "description": "条码上传方式",
+        "rule": "Y自动上传条码  \r\nN MES客户端补录 \r\nB 现场终端补录",
+        "source": "comment"
+      },
+      {
+        "column": "CUWARNING",
+        "description": "硫化报警胎",
+        "rule": "0 正常 \r\n1 报警",
+        "source": "comment"
+      },
+      {
+        "column": "TIMSTA",
+        "description": "时间状态",
+        "rule": "0 正常\r\n1 开模超时\r\n2 硫化超时",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTA0002": {
+    "tableName": "LTA0002",
+    "fileName": "LTA0002-硫化投入现况.xlsx",
+    "module": "LT-LOT追溯管理\\LTAB-硫化成型追溯",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分 0未到存放时间1正常2过期3修正4.报废5.不良6.规格误投",
+        "rule": "区分 0未到存放时间1正常2过期3修正4.报废5.不良6.规格误投",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTA0005": {
+    "tableName": "LTA0005",
+    "fileName": "LTA0005-硫化投入队列.xlsx",
+    "module": "LT-LOT追溯管理\\LTAB-硫化成型追溯",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "状态区分",
+        "rule": "0未到存放时间1正常2过期3修正4.报废5.不良6.规格误投",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTA0010": {
+    "tableName": "LTA0010",
+    "fileName": "LTA0010-半钢硫化胎胚投入异常记录.xlsx",
+    "module": "LT-LOT追溯管理\\LTAB-硫化成型追溯",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "异常区分",
+        "rule": "1、无成型生产信息\r\n2、成型质量状态异常\r\n后续3,4,5排列补充，含所有异常…",
+        "source": "comment"
+      },
+      {
+        "column": "CONTDESC",
+        "description": "异常描述",
+        "rule": "比如异常区分是2，可写入具体是不良还是报废还是冻结。其余写入相关描述即可",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTA0013": {
+    "tableName": "LTA0013",
+    "fileName": "LTA0013-静音棉生产明细（业务未实现）.xlsx",
+    "module": "LT-LOT追溯管理\\LTAB-硫化成型追溯",
+    "rules": [
+      {
+        "column": "Quality_S",
+        "description": "自愈合涂胶是否合格",
+        "rule": "自愈合涂胶是否合格",
+        "source": "description"
+      },
+      {
+        "column": "Quality_M",
+        "description": "静音胎涂胶是否合格",
+        "rule": "静音胎涂胶是否合格",
+        "source": "description"
+      },
+      {
+        "column": "QualityH",
+        "description": "静音胎(胶水+海绵)是否合格",
+        "rule": "静音胎(胶水+海绵)是否合格",
+        "source": "description"
+      }
+    ]
+  },
+  "LTA0022": {
+    "tableName": "LTA0022",
+    "fileName": "LTA0022-硫化产出规格条码现况.xlsx",
+    "module": "LT-LOT追溯管理\\LTAB-硫化成型追溯",
+    "rules": [
+      {
+        "column": "FSTSTA",
+        "description": "机台首模状态 0首模产出，1首模合格，2首模不合格",
+        "rule": "机台首模状态 0首模产出，1首模合格，2首模不合格",
+        "source": "description"
+      }
+    ]
+  },
+  "LTA0023": {
+    "tableName": "LTA0023",
+    "fileName": "LTA0023-硫化队列先入先出检查.xlsx",
+    "module": "LT-LOT追溯管理\\LTAB-硫化成型追溯",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "结果状态",
+        "rule": "Y 符合 N 不符合",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTA1024": {
+    "tableName": "LTA1024",
+    "fileName": "LTA1024-静音棉计件表.xlsx",
+    "module": "LT-LOT追溯管理\\LTAB-硫化成型追溯",
+    "rules": [
+      {
+        "column": "TYPE",
+        "description": "类型",
+        "rule": "0贴棉工 1刻字工 2压棉工 3裁棉工",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTB0002": {
+    "tableName": "LTB0002",
+    "fileName": "LTB0002-成型投入现况.xlsx",
+    "module": "LT-LOT追溯管理\\LTAB-硫化成型追溯",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分 0未到存放时间1正常2过期3修正4.报废5.不良6.规格误投",
+        "rule": "区分 0未到存放时间1正常2过期3修正4.报废5.不良6.规格误投",
+        "source": "description"
+      }
+    ]
+  },
+  "LTB0002_BACKLOG": {
+    "tableName": "LTB0002_BACKLOG",
+    "fileName": "LTB0002_BACKLOG-成型投入返料记录.xlsx",
+    "module": "LT-LOT追溯管理\\LTAB-硫化成型追溯",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "投入状态区分 0未到存放时间1正常2过期3修正4.报废5.不良6.规格误投",
+        "rule": "投入状态区分 0未到存放时间1正常2过期3修正4.报废5.不良6.规格误投",
+        "source": "description"
+      }
+    ]
+  },
+  "LTB0004": {
+    "tableName": "LTB0004",
+    "fileName": "LTB0004-成型投入履历.xlsx",
+    "module": "LT-LOT追溯管理\\LTAB-硫化成型追溯",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "投入状态 0未到存放时间1正常2过期3修正4.报废5.不良6.规格误投",
+        "rule": "投入状态 0未到存放时间1正常2过期3修正4.报废5.不良6.规格误投",
+        "source": "description"
+      }
+    ]
+  },
+  "LTB0007": {
+    "tableName": "LTB0007",
+    "fileName": "LTB0007-成型队列先入先出检查.xlsx",
+    "module": "LT-LOT追溯管理\\LTAB-硫化成型追溯",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "结果状态",
+        "rule": "Y 符合 N 不符合",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTB0011": {
+    "tableName": "LTB0011",
+    "fileName": "LTB0011-成型生产时间采集.xlsx",
+    "module": "LT-LOT追溯管理\\LTAB-硫化成型追溯",
+    "rules": [
+      {
+        "column": "CDIV",
+        "description": "区分",
+        "rule": "1 一段 2 二段",
+        "source": "comment"
+      }
+    ]
+  },
+  "TB_PP_CURINGOUTPUT_JYM": {
+    "tableName": "TB_PP_CURINGOUTPUT_JYM",
+    "fileName": "tb_PP_CuringOutput_JYM-静音棉规格变更前信息记录.xlsx",
+    "module": "LT-LOT追溯管理\\LTAB-硫化成型追溯",
+    "rules": [
+      {
+        "column": "NORMALSTA",
+        "description": "条码上传方式 Y自动上传条码  N MES客户端补录",
+        "rule": "条码上传方式 Y自动上传条码  N MES客户端补录",
+        "source": "description"
+      },
+      {
+        "column": "S6",
+        "description": "氮气保压差值",
+        "rule": "氮气保压差值",
+        "source": "description"
+      }
+    ]
+  },
+  "LTC0001": {
+    "tableName": "LTC0001",
+    "fileName": "LTC0001-半成品生产追踪.xlsx",
+    "module": "LT-LOT追溯管理\\LTC-半成品生产追溯",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "半成品区分 SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布",
+        "rule": "SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 \r\nIL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 \r\nNF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布",
+        "source": "comment"
+      },
+      {
+        "column": "STYN",
+        "description": "状态",
+        "rule": "A-合格，B-不良，C-废品，D-修理\r\n原：1合格 2不良 3报废 4保留",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTC0002": {
+    "tableName": "LTC0002",
+    "fileName": "LTC0002-半成品投入现况.xlsx",
+    "module": "LT-LOT追溯管理\\LTC-半成品生产追溯",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "投入状态区分",
+        "rule": "0未到存放时间1正常2过期3修正4.报废5.不良6.规格误投",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTC00022": {
+    "tableName": "LTC00022",
+    "fileName": "LTC00022-半成品投入现况2号胶料.xlsx",
+    "module": "LT-LOT追溯管理\\LTC-半成品生产追溯",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "投入状态区分",
+        "rule": "0未到存放时间1正常2过期3修正4.报废5.不良6.规格误投",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTC0004": {
+    "tableName": "LTC0004",
+    "fileName": "LTC0004-半成品投入履历.xlsx",
+    "module": "LT-LOT追溯管理\\LTC-半成品生产追溯",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "投入状态",
+        "rule": "0未到存放时间1正常2过期3修正4.报废5.不良6.规格误投",
+        "source": "comment"
+      },
+      {
+        "column": "INPUTMODE",
+        "description": "投入区分",
+        "rule": "Y:自动 N:手动",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTC0007": {
+    "tableName": "LTC0007",
+    "fileName": "LTC0007-半成品投入队列.xlsx",
+    "module": "LT-LOT追溯管理\\LTC-半成品生产追溯",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "投入状态区分 0未到存放时间1正常2过期3修正4.报废5.不良6.规格误投",
+        "rule": "0未到存放时间1正常2过期3修正4.报废5.不良6.规格误投",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTC0012": {
+    "tableName": "LTC0012",
+    "fileName": "LTC0012-半成品投入队列暂存表.xlsx",
+    "module": "LT-LOT追溯管理\\LTC-半成品生产追溯",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "投入状态区分",
+        "rule": "0未到存放时间1正常2过期3修正4.报废5.不良6.规格误投",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTD0001": {
+    "tableName": "LTD0001",
+    "fileName": "LTD0001-密炼生产追踪.xlsx",
+    "module": "LT-LOT追溯管理\\LTD-密炼生产追溯",
+    "rules": [
+      {
+        "column": "JGRD",
+        "description": "胶料等级",
+        "rule": "0 待检 1合格 2不良 3.保留 4.报废 5过期 6等待",
+        "source": "comment"
+      },
+      {
+        "column": "NORMALSTA",
+        "description": "自动上传",
+        "rule": "Y 自动上传 N手动上传 B补录",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTD0002": {
+    "tableName": "LTD0002",
+    "fileName": "LTD0002-密炼投入现况.xlsx",
+    "module": "LT-LOT追溯管理\\LTD-密炼生产追溯",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "投入状态 0 待检 1合格 2不良 3.保留 4.报废 5过期 6等待 7-规格误投",
+        "rule": "0待检 1合格 2不良 3保留 4报废 5过期 6等待 7规格误投,数据字典key：paa_jgrd",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTD0002_HISTORY": {
+    "tableName": "LTD0002_HISTORY",
+    "fileName": "LTD0002_HISTORY-密炼投入现况更新履历.xlsx",
+    "module": "LT-LOT追溯管理\\LTD-密炼生产追溯",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "投入状态 0 待检 1合格 2不良 3.保留 4.报废 5过期 6等待 7-规格误投",
+        "rule": "0 待检 1合格 2不良 3.保留 4.报废 5过期 6等待 7-规格误投",
+        "source": "comment"
+      },
+      {
+        "column": "SDIV",
+        "description": "投入区分 1.母炼胶 2.天然胶 3.合成胶 4.硫磺 5.炭黑(包括白炭黑) 6.油 7.小料  8.不合格胶料 9.返回胶",
+        "rule": "1.母炼胶 2.天然胶 3.合成胶 4.硫磺 5.炭黑(包括白炭黑) 6.油 7.小料  8.不合格胶料 9.返回胶",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTD0003": {
+    "tableName": "LTD0003",
+    "fileName": "LTD0003-密炼投入绑定.xlsx",
+    "module": "LT-LOT追溯管理\\LTD-密炼生产追溯",
+    "rules": [
+      {
+        "column": "JLLOTS",
+        "description": "母胶Lots,DIV=ML+SL",
+        "rule": "母胶Lots,DIV=ML+SL",
+        "source": "description"
+      },
+      {
+        "column": "TJLOTS",
+        "description": "天然胶Lots,DIV=NB",
+        "rule": "天然胶Lots,DIV=NB",
+        "source": "description"
+      },
+      {
+        "column": "HJLOTS",
+        "description": "合成胶Lots,DIV=RP",
+        "rule": "合成胶Lots,DIV=RP",
+        "source": "description"
+      },
+      {
+        "column": "LHLOTS",
+        "description": "硫磺Lots,DIV=VA(偶联剂Si69等)",
+        "rule": "硫磺Lots,DIV=VA(偶联剂Si69等)",
+        "source": "description"
+      },
+      {
+        "column": "YFLOTS",
+        "description": "药粉Lots,DIV=XL",
+        "rule": "药粉Lots,DIV=XL",
+        "source": "description"
+      },
+      {
+        "column": "THEQTY3",
+        "description": "炭黑Lots（黑）,DIV=CB",
+        "rule": "炭黑Lots（黑）,DIV=CB",
+        "source": "description"
+      },
+      {
+        "column": "YLLOTS",
+        "description": "油Lots,DIV=YL",
+        "rule": "油Lots,DIV=YL",
+        "source": "description"
+      },
+      {
+        "column": "NJLLOTS",
+        "description": "不合格胶料LOTS,DIV=JL,PPB0103-STATE NOT IN('4','5')",
+        "rule": "不合格胶料LOTS,DIV=JL,PPB0103-STATE NOT IN('4','5')",
+        "source": "description"
+      },
+      {
+        "column": "FJLLOTS",
+        "description": "返回胶LOTS,DIV=RB",
+        "rule": "返回胶LOTS,DIV=RB",
+        "source": "description"
+      },
+      {
+        "column": "WTHEQTY3",
+        "description": "白炭黑LOTS（白）,DIV=RF",
+        "rule": "白炭黑LOTS（白）,DIV=RF",
+        "source": "description"
+      }
+    ]
+  },
+  "LTD0004": {
+    "tableName": "LTD0004",
+    "fileName": "LTD0004-密炼投入履历.xlsx",
+    "module": "LT-LOT追溯管理\\LTD-密炼生产追溯",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "投入状态 0 待检 1合格 2不良 3.保留 4.报废 5过期 6等待 7-规格误投",
+        "rule": "(0 正常 1.规格误投 2.不良 3.报废 4.保留 5.过期)OLD\r\n0 待检 1合格 2不良 3.保留 4.报废 5过期 6等待 7-规格误投",
+        "source": "comment"
+      },
+      {
+        "column": "SDIV",
+        "description": "投入区分 母炼胶1  天然胶2 合成胶3  小料包4  不合格胶5 返回胶6  回车胶7",
+        "rule": "CB炭黑\r\nCF纤维帘线\r\nJL终炼胶\r\nML母炼胶\r\nNB天然胶\r\nPA加工助剂\r\nPT增塑与增粘剂\r\nRA防老剂\r\nRB返回胶\r\nRBW胎圈钢丝\r\nRF补强填充剂\r\nRP合成胶\r\nRSC钢丝帘线\r\nSL塑炼胶\r\nSR再生胶\r\nVA硫化剂\r\nXL小料包\r\nYL油",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTD0007": {
+    "tableName": "LTD0007",
+    "fileName": "LTD0007-密炼投入队列.xlsx",
+    "module": "LT-LOT追溯管理\\LTD-密炼生产追溯",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "投入状态",
+        "rule": "0待检 1合格 2不良 3保留 4报废 5过期 6等待 7规格误投\r\n11已登记余量 12已产出",
+        "source": "comment"
+      },
+      {
+        "column": "SDIV",
+        "description": "投入区分",
+        "rule": "母炼胶1  天然胶2 合成胶3  小料包4  不合格胶5 返回胶6  回车胶7",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTD0012": {
+    "tableName": "LTD0012",
+    "fileName": "LTD0012-密炼先入先出检查.xlsx",
+    "module": "LT-LOT追溯管理\\LTD-密炼生产追溯",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "结果状态",
+        "rule": "Y 符合 N 不符合",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTD0030": {
+    "tableName": "LTD0030",
+    "fileName": "LTD0030-密炼误投入履历.xlsx",
+    "module": "LT-LOT追溯管理\\LTD-密炼生产追溯",
+    "rules": [
+      {
+        "column": "WRONGINDIV",
+        "description": "投入区分 母炼胶1  天然胶2 合成胶3  小料包4  不合格胶5 返回胶6  回车胶7",
+        "rule": "投入区分 母炼胶1  天然胶2 合成胶3  小料包4  不合格胶5 返回胶6  回车胶7",
+        "source": "description"
+      },
+      {
+        "column": "WRONGINDIV_ENT",
+        "description": "投入口区分母炼胶->1_1;1_2;1_3  天然胶->2_1;2_2;2_3  合成胶->3_1;3_2;3_3;3_4;3_5;3_6  小料包->4_1;4_2;4_3  不合格胶->5_1;5_2;5_3 返回胶->6_1;6_2  回车胶->7_1;7_2;7_3",
+        "rule": "投入口区分母炼胶->1_1;1_2;1_3  天然胶->2_1;2_2;2_3  合成胶->3_1;3_2;3_3;3_4;3_5;3_6  小料包->4_1;4_2;4_3  不合格胶->5_1;5_2;5_3 返回胶->6_1;6_2  回车胶->7_1;7_2;7_3",
+        "source": "description"
+      },
+      {
+        "column": "WRONGDIV",
+        "description": "误投入区分 1.规格误投 2.不良 3.报废 4.保留 5.过期 6.未读取 7-等待 8-无在制品库存 9-规格误投(规格交替) 10-待检",
+        "rule": "误投入区分 1.规格误投 2.不良 3.报废 4.保留 5.过期 6.未读取 7-等待 8-无在制品库存 9-规格误投(规格交替) 10-待检",
+        "source": "description"
+      }
+    ]
+  },
+  "LTD0031": {
+    "tableName": "LTD0031",
+    "fileName": "LTD0031-密炼误投入解除履历.xlsx",
+    "module": "LT-LOT追溯管理\\LTD-密炼生产追溯",
+    "rules": [
+      {
+        "column": "WRONGINDIV",
+        "description": "投入区分 母炼胶1  天然胶2 合成胶3  小料包4  不合格胶5 返回胶6  回车胶7",
+        "rule": "投入区分 母炼胶1  天然胶2 合成胶3  小料包4  不合格胶5 返回胶6  回车胶7",
+        "source": "description"
+      },
+      {
+        "column": "WRONGINDIV_ENT",
+        "description": "投入口区分 母炼胶->1_1;1_2;1_3  天然胶->2_1;2_2;2_3  合成胶->3_1;3_2;3_3;3_4;3_5;3_6  小料包->4_1;4_2;4_3  不合格胶->5_1;5_2;5_3 返回胶->6_1;6_2  回车胶->7_1;7_2;7_3",
+        "rule": "投入口区分 母炼胶->1_1;1_2;1_3  天然胶->2_1;2_2;2_3  合成胶->3_1;3_2;3_3;3_4;3_5;3_6  小料包->4_1;4_2;4_3  不合格胶->5_1;5_2;5_3 返回胶->6_1;6_2  回车胶->7_1;7_2;7_3",
+        "source": "description"
+      },
+      {
+        "column": "WRONGDIV",
+        "description": "误投入区分 1.规格误投 2.不良 3.报废 4.保留 5.过期 6.未读取 7-等待 8-无在制品库存 9-规格误投(规格交替) 10-待检",
+        "rule": "误投入区分 1.规格误投 2.不良 3.报废 4.保留 5.过期 6.未读取 7-等待 8-无在制品库存 9-规格误投(规格交替) 10-待检",
+        "source": "description"
+      }
+    ]
+  },
+  "LTD0074": {
+    "tableName": "LTD0074",
+    "fileName": "LTD0074-密炼主配方下发记录.xlsx",
+    "module": "LT-LOT追溯管理\\LTD-密炼生产追溯",
+    "rules": [
+      {
+        "column": "Div",
+        "description": "部件区分",
+        "rule": "四期密炼专用字段 0上密炼机 1下密炼机 2-其他，默认值0",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTD0075": {
+    "tableName": "LTD0075",
+    "fileName": "LTD0075-密炼称重配方下发记录.xlsx",
+    "module": "LT-LOT追溯管理\\LTD-密炼生产追溯",
+    "rules": [
+      {
+        "column": "IsUseRubberCutter",
+        "description": "是否使用供胶机",
+        "rule": "四期密炼专用字段 母炼一台供胶机，终炼两台供胶机，0:不使用 1：使用一台(母炼，终炼一号供胶机) 2: 使用第二台供胶机(终炼2号供胶机) 3: 两台供胶机一起使用（终炼），默认0",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTD0076": {
+    "tableName": "LTD0076",
+    "fileName": "LTD0076-密炼步序配方下发记录.xlsx",
+    "module": "LT-LOT追溯管理\\LTD-密炼生产追溯",
+    "rules": [
+      {
+        "column": "Div",
+        "description": "部件区分",
+        "rule": "四期密炼专用字段 0：上密炼机 1：下密炼机：2：其他，默认值0",
+        "source": "comment"
+      }
+    ]
+  },
+  "LTF0001": {
+    "tableName": "LTF0001",
+    "fileName": "LTF0001-原材料信息追踪.xlsx",
+    "module": "LT-LOT追溯管理\\LTF原材料追溯",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分",
+        "rule": "TR天然胶 HC合成胶 GS钢丝 XY小药",
+        "source": "comment"
+      },
+      {
+        "column": "STA",
+        "description": "状态",
+        "rule": "1正常  2不良 3保留 4报废",
+        "source": "comment"
+      },
+      {
+        "column": "LOCKYN",
+        "description": "是否锁定 Y锁定  N 可用",
+        "rule": "是否锁定 Y锁定  N 可用",
+        "source": "description"
+      }
+    ]
+  },
+  "LTF0001_EU": {
+    "tableName": "LTF0001_EU",
+    "fileName": "LTF0001_EU-欧洲原材料信息追踪.xlsx",
+    "module": "LT-LOT追溯管理\\LTF原材料追溯",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分",
+        "rule": "TR天然胶 HC合成胶 GS钢丝 XY小药",
+        "source": "comment"
+      },
+      {
+        "column": "STA",
+        "description": "状态",
+        "rule": "1正常  2不良 3保留 4报废",
+        "source": "comment"
+      },
+      {
+        "column": "LOCKYN",
+        "description": "是否锁定 Y锁定  N 可用",
+        "rule": "是否锁定 Y锁定  N 可用",
+        "source": "description"
+      }
+    ]
+  },
+  "LT_OPERATE": {
+    "tableName": "LT_OPERATE",
+    "fileName": "LT_OPERATE-硫化成型生产追踪调整履历.xlsx",
+    "module": "LT-LOT追溯管理",
+    "rules": [
+      {
+        "column": "NORMALSTA",
+        "description": "操作区分 M MES端操作，P  Pda操作",
+        "rule": "操作区分 M MES端操作，P  Pda操作",
+        "source": "description"
+      }
+    ]
+  },
+  "MDA0004": {
+    "tableName": "MDA0004",
+    "fileName": "MDA0004-模具件号档案.xlsx",
+    "module": "MD-生产辅助管理\\MDA-模具基本信息管理",
+    "rules": [
+      {
+        "column": "QSTA",
+        "description": "质量状态",
+        "rule": "待检，合格，不合格，修理中，废弃",
+        "source": "comment"
+      }
+    ]
+  },
+  "MDA0005": {
+    "tableName": "MDA0005",
+    "fileName": "MDA0005-模具报废原因维护.xlsx",
+    "module": "MD-生产辅助管理\\MDA-模具基本信息管理",
+    "rules": [
+      {
+        "column": "MDBADCOD",
+        "description": "模具报废原因代码 MD",
+        "rule": "模具报废原因代码 MD",
+        "source": "description"
+      },
+      {
+        "column": "MDBADNAME",
+        "description": "模具报废原因描述",
+        "rule": "模具报废原因描述",
+        "source": "description"
+      }
+    ]
+  },
+  "MDA0006": {
+    "tableName": "MDA0006",
+    "fileName": "MDA0006-模具报废履历.xlsx",
+    "module": "MD-生产辅助管理\\MDA-模具基本信息管理",
+    "rules": [
+      {
+        "column": "BADREMARK",
+        "description": "报废原因",
+        "rule": "报废原因",
+        "source": "comment"
+      },
+      {
+        "column": "ENAM",
+        "description": "报废人",
+        "rule": "报废人",
+        "source": "comment"
+      },
+      {
+        "column": "BTIM",
+        "description": "报废日期",
+        "rule": "报废日期",
+        "source": "comment"
+      }
+    ]
+  },
+  "MDA0017": {
+    "tableName": "MDA0017",
+    "fileName": "MDA0017-氮气保压等级.xlsx",
+    "module": "MD-生产辅助管理\\MDA-模具基本信息管理",
+    "rules": [
+      {
+        "column": "GRADE",
+        "description": "氮气保压差值等级",
+        "rule": "氮气保压差值等级",
+        "source": "description"
+      },
+      {
+        "column": "DIFMAX",
+        "description": "氮气保压差值上限",
+        "rule": "氮气保压差值上限",
+        "source": "description"
+      },
+      {
+        "column": "DIFMIN",
+        "description": "氮气保压差值下限",
+        "rule": "氮气保压差值下限",
+        "source": "description"
+      }
+    ]
+  },
+  "MDB0004": {
+    "tableName": "MDB0004",
+    "fileName": "MDB0004-胶囊报废原因管理.xlsx",
+    "module": "MD-生产辅助管理\\MDB-胶囊基础信息",
+    "rules": [
+      {
+        "column": "CAPBADCOD",
+        "description": "胶囊报废原因代码",
+        "rule": "胶囊报废原因代码",
+        "source": "description"
+      },
+      {
+        "column": "CAPBADNAME",
+        "description": "报废原因描述",
+        "rule": "报废原因描述",
+        "source": "description"
+      }
+    ]
+  },
+  "MDD0001": {
+    "tableName": "MDD0001",
+    "fileName": "MDD0001-成型鼓台账.xlsx",
+    "module": "MD-生产辅助管理\\MDD-成型鼓及鼓胶囊管理",
+    "rules": [
+      {
+        "column": "LR",
+        "description": "左右限制",
+        "rule": "L=仅限左侧，R=仅限右侧，LR=两侧通用",
+        "source": "comment"
+      },
+      {
+        "column": "GROUPNO",
+        "description": "组别",
+        "rule": "MD_GROUP，1=第一组，2=第二组",
+        "source": "comment"
+      }
+    ]
+  },
+  "MDD0004": {
+    "tableName": "MDD0004",
+    "fileName": "MDD0004-成型鼓更换记录.xlsx",
+    "module": "MD-生产辅助管理\\MDD-成型鼓及鼓胶囊管理",
+    "rules": [
+      {
+        "column": "CHANGEDIS",
+        "description": "更换区分",
+        "rule": "1=鼓，2=胶囊",
+        "source": "comment"
+      },
+      {
+        "column": "GROUPNO",
+        "description": "组别",
+        "rule": "1=第一组，2=第二组",
+        "source": "comment"
+      }
+    ]
+  },
+  "MP0002": {
+    "tableName": "MP0002",
+    "fileName": "MP0002-口型板库存管理.xlsx",
+    "module": "MP-口型版管理",
+    "rules": [
+      {
+        "column": "QUASTATE",
+        "description": "质量状态 合格、报废",
+        "rule": "合格、报废",
+        "source": "comment"
+      }
+    ]
+  },
+  "WIP0001": {
+    "tableName": "WIP0001",
+    "fileName": "WIP0001-在制品库存(半成品).xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分",
+        "rule": "SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 \r\nSK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 \r\nSB钢丝带束 DE钢丝子口 CC胎体帘布",
+        "source": "comment"
+      },
+      {
+        "column": "STA",
+        "description": "状态",
+        "rule": "0未到存放时间1正常2过期3修正4.报废5.不良",
+        "source": "comment"
+      },
+      {
+        "column": "STKSTS",
+        "description": "在库状态",
+        "rule": "10:生产完未入库  11：在库 12\\13：在线边库 15：成型投料位",
+        "source": "comment"
+      }
+    ]
+  },
+  "WIP0001_HOLD": {
+    "tableName": "WIP0001_HOLD",
+    "fileName": "WIP0001_Hold-在制品库存(半成品)保留.xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分-SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布",
+        "rule": "区分-SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布",
+        "source": "description"
+      },
+      {
+        "column": "STA",
+        "description": "状态  0未到存放时间1正常2过期3修正4.报废5.不良",
+        "rule": "0未到存放时间1正常2过期3修正4.报废5.不良",
+        "source": "comment"
+      },
+      {
+        "column": "STKSTS",
+        "description": "在库状态  10:生产完未入库  11：在库 12：在线边库",
+        "rule": "10:生产完未入库  11：在库 12：在线边库 15：成型投料位",
+        "source": "comment"
+      },
+      {
+        "column": "IS_LOCK",
+        "description": "是否锁定 Y锁定  N 可用",
+        "rule": "是否锁定 Y锁定  N 可用",
+        "source": "description"
+      }
+    ]
+  },
+  "WIP0001_LOG": {
+    "tableName": "WIP0001_LOG",
+    "fileName": "WIP0001_LOG-在制品库存(半成品)日志.xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分",
+        "rule": "SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 \r\nBW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布",
+        "source": "comment"
+      },
+      {
+        "column": "STA",
+        "description": "状态",
+        "rule": "0未到存放时间1正常2过期3修正4.报废5.不良",
+        "source": "comment"
+      },
+      {
+        "column": "STKSTS",
+        "description": "在库状态",
+        "rule": "10:生产完未入库  11：在库 12：在线边库",
+        "source": "comment"
+      }
+    ]
+  },
+  "WIP0001_OPLOG": {
+    "tableName": "WIP0001_OPLOG",
+    "fileName": "WIP0001_OPLOG-半成品库存表操作日志.xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分",
+        "rule": "SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 \r\nPD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 \r\nNX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布",
+        "source": "comment"
+      },
+      {
+        "column": "STA",
+        "description": "状态",
+        "rule": "0未到存放时间1正常2过期3修正4.报废5.不良",
+        "source": "comment"
+      },
+      {
+        "column": "OPDIV",
+        "description": "操作区分",
+        "rule": "Insert Update Select Delete",
+        "source": "comment"
+      }
+    ]
+  },
+  "WIP0002": {
+    "tableName": "WIP0002",
+    "fileName": "WIP0002-在制品库存(胎胚).xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态",
+        "rule": "0未到存放时间1正常2过期3修正4.报废5.不良",
+        "source": "comment"
+      }
+    ]
+  },
+  "WIP0002_JSMX": {
+    "tableName": "WIP0002_JSMX",
+    "fileName": "WIP0002_JSMX-在制品库存历史结算明细(胎胚).xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态",
+        "rule": "0未到存放时间1正常2过期3修正4.报废5.不良",
+        "source": "comment"
+      }
+    ]
+  },
+  "WIP0002_LHLOG": {
+    "tableName": "WIP0002_LHLOG",
+    "fileName": "WIP0002_LHLOG-在制品库存(胎胚）（备份表）.xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态  0未到存放时间1正常2过期3修正4.报废5.不良",
+        "rule": "0未到存放时间1正常2过期3修正4.报废5.不良",
+        "source": "comment"
+      },
+      {
+        "column": "IS_LOCK",
+        "description": "是否锁定 Y锁定  N 可用",
+        "rule": "是否锁定 Y锁定  N 可用",
+        "source": "description"
+      }
+    ]
+  },
+  "WIP0002_LOG": {
+    "tableName": "WIP0002_LOG",
+    "fileName": "WIP0002_LOG-在制品详细库存(胎胚).xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态",
+        "rule": "0未到存放时间 1正常 2过期 3修正 4报废 5不良",
+        "source": "comment"
+      },
+      {
+        "column": "DelType",
+        "description": "胎胚报废删除分类",
+        "rule": "胎胚报废删除分类",
+        "source": "description"
+      }
+    ]
+  },
+  "WIP0002_OPLOG": {
+    "tableName": "WIP0002_OPLOG",
+    "fileName": "WIP0002_OPLOG.xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态",
+        "rule": "0未到存放时间 1正常 2过期 3修正 4报废 5不良",
+        "source": "comment"
+      }
+    ]
+  },
+  "WIP0003": {
+    "tableName": "WIP0003",
+    "fileName": "WIP0003-在制品库存(密炼).xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态",
+        "rule": "1正常  2不良 3保留 4报废(0未到存放日期 1正常 2过期 3不良 4保留 5报废)",
+        "source": "comment"
+      }
+    ]
+  },
+  "WIP0004": {
+    "tableName": "WIP0004",
+    "fileName": "WIP0004-原材料库存.xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态",
+        "rule": "0待检 1正常 2不良 3保留 4报废",
+        "source": "comment"
+      }
+    ]
+  },
+  "WIP0004_OPLOG": {
+    "tableName": "WIP0004_OPLOG",
+    "fileName": "WIP0004_OPLOG.xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态",
+        "rule": "1正常 2不良 3保留 4报废",
+        "source": "comment"
+      }
+    ]
+  },
+  "WIP0010": {
+    "tableName": "WIP0010",
+    "fileName": "WIP0010-成品胎在制品库存.xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态",
+        "rule": "1正常 2不良 3保留 4报废",
+        "source": "comment"
+      }
+    ]
+  },
+  "WIP0010_LOG": {
+    "tableName": "WIP0010_LOG",
+    "fileName": "WIP0010_LOG-成品胎在制品库存操作日志.xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态",
+        "rule": "1正常 2不良 3保留 4报废",
+        "source": "comment"
+      },
+      {
+        "column": "STKSTS",
+        "description": "在库状态",
+        "rule": "10:检测中  11：待入库(物流存放区) 12,入库。发货的时候删除,产出插入，入库更新",
+        "source": "comment"
+      }
+    ]
+  },
+  "WIP0010_OPLOG": {
+    "tableName": "WIP0010_OPLOG",
+    "fileName": "WIP0010_OPLOG.xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "OPDIV",
+        "description": "操作类型",
+        "rule": "Delete Update Insert Select",
+        "source": "comment"
+      }
+    ]
+  },
+  "WIP0012": {
+    "tableName": "WIP0012",
+    "fileName": "WIP0012_配套规格维护、PC吋口规格维护.xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分",
+        "rule": "1:配套规格、2:PC寸口规格",
+        "source": "comment"
+      }
+    ]
+  },
+  "WIP0013": {
+    "tableName": "WIP0013",
+    "fileName": "WIP0013_配套规格维护.xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分",
+        "rule": "1:配套规格、2:PC寸口规格",
+        "source": "comment"
+      }
+    ]
+  },
+  "WIP0014": {
+    "tableName": "WIP0014",
+    "fileName": "WIP0014-实验胎库存.xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态",
+        "rule": "1正常  2不良 3保留 4报废",
+        "source": "comment"
+      }
+    ]
+  },
+  "WIP0031": {
+    "tableName": "WIP0031",
+    "fileName": "WIP0031-拆卷原卷拆分前信息.xlsx",
+    "module": "OR-信息维护",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分-SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布",
+        "rule": "SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布",
+        "source": "comment"
+      },
+      {
+        "column": "STA",
+        "description": "状态  0未到存放时间1正常2过期3修正4.报废5.不良",
+        "rule": "0未到存放时间1正常2过期3修正4.报废5.不良",
+        "source": "comment"
+      },
+      {
+        "column": "STKSTS",
+        "description": "在库状态  10:生产完未入库  11：在库 12：在线边库",
+        "rule": "10:生产完未入库  11：在库 12\\13：在线边库 15：成型投料位",
+        "source": "comment"
+      },
+      {
+        "column": "LOCKYN",
+        "description": "是否锁定 Y锁定  N 可用",
+        "rule": "是否锁定 Y锁定  N 可用",
+        "source": "description"
+      }
+    ]
+  },
+  "PAA0002": {
+    "tableName": "PAA0002",
+    "fileName": "PAA0002-物料邀请记录.xlsx",
+    "module": "PA-生产实际管理",
+    "rules": [
+      {
+        "column": "SQTY",
+        "description": "计划剩余量的需求量",
+        "rule": "邀请的数量=计划量-实绩-当前投入能干出来的数量",
+        "source": "comment"
+      }
+    ]
+  },
+  "PAD0001": {
+    "tableName": "PAD0001",
+    "fileName": "PAD0001-规格交替履历.xlsx",
+    "module": "PA-生产实际管理\\PAD-计划实绩中间表(DCC)",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分FT 硫化 GT 成型…",
+        "rule": "区分FT 硫化 GT 成型…",
+        "source": "description"
+      }
+    ]
+  },
+  "PAD0101": {
+    "tableName": "PAD0101",
+    "fileName": "PAD0101-密炼计划中间表.xlsx",
+    "module": "PA-生产实际管理\\PAD-计划实绩中间表(DCC)",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "生产状态",
+        "rule": "1:等待 2:进行中3:完成4:投入进行中5:产出进行中6:等待产出交替7:暂停",
+        "source": "comment"
+      }
+    ]
+  },
+  "PAD0201_CT": {
+    "tableName": "PAD0201_CT",
+    "fileName": "PAD0201_CT-硫化日计划下载中间表.xlsx",
+    "module": "PA-生产实际管理\\PAD-计划实绩中间表(DCC)",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "生产状态",
+        "rule": "1等待 2进行中 3完成 4投入口进行中 5产出进行中",
+        "source": "comment"
+      }
+    ]
+  },
+  "PDADELLOG": {
+    "tableName": "PDADELLOG",
+    "fileName": "PDADELLOG-原材料PDA删除日志.xlsx",
+    "module": "PDA-扫描日志",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态 1正常  2不良 3保留 4报废",
+        "rule": "状态 1正常  2不良 3保留 4报废",
+        "source": "comment"
+      },
+      {
+        "column": "LOCKYN",
+        "description": "是否锁定 Y锁定  N 可用",
+        "rule": "是否锁定 Y锁定  N 可用",
+        "source": "comment"
+      }
+    ]
+  },
+  "SCANLOG": {
+    "tableName": "SCANLOG",
+    "fileName": "SCANLOG-PDA扫描日志.xlsx",
+    "module": "PDA-扫描日志",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "分类",
+        "rule": "1硫化扫描无成型信息 \r\n2外观扫描无硫化信息 \r\n3PDA扫描报警 \r\n4X光扫描无硫化信息",
+        "source": "comment"
+      }
+    ]
+  },
+  "PDA0005": {
+    "tableName": "PDA0005",
+    "fileName": "PDA0005-半成品PDA提示记录.xlsx",
+    "module": "PDA系统表",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分  SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布 GT 胎胚",
+        "rule": "SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布 GT 胎胚",
+        "source": "comment"
+      }
+    ]
+  },
+  "PLB0012": {
+    "tableName": "PLB0012",
+    "fileName": "PLB0012-静音棉镶钉胎月计划.xlsx",
+    "module": "PL\\PLB",
+    "rules": [
+      {
+        "column": "SUDIV",
+        "description": "规则区分",
+        "rule": "1：静音棉  2：镶订胎",
+        "source": "comment"
+      }
+    ]
+  },
+  "PLC0009": {
+    "tableName": "PLC0009",
+    "fileName": "PLC0009-生产日产计划  - 工程胎.xlsx",
+    "module": "PL\\PLC",
+    "rules": [
+      {
+        "column": "PLQTY1",
+        "description": "早班计划米数",
+        "rule": "早班计划米数",
+        "source": "description"
+      },
+      {
+        "column": "PLQTY2",
+        "description": "中班计划米数",
+        "rule": "中班计划米数",
+        "source": "description"
+      },
+      {
+        "column": "PLQTY3",
+        "description": "夜班计划米数",
+        "rule": "夜班计划米数",
+        "source": "description"
+      },
+      {
+        "column": "PLLOT1",
+        "description": "早班计划LOT数",
+        "rule": "早班计划LOT数",
+        "source": "description"
+      },
+      {
+        "column": "PLLOT2",
+        "description": "中班计划LOT数",
+        "rule": "中班计划LOT数",
+        "source": "description"
+      },
+      {
+        "column": "PLLOT3",
+        "description": "夜班计划LOT数",
+        "rule": "夜班计划LOT数",
+        "source": "description"
+      },
+      {
+        "column": "ORDERNOA",
+        "description": "早班工单号",
+        "rule": "早班工单号",
+        "source": "description"
+      },
+      {
+        "column": "ORDERNOB",
+        "description": "中班工单号",
+        "rule": "中班工单号",
+        "source": "description"
+      }
+    ]
+  },
+  "PLA0009": {
+    "tableName": "PLA0009",
+    "fileName": "PLA0009-生产日产计划.xlsx",
+    "module": "PP-计划管理\\PLA-滚动计划",
+    "rules": [
+      {
+        "column": "PLQTY1",
+        "description": "早班计划米数",
+        "rule": "早班计划米数",
+        "source": "description"
+      },
+      {
+        "column": "PLQTY2",
+        "description": "中班计划米数",
+        "rule": "中班计划米数",
+        "source": "description"
+      },
+      {
+        "column": "PLQTY3",
+        "description": "夜班计划米数",
+        "rule": "夜班计划米数",
+        "source": "description"
+      },
+      {
+        "column": "PLLOT1",
+        "description": "早班计划LOT数",
+        "rule": "早班计划LOT数",
+        "source": "description"
+      },
+      {
+        "column": "PLLOT2",
+        "description": "中班计划LOT数",
+        "rule": "中班计划LOT数",
+        "source": "description"
+      },
+      {
+        "column": "PLLOT3",
+        "description": "夜班计划LOT数",
+        "rule": "夜班计划LOT数",
+        "source": "description"
+      },
+      {
+        "column": "ORDERNOA",
+        "description": "早班工单号",
+        "rule": "早班工单号",
+        "source": "description"
+      },
+      {
+        "column": "ORDERNOB",
+        "description": "中班工单号",
+        "rule": "中班工单号",
+        "source": "description"
+      }
+    ]
+  },
+  "PLB0009": {
+    "tableName": "PLB0009",
+    "fileName": "PLB0009-生产日产计划  - 半钢.xlsx",
+    "module": "PP-计划管理\\PLA-滚动计划",
+    "rules": [
+      {
+        "column": "PLQTY1",
+        "description": "早班计划米数",
+        "rule": "早班计划米数",
+        "source": "description"
+      },
+      {
+        "column": "PLQTY2",
+        "description": "中班计划米数",
+        "rule": "中班计划米数",
+        "source": "description"
+      },
+      {
+        "column": "PLQTY3",
+        "description": "夜班计划米数",
+        "rule": "夜班计划米数",
+        "source": "description"
+      },
+      {
+        "column": "PLLOT1",
+        "description": "早班计划LOT数",
+        "rule": "早班计划LOT数",
+        "source": "description"
+      },
+      {
+        "column": "PLLOT2",
+        "description": "中班计划LOT数",
+        "rule": "中班计划LOT数",
+        "source": "description"
+      },
+      {
+        "column": "PLLOT3",
+        "description": "夜班计划LOT数",
+        "rule": "夜班计划LOT数",
+        "source": "description"
+      },
+      {
+        "column": "ORDERNOA",
+        "description": "早班工单号",
+        "rule": "早班工单号",
+        "source": "description"
+      },
+      {
+        "column": "ORDERNOB",
+        "description": "中班工单号",
+        "rule": "中班工单号",
+        "source": "description"
+      }
+    ]
+  },
+  "PPB0003": {
+    "tableName": "PPB0003",
+    "fileName": "PPB0003-MES报工数据(传SAP).xlsx",
+    "module": "PP-计划管理\\PPB-日计划",
+    "rules": [
+      {
+        "column": "ZBGLX",
+        "description": "报工类型",
+        "rule": "A-成品正常报工 B-报工完全取消\r\nC-报废 D-组件投料 E-作业反冲",
+        "source": "comment"
+      }
+    ]
+  },
+  "PPB0003_TH": {
+    "tableName": "PPB0003_TH",
+    "fileName": "PPB0003_th-泰国MES报工数据(传SAP).xlsx",
+    "module": "PP-计划管理\\PPB-日计划",
+    "rules": [
+      {
+        "column": "ZBGLX",
+        "description": "报工类型",
+        "rule": "A-成品正常报工 B-报工完全取消 C-报废 D-组件投料 E-作业反冲",
+        "source": "comment"
+      }
+    ]
+  },
+  "PPB0011": {
+    "tableName": "PPB0011",
+    "fileName": "PPB0011-密炼车间计划看板.xlsx",
+    "module": "PP-计划管理\\PPB-日计划",
+    "rules": [
+      {
+        "column": "PLQTY1",
+        "description": "夜班计划量",
+        "rule": "夜班计划量",
+        "source": "description"
+      },
+      {
+        "column": "PLQTY3",
+        "description": "中班计划量",
+        "rule": "中班计划量",
+        "source": "description"
+      }
+    ]
+  },
+  "PPB0101_LOG": {
+    "tableName": "PPB0101_LOG",
+    "fileName": "PPB0101_LOG-密炼计划修改履历.xlsx",
+    "module": "PP-计划管理\\PPB-日计划",
+    "rules": [
+      {
+        "column": "OPTYPE",
+        "description": "操作类型",
+        "rule": "1新增 2修改 3删除 4复制删除 5复制",
+        "source": "comment"
+      }
+    ]
+  },
+  "PPB0201": {
+    "tableName": "PPB0201",
+    "fileName": "PPB0201-生产日产计划.xlsx",
+    "module": "PP-计划管理\\PPB-日计划",
+    "rules": [
+      {
+        "column": "PLQTY1",
+        "description": "早班计划米数",
+        "rule": "早班计划米数",
+        "source": "description"
+      },
+      {
+        "column": "PLQTY2",
+        "description": "中班计划米数",
+        "rule": "中班计划米数",
+        "source": "description"
+      },
+      {
+        "column": "PLQTY3",
+        "description": "夜班计划米数",
+        "rule": "夜班计划米数",
+        "source": "description"
+      },
+      {
+        "column": "PLLOT1",
+        "description": "早班计划LOT数",
+        "rule": "早班计划LOT数",
+        "source": "description"
+      },
+      {
+        "column": "PLLOT2",
+        "description": "中班计划LOT数",
+        "rule": "中班计划LOT数",
+        "source": "description"
+      },
+      {
+        "column": "PLLOT3",
+        "description": "夜班计划LOT数",
+        "rule": "夜班计划LOT数",
+        "source": "description"
+      },
+      {
+        "column": "ORDERNOA",
+        "description": "早班工单号",
+        "rule": "早班工单号",
+        "source": "description"
+      },
+      {
+        "column": "ORDERNOB",
+        "description": "中班工单号",
+        "rule": "中班工单号",
+        "source": "description"
+      }
+    ]
+  },
+  "PPB0202": {
+    "tableName": "PPB0202",
+    "fileName": "PPB0202-生产日计划从表.xlsx",
+    "module": "PP-计划管理\\PPB-日计划",
+    "rules": [
+      {
+        "column": "QTY1",
+        "description": "早班投入量",
+        "rule": "早班投入量",
+        "source": "description"
+      },
+      {
+        "column": "QTY2",
+        "description": "中班投入量",
+        "rule": "中班投入量",
+        "source": "description"
+      }
+    ]
+  },
+  "PPD0002": {
+    "tableName": "PPD0002",
+    "fileName": "PPD0002-模具组装计划管理.xlsx",
+    "module": "PP-计划管理\\PPD-模具管理",
+    "rules": [
+      {
+        "column": "STATE",
+        "description": "任务状态",
+        "rule": "1、新建 2、组装完成 3、安装完成",
+        "source": "comment"
+      },
+      {
+        "column": "FTO_FLAG",
+        "description": "FTO状态",
+        "rule": "FTO状态:\r\n0-未开始\r\n1-模具检验合格\r\n2-模具复检合格\r\n3-质量检验合格\r\n4-质量复检合格\r\nNG1-模具检验不合格\r\nNG2-模具复检不合格\r\nNG3-质量检验不合格\r\nNG4-质量复检不合格",
+        "source": "comment"
+      }
+    ]
+  },
+  "PPD0002_FTO": {
+    "tableName": "PPD0002_FTO",
+    "fileName": "PPD0002_FTO-模具组装 FTO子表.xlsx",
+    "module": "PP-计划管理\\PPD-模具管理",
+    "rules": [
+      {
+        "column": "FTO_FALG",
+        "description": "FTO状态-1.合格, 2.不合格",
+        "rule": "FTO状态-1.合格, 2.不合格",
+        "source": "description"
+      },
+      {
+        "column": "QC_FLAG",
+        "description": "质检判定状态 0/1/2 => 合格、不合格、不检",
+        "rule": "质检判定状态 0/1/2 => 合格、不合格、不检",
+        "source": "description"
+      },
+      {
+        "column": "F_FTO_FALG",
+        "description": "复检 FTO状态-1.合格, 2.不合格",
+        "rule": "复检 FTO状态-1.合格, 2.不合格",
+        "source": "description"
+      },
+      {
+        "column": "F_QC_FLAG",
+        "description": "复检 质检判定状态 0/1/2 => 合格、不合格、不检",
+        "rule": "复检 质检判定状态 0/1/2 => 合格、不合格、不检",
+        "source": "description"
+      }
+    ]
+  },
+  "PPD0002_TASK_FTO": {
+    "tableName": "PPD0002_TASK_FTO",
+    "fileName": "PPD0002_TASK_FTO 模具组装 FTO主表.xlsx",
+    "module": "PP-计划管理\\PPD-模具管理",
+    "rules": [
+      {
+        "column": "MOLD_DEP_FLAG",
+        "description": "模具检测结果",
+        "rule": "1.合格, 2.不合格",
+        "source": "comment"
+      },
+      {
+        "column": "QC_DEP_FLAG",
+        "description": "质检检测结果",
+        "rule": "1.合格, 2.不合格",
+        "source": "comment"
+      },
+      {
+        "column": "F_MOLD_DEP_FLAG",
+        "description": "复检-模具检测结果-1.合格, 2.不合格",
+        "rule": "1.合格, 2.不合格",
+        "source": "comment"
+      },
+      {
+        "column": "F_QC_DEP_FLAG",
+        "description": "复检-质检检测结果-1.合格, 2.不合格",
+        "rule": "1.合格, 2.不合格",
+        "source": "comment"
+      }
+    ]
+  },
+  "PPD0010": {
+    "tableName": "PPD0010",
+    "fileName": "PPD0010-模具首模消息推送.xlsx",
+    "module": "PP-计划管理\\PPD-模具管理",
+    "rules": [
+      {
+        "column": "TXNTIME",
+        "description": "模具检测结果-1.合格, 2.不合格",
+        "rule": "模具检测结果-1.合格, 2.不合格",
+        "source": "description"
+      }
+    ]
+  },
+  "QMA0004": {
+    "tableName": "QMA0004",
+    "fileName": "QMA0004-工艺自检主表.xlsx",
+    "module": "QM-品质管理\\QMA-品质基础数据",
+    "rules": [
+      {
+        "column": "CONL_YN",
+        "description": "末件是否有不合格",
+        "rule": "末件是否有不合格",
+        "source": "description"
+      }
+    ]
+  },
+  "QMA0005": {
+    "tableName": "QMA0005",
+    "fileName": "QMA0005-工艺自检从表.xlsx",
+    "module": "QM-品质管理\\QMA-品质基础数据",
+    "rules": [
+      {
+        "column": "LSTOK",
+        "description": "末件检验合格",
+        "rule": "末件检验合格",
+        "source": "description"
+      },
+      {
+        "column": "QSTATE",
+        "description": "标识符",
+        "rule": "0:自检单生成的,1:上位机插入的,2:已标记历史数据，默认0",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMA0009": {
+    "tableName": "QMA0009",
+    "fileName": "QMA0009-首模检验主表.xlsx",
+    "module": "QM-品质管理\\QMA-品质基础数据",
+    "rules": [
+      {
+        "column": "PRES",
+        "description": "判定结果  A-合格 B-不合格",
+        "rule": "判定结果  A-合格 B-不合格",
+        "source": "description"
+      }
+    ]
+  },
+  "QMA1002": {
+    "tableName": "QMA1002",
+    "fileName": "QMA1002-过程质量巡检记录从表.xlsx",
+    "module": "QM-品质管理\\QMA-品质基础数据",
+    "rules": [
+      {
+        "column": "LOK",
+        "description": "L是否合格",
+        "rule": "L是否合格",
+        "source": "description"
+      },
+      {
+        "column": "ROK",
+        "description": "R是否合格",
+        "rule": "R是否合格",
+        "source": "description"
+      }
+    ]
+  },
+  "QMA1004": {
+    "tableName": "QMA1004",
+    "fileName": "QMA1004-过程质量记录主表.xlsx",
+    "module": "QM-品质管理\\QMA-品质基础数据",
+    "rules": [
+      {
+        "column": "RESULT",
+        "description": "首件是否有不合格",
+        "rule": "首件是否有不合格",
+        "source": "description"
+      },
+      {
+        "column": "RESULT2",
+        "description": "末件是否有不合格",
+        "rule": "末件是否有不合格",
+        "source": "description"
+      }
+    ]
+  },
+  "QMA1005": {
+    "tableName": "QMA1005",
+    "fileName": "QMA1005-过程质量记录从表.xlsx",
+    "module": "QM-品质管理\\QMA-品质基础数据",
+    "rules": [
+      {
+        "column": "LOK",
+        "description": "L是否合格",
+        "rule": "L是否合格",
+        "source": "description"
+      },
+      {
+        "column": "ROK",
+        "description": "R是否合格",
+        "rule": "R是否合格",
+        "source": "description"
+      },
+      {
+        "column": "QSTATE",
+        "description": "标识符",
+        "rule": "0:自检单生成的,1:上位机插入的,2:已标记历史数据，默认0",
+        "source": "comment"
+      },
+      {
+        "column": "LOK2",
+        "description": "L是否合格末件",
+        "rule": "L是否合格末件",
+        "source": "description"
+      },
+      {
+        "column": "ROK2",
+        "description": "R是否合格末件",
+        "rule": "R是否合格末件",
+        "source": "description"
+      },
+      {
+        "column": "OLOK",
+        "description": "确认L是否合格",
+        "rule": "确认L是否合格",
+        "source": "description"
+      },
+      {
+        "column": "OROK",
+        "description": "确认R是否合格",
+        "rule": "确认R是否合格",
+        "source": "description"
+      },
+      {
+        "column": "OLOK2",
+        "description": "确认L是否合格末件",
+        "rule": "确认L是否合格末件",
+        "source": "description"
+      },
+      {
+        "column": "OROK2",
+        "description": "确认R是否合格末件",
+        "rule": "确认R是否合格末件",
+        "source": "description"
+      }
+    ]
+  },
+  "QMA1005_ERRORLOG": {
+    "tableName": "QMA1005_ERRORLOG",
+    "fileName": "QMA1005_ERRORLOG-过程质量记录错误记录.xlsx",
+    "module": "QM-品质管理\\QMA-品质基础数据",
+    "rules": [
+      {
+        "column": "FLDIV",
+        "description": "首末区分",
+        "rule": "0 首件 1 末件",
+        "source": "comment"
+      },
+      {
+        "column": "LRFLG",
+        "description": "左右区分",
+        "rule": "L 左 R 右",
+        "source": "comment"
+      }
+    ]
+  },
+  "INFLATABLEDETECTION": {
+    "tableName": "INFLATABLEDETECTION",
+    "fileName": "InflatableDetection-外观复检（充气检测、全息无损检测、均匀性检测）.xlsx",
+    "module": "QM-品质管理\\QMB-成品检查",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分（1、2、3）",
+        "rule": "1=充气检测 2=全息无损检测 3=均匀性矫正",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMB0001": {
+    "tableName": "QMB0001",
+    "fileName": "QMB0001-成品胎检查履历.xlsx",
+    "module": "QM-品质管理\\QMB-成品检查",
+    "rules": [
+      {
+        "column": "RESULT",
+        "description": "判定结果  1.合格 2.内修 3.外修 4.次品 5.废品 6.待判",
+        "rule": "判定结果  1.合格 2.内修 3.外修 4.次品 5.废品 6.待判",
+        "source": "description"
+      }
+    ]
+  },
+  "QMB0005": {
+    "tableName": "QMB0005",
+    "fileName": "QMB0005-成品测厚记录.xlsx",
+    "module": "QM-品质管理\\QMB-成品检查",
+    "rules": [
+      {
+        "column": "RESULT",
+        "description": "结果1合格2次品 3 废品",
+        "rule": "结果1合格2次品 3 废品",
+        "source": "description"
+      }
+    ]
+  },
+  "QMB0006": {
+    "tableName": "QMB0006",
+    "fileName": "QMB0006-成品胎改判记录.xlsx",
+    "module": "QM-品质管理\\QMB-成品检查",
+    "rules": [
+      {
+        "column": "LASTRESULT",
+        "description": "改判前质量 1.合格 2.内修 3.外修 4.次品 5.废品 6.待判",
+        "rule": "1.合格 2.内修 3.外修 4.次品 5.废品 6.待判",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMB0008": {
+    "tableName": "QMB0008",
+    "fileName": "QMB0008-报警胎改判记录.xlsx",
+    "module": "QM-品质管理\\QMB-成品检查",
+    "rules": [
+      {
+        "column": "LASTRESULT",
+        "description": "改判前质量",
+        "rule": "1.合格 2.内修 3.外修 4.次品 5.废品 6.待判",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMB0009": {
+    "tableName": "QMB0009",
+    "fileName": "QMB0009-称重抽检记录.xlsx",
+    "module": "QM-品质管理\\QMB-成品检查",
+    "rules": [
+      {
+        "column": "RESULT",
+        "description": "结果 a,b,c,d,e,f，是否合格",
+        "rule": "结果 a,b,c,d,e,f，是否合格",
+        "source": "description"
+      }
+    ]
+  },
+  "QMB0010": {
+    "tableName": "QMB0010",
+    "fileName": "QMB0010-条码雕刻信息.xlsx",
+    "module": "QM-品质管理\\QMB-成品检查",
+    "rules": [
+      {
+        "column": "CARVEQC",
+        "description": "雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE1",
+        "description": "雕刻内容1雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE2",
+        "description": "雕刻内容2雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE3",
+        "description": "雕刻内容3雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE4",
+        "description": "雕刻内容4雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE5",
+        "description": "雕刻内容5雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE6",
+        "description": "雕刻内容6雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE7",
+        "description": "雕刻内容7雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE8",
+        "description": "雕刻内容8雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE9",
+        "description": "雕刻内容9雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE10",
+        "description": "雕刻内容10雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE11",
+        "description": "雕刻内容11雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE12",
+        "description": "雕刻内容12雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE13",
+        "description": "雕刻内容13雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE14",
+        "description": "雕刻内容14雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE15",
+        "description": "雕刻内容15雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE16",
+        "description": "雕刻内容16雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE17",
+        "description": "雕刻内容17雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE18",
+        "description": "雕刻内容18雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE19",
+        "description": "雕刻内容19雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE20",
+        "description": "雕刻内容20雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMB0010_ERROR": {
+    "tableName": "QMB0010_ERROR",
+    "fileName": "QMB0010_error-条码雕刻信息.xlsx",
+    "module": "QM-品质管理\\QMB-成品检查",
+    "rules": [
+      {
+        "column": "CARVEQC",
+        "description": "雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE1",
+        "description": "雕刻内容1雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE2",
+        "description": "雕刻内容2雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE3",
+        "description": "雕刻内容3雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE4",
+        "description": "雕刻内容4雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE5",
+        "description": "雕刻内容5雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE6",
+        "description": "雕刻内容6雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE7",
+        "description": "雕刻内容7雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE8",
+        "description": "雕刻内容8雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE9",
+        "description": "雕刻内容9雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE10",
+        "description": "雕刻内容10雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE11",
+        "description": "雕刻内容11雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE12",
+        "description": "雕刻内容12雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE13",
+        "description": "雕刻内容13雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE14",
+        "description": "雕刻内容14雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE15",
+        "description": "雕刻内容15雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE16",
+        "description": "雕刻内容16雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE17",
+        "description": "雕刻内容17雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE18",
+        "description": "雕刻内容18雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE19",
+        "description": "雕刻内容19雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      },
+      {
+        "column": "CARVE20",
+        "description": "雕刻内容20雕刻结果",
+        "rule": "1-合格,2-未雕刻，3-不合格",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMB0016": {
+    "tableName": "QMB0016",
+    "fileName": "QMB0016-成品胎复检记录.xlsx",
+    "module": "QM-品质管理\\QMB-成品检查",
+    "rules": [
+      {
+        "column": "LASTRESULT",
+        "description": "复检前质量 1.合格 2.内修 3.外修 4.次品 5.废品 6.待判",
+        "rule": "1.合格 2.内修 3.外修 4.次品 5.废品 6.待判",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMB0023": {
+    "tableName": "QMB0023",
+    "fileName": "QMB0023轮胎涂胶贴棉履历.xlsx",
+    "module": "QM-品质管理\\QMB-成品检查",
+    "rules": [
+      {
+        "column": "TyreDirection",
+        "description": "轮胎去向",
+        "rule": "1:自愈合2:静音棉,3:综合4.其他",
+        "source": "comment"
+      },
+      {
+        "column": "QualityJ",
+        "description": "涂胶是否合格",
+        "rule": "1.合格 2.不合格",
+        "source": "comment"
+      },
+      {
+        "column": "QualityH",
+        "description": "贴棉是否合格",
+        "rule": "1.合格 2.不合格",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMB0026": {
+    "tableName": "QMB0026",
+    "fileName": "QMB0026-成品胎动均改判记录.xlsx",
+    "module": "QM-品质管理\\QMB-成品检查",
+    "rules": [
+      {
+        "column": "LASTRESULT",
+        "description": "改判前质量 1.合格 2.内修 3.外修 4.次品 5.废品 6.待判",
+        "rule": "1.合格 2.内修 3.外修 4.次品 5.废品 6.待判",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMB0101": {
+    "tableName": "QMB0101",
+    "fileName": "QMB0101-成品胎综合质量.xlsx",
+    "module": "QM-品质管理\\QMB-成品检查",
+    "rules": [
+      {
+        "column": "QCSTATE",
+        "description": "综合质量  合格  次品 废品",
+        "rule": "综合质量  合格  次品 废品",
+        "source": "description"
+      },
+      {
+        "column": "UFPTYPE",
+        "description": "均匀性打标方式",
+        "rule": "均匀性打标方式",
+        "source": "description"
+      },
+      {
+        "column": "DBPTYPE",
+        "description": "动平衡打标方式",
+        "rule": "动平衡打标方式",
+        "source": "description"
+      },
+      {
+        "column": "ISOE",
+        "description": "OE品质",
+        "rule": "默认值为1，综合质量结算的时候，规格名称带OE，且外观有过不合格记录的，更新为2",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMB0101_240103": {
+    "tableName": "QMB0101_240103",
+    "fileName": "QMB0101_240103-.xlsx",
+    "module": "QM-品质管理\\QMB-成品检查",
+    "rules": [
+      {
+        "column": "QCSTATE",
+        "description": "综合质量  合格  次品 废品",
+        "rule": "综合质量  合格  次品 废品",
+        "source": "description"
+      },
+      {
+        "column": "UFPTYPE",
+        "description": "均匀性打标方式",
+        "rule": "均匀性打标方式",
+        "source": "description"
+      },
+      {
+        "column": "DBPTYPE",
+        "description": "动平衡打标方式",
+        "rule": "动平衡打标方式",
+        "source": "description"
+      }
+    ]
+  },
+  "QMB0101_LOG": {
+    "tableName": "QMB0101_LOG",
+    "fileName": "QMB0101_LOG-.xlsx",
+    "module": "QM-品质管理\\QMB-成品检查",
+    "rules": [
+      {
+        "column": "QCSTATE",
+        "description": "综合质量  合格  次品 废品",
+        "rule": "综合质量  合格  次品 废品",
+        "source": "description"
+      },
+      {
+        "column": "UFPTYPE",
+        "description": "均匀性打标方式",
+        "rule": "均匀性打标方式",
+        "source": "description"
+      },
+      {
+        "column": "DBPTYPE",
+        "description": "动平衡打标方式",
+        "rule": "动平衡打标方式",
+        "source": "description"
+      }
+    ]
+  },
+  "QMB0102": {
+    "tableName": "QMB0102",
+    "fileName": "QMB0102-工艺报警胎处理.xlsx",
+    "module": "QM-品质管理\\QMB-成品检查",
+    "rules": [
+      {
+        "column": "QCSTATE",
+        "description": "综合质量  合格  次品 废品",
+        "rule": "综合质量  合格  次品 废品",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMB1005": {
+    "tableName": "QMB1005",
+    "fileName": "QMB1005-成品测硬记录.xlsx",
+    "module": "QM-品质管理\\QMB-成品检查",
+    "rules": [
+      {
+        "column": "RESULT",
+        "description": "结果1合格2次品 3 废品",
+        "rule": "结果1合格2次品 3 废品",
+        "source": "description"
+      }
+    ]
+  },
+  "QMB1006": {
+    "tableName": "QMB1006",
+    "fileName": "QMB1006-首锅规格复检记录.xlsx",
+    "module": "QM-品质管理\\QMB-成品检查",
+    "rules": [
+      {
+        "column": "IS_SUCCESS",
+        "description": "是否校验通过",
+        "rule": "0：否  1：是",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMC0001": {
+    "tableName": "QMC0001",
+    "fileName": "QMC0001-半成品不良信息登记.xlsx",
+    "module": "QM-品质管理\\QMC-半成品检查",
+    "rules": [
+      {
+        "column": "AYN",
+        "description": "状态  N.不良 Y.报废 B.合格",
+        "rule": "N.不良 Y.报废 B.合格",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMC0002": {
+    "tableName": "QMC0002",
+    "fileName": "QMC0002-半成品不良撤销履历.xlsx",
+    "module": "QM-品质管理\\QMC-半成品检查",
+    "rules": [
+      {
+        "column": "AYN",
+        "description": "状态  N.不良 Y.报废 B.合格",
+        "rule": "N.不良 Y.报废 B.合格",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMC0003": {
+    "tableName": "QMC0003",
+    "fileName": "QMC0003-胎胚不良登记.xlsx",
+    "module": "QM-品质管理\\QMC-半成品检查",
+    "rules": [
+      {
+        "column": "AYN",
+        "description": "判定结果  A 合格 B修理(不良) C报废",
+        "rule": "A 合格 B修理(不良) C报废",
+        "source": "comment"
+      },
+      {
+        "column": "CCOD",
+        "description": "报废CODE",
+        "rule": "报废CODE",
+        "source": "description"
+      },
+      {
+        "column": "IS_REP",
+        "description": "是否修理  Y 已修理  N未修理",
+        "rule": "是否修理  Y 已修理  N未修理",
+        "source": "description"
+      },
+      {
+        "column": "QCNAM",
+        "description": "质检确认人",
+        "rule": "TMP报废后，质检确认",
+        "source": "comment"
+      },
+      {
+        "column": "QCTIM",
+        "description": "质检确认时间  TMP报废后，质检确认",
+        "rule": "质检确认时间  TMP报废后，质检确认",
+        "source": "description"
+      }
+    ]
+  },
+  "QMC0005": {
+    "tableName": "QMC0005",
+    "fileName": "QMC0005-半成品检查履历.xlsx",
+    "module": "QM-品质管理\\QMC-半成品检查",
+    "rules": [
+      {
+        "column": "RESULT",
+        "description": "判定结果  1.合格 2.不良 3.废品",
+        "rule": "1.合格 2.不良 3.废品",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMC0006": {
+    "tableName": "QMC0006",
+    "fileName": "QMC0006-半成品改判记录.xlsx",
+    "module": "QM-品质管理\\QMC-半成品检查",
+    "rules": [
+      {
+        "column": "LASTRESULT",
+        "description": "改判前质量 1.合格 2.不良 3.废品",
+        "rule": "1.合格 2.不良 3.废品",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMC0013": {
+    "tableName": "QMC0013",
+    "fileName": "QMC0013-胎坯称重记录.xlsx",
+    "module": "QM-品质管理\\QMC-半成品检查",
+    "rules": [
+      {
+        "column": "RESULT",
+        "description": "结果 1=合格，2=超重，3=超轻",
+        "rule": "结果 1=合格，2=超重，3=超轻",
+        "source": "description"
+      }
+    ]
+  },
+  "QMC0014": {
+    "tableName": "QMC0014",
+    "fileName": "QMC0014-胎坯称重判级.xlsx",
+    "module": "QM-品质管理\\QMC-半成品检查",
+    "rules": [
+      {
+        "column": "BEFOR_BARCODE",
+        "description": "上一条合格轮胎号",
+        "rule": "上一条合格轮胎号",
+        "source": "description"
+      }
+    ]
+  },
+  "QMD0003": {
+    "tableName": "QMD0003",
+    "fileName": "QMD0003-返回称重履历.xlsx",
+    "module": "QM-品质管理\\QMD-密炼QC",
+    "rules": [
+      {
+        "column": "ITMDIV",
+        "description": "物料区分1.返回胶，2.报废胶，3报废骨架材料",
+        "rule": "物料区分1.返回胶，2.报废胶，3报废骨架材料",
+        "source": "description"
+      },
+      {
+        "column": "RETREA",
+        "description": "返回/报废原因",
+        "rule": "返回/报废原因",
+        "source": "description"
+      }
+    ]
+  },
+  "QMD0005": {
+    "tableName": "QMD0005",
+    "fileName": "QMD0005-快检检测数据（主表）.xlsx",
+    "module": "QM-品质管理\\QMD-密炼QC",
+    "rules": [
+      {
+        "column": "Judge_Value",
+        "description": "是否合格",
+        "rule": "1合格 0不合格",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMD0006": {
+    "tableName": "QMD0006",
+    "fileName": "QMD0006-快检检测数据（子表）.xlsx",
+    "module": "QM-品质管理\\QMD-密炼QC",
+    "rules": [
+      {
+        "column": "Judge_Value",
+        "description": "是否合格",
+        "rule": "1合格 0不合格",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMD0009": {
+    "tableName": "QMD0009",
+    "fileName": "QMD0009-快检判定最终结果.xlsx",
+    "module": "QM-品质管理\\QMD-密炼QC",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "判定状态",
+        "rule": "1-合格,2-半成品1:1掺用,3-半成品1:2掺用,4-密炼掺用,5-密炼空走，6-封存",
+        "source": "comment"
+      }
+    ]
+  },
+  "QMD0012": {
+    "tableName": "QMD0012",
+    "fileName": "QMD0012-原料紧急放行履历.xlsx",
+    "module": "QM-品质管理\\QMD-密炼QC",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "Lims回传状态记录\r\n10-合格\r\n20-不合格\r\n29-让步接收",
+        "rule": "Lims回传状态记录\r\n10-合格\r\n20-不合格\r\n29-让步接收",
+        "source": "description"
+      }
+    ]
+  },
+  "QMD0013": {
+    "tableName": "QMD0013",
+    "fileName": "QMD0013-密炼投入产出率.xlsx",
+    "module": "QM-品质管理\\QMD-密炼QC",
+    "rules": [
+      {
+        "column": "ISLOCKYN",
+        "description": "是否冻结N=不冻结  Y=冻结  Z=已冻结",
+        "rule": "是否冻结N=不冻结  Y=冻结  Z=已冻结",
+        "source": "description"
+      }
+    ]
+  },
+  "FTREEDIT": {
+    "tableName": "FTREEDIT",
+    "fileName": "FTREEDIT.xlsx",
+    "module": "RE-结算表",
+    "rules": [
+      {
+        "column": "Source",
+        "description": "成品胎来源",
+        "rule": "默认为1\r\n1：正常来源、2：返厂胎",
+        "source": "comment"
+      }
+    ]
+  },
+  "RE0001": {
+    "tableName": "RE0001",
+    "fileName": "RE0001-库存每日结算.xlsx",
+    "module": "RE-结算表",
+    "rules": [
+      {
+        "column": "LOTE",
+        "description": "合格批次数量,成型待硫化数量",
+        "rule": "合格批次数量,成型待硫化数量",
+        "source": "description"
+      },
+      {
+        "column": "LOTF",
+        "description": "不合格批次数量",
+        "rule": "不合格批次数量",
+        "source": "description"
+      },
+      {
+        "column": "QTYF",
+        "description": "不合格数量",
+        "rule": "不合格数量",
+        "source": "description"
+      }
+    ]
+  },
+  "RE0002": {
+    "tableName": "RE0002",
+    "fileName": "RE0002-检测每日结算.xlsx",
+    "module": "RE-结算表",
+    "rules": [
+      {
+        "column": "NGQTY",
+        "description": "不合格数量",
+        "rule": "不合格数量",
+        "source": "description"
+      }
+    ]
+  },
+  "RE0004": {
+    "tableName": "RE0004",
+    "fileName": "RE0004-生产日产计划实绩结算.xlsx",
+    "module": "RE-结算表",
+    "rules": [
+      {
+        "column": "PLQTY1",
+        "description": "早班计划米数",
+        "rule": "早班计划米数",
+        "source": "description"
+      },
+      {
+        "column": "PLQTY2",
+        "description": "中班计划米数",
+        "rule": "中班计划米数",
+        "source": "description"
+      },
+      {
+        "column": "PLQTY3",
+        "description": "夜班计划米数",
+        "rule": "夜班计划米数",
+        "source": "description"
+      },
+      {
+        "column": "PLLOT1",
+        "description": "早班计划LOT数",
+        "rule": "早班计划LOT数",
+        "source": "description"
+      },
+      {
+        "column": "PLLOT2",
+        "description": "中班计划LOT数",
+        "rule": "中班计划LOT数",
+        "source": "description"
+      },
+      {
+        "column": "PLLOT3",
+        "description": "夜班计划LOT数",
+        "rule": "夜班计划LOT数",
+        "source": "description"
+      },
+      {
+        "column": "REQTY1",
+        "description": "早班实绩米数",
+        "rule": "早班实绩米数",
+        "source": "description"
+      },
+      {
+        "column": "REQTY2",
+        "description": "中班实绩米数",
+        "rule": "中班实绩米数",
+        "source": "description"
+      },
+      {
+        "column": "REQTY3",
+        "description": "夜班实绩米数",
+        "rule": "夜班实绩米数",
+        "source": "description"
+      },
+      {
+        "column": "RELOT1",
+        "description": "早班实绩LOT数",
+        "rule": "早班实绩LOT数",
+        "source": "description"
+      },
+      {
+        "column": "RELOT2",
+        "description": "中班实绩LOT数",
+        "rule": "中班实绩LOT数",
+        "source": "description"
+      },
+      {
+        "column": "RELOT3",
+        "description": "夜班实绩LOT数",
+        "rule": "夜班实绩LOT数",
+        "source": "description"
+      }
+    ]
+  },
+  "RE0008": {
+    "tableName": "RE0008",
+    "fileName": "RE0008-库存每日结算 -密炼.xlsx",
+    "module": "RE-结算表",
+    "rules": [
+      {
+        "column": "LOTE",
+        "description": "合格批次数量,成型待硫化数量",
+        "rule": "合格批次数量,成型待硫化数量",
+        "source": "description"
+      },
+      {
+        "column": "LOTF",
+        "description": "不合格批次数量",
+        "rule": "不合格批次数量",
+        "source": "description"
+      },
+      {
+        "column": "QTYF",
+        "description": "不合格数量",
+        "rule": "不合格数量",
+        "source": "description"
+      }
+    ]
+  },
+  "RE0009": {
+    "tableName": "RE0009",
+    "fileName": "RE0009-RFID投入口读取率日结.xlsx",
+    "module": "RE-结算表",
+    "rules": [
+      {
+        "column": "AUQTY1",
+        "description": "夜班自动数量",
+        "rule": "夜班自动数量",
+        "source": "description"
+      },
+      {
+        "column": "HAQTY1",
+        "description": "夜班手动数量",
+        "rule": "夜班手动数量",
+        "source": "description"
+      }
+    ]
+  },
+  "RE0010": {
+    "tableName": "RE0010",
+    "fileName": "RE0010-RFID产出读取率日结.xlsx",
+    "module": "RE-结算表",
+    "rules": [
+      {
+        "column": "AUQTY1",
+        "description": "夜班自动数量",
+        "rule": "夜班自动数量",
+        "source": "description"
+      },
+      {
+        "column": "HAQTY1",
+        "description": "夜班手动数量",
+        "rule": "夜班手动数量",
+        "source": "description"
+      }
+    ]
+  },
+  "RE0073": {
+    "tableName": "RE0073",
+    "fileName": "RE0073-成型日欠产结算.xlsx",
+    "module": "RE-结算表",
+    "rules": [
+      {
+        "column": "BADQTY",
+        "description": "物料不合格",
+        "rule": "物料不合格",
+        "source": "description"
+      }
+    ]
+  },
+  "SJC0003_PCR": {
+    "tableName": "SJC0003_PCR",
+    "fileName": "SJC0003_PCR-半钢外检_动平衡_均匀性_X光缺陷预警结算.xlsx",
+    "module": "RE-结算表",
+    "rules": [
+      {
+        "column": "CHKDIV",
+        "description": "检查区分",
+        "rule": "外检：VI\r\n动平衡：DB    \r\n均匀性:UF\r\nX光:XR",
+        "source": "comment"
+      }
+    ]
+  },
+  "STA0006": {
+    "tableName": "STA0006",
+    "fileName": "STA0006-库存盘点单详细子表.xlsx",
+    "module": "ST-库存管理\\STA-库存基本信息管理",
+    "rules": [
+      {
+        "column": "STKSTS",
+        "description": "库存状态",
+        "rule": "10生产完未入库 11在库 12在线边库 15成型投料位",
+        "source": "comment"
+      }
+    ]
+  },
+  "STA0006_GG": {
+    "tableName": "STA0006_GG",
+    "fileName": "STA0006_GG-库存盘点单详细(规格)子表.xlsx",
+    "module": "ST-库存管理\\STA-库存基本信息管理",
+    "rules": [
+      {
+        "column": "STKSTS",
+        "description": "库存状态",
+        "rule": "10生产完未入库 11在库 12在线边库 15成型投料位",
+        "source": "comment"
+      }
+    ]
+  },
+  "STA0103": {
+    "tableName": "STA0103",
+    "fileName": "STA0103-成品库装笼基础策略.xlsx",
+    "module": "ST-库存管理\\STA-库存基本信息管理",
+    "rules": [
+      {
+        "column": "DBGRADE",
+        "description": "动平衡打标方式",
+        "rule": "动平衡打标方式",
+        "source": "description"
+      },
+      {
+        "column": "UFGRADE",
+        "description": "均匀性打标方式",
+        "rule": "均匀性打标方式",
+        "source": "description"
+      }
+    ]
+  },
+  "STA0201": {
+    "tableName": "STA0201",
+    "fileName": "STA0201-半钢成品胎上架库位分配参照表.xlsx",
+    "module": "ST-库存管理\\STA-库存基本信息管理",
+    "rules": [
+      {
+        "column": "PTNGSN",
+        "description": "配套不合格默认库位号",
+        "rule": "配套不合格默认库位号",
+        "source": "description"
+      }
+    ]
+  },
+  "STA1006": {
+    "tableName": "STA1006",
+    "fileName": "STA1006-返回胶库存盘点单详细子表.xlsx",
+    "module": "ST-库存管理\\STA-库存基本信息管理",
+    "rules": [
+      {
+        "column": "STKSTS",
+        "description": "库存状态",
+        "rule": "10生产完未入库 11在库 12在线边库 15成型投料位",
+        "source": "comment"
+      }
+    ]
+  },
+  "STA2006": {
+    "tableName": "STA2006",
+    "fileName": "STA2006-胶料库存盘点单详细子表.xlsx",
+    "module": "ST-库存管理\\STA-库存基本信息管理",
+    "rules": [
+      {
+        "column": "STKSTS",
+        "description": "库存状态",
+        "rule": "10生产完未入库 11在库 12在线边库 15成型投料位",
+        "source": "comment"
+      }
+    ]
+  },
+  "STB0003": {
+    "tableName": "STB0003",
+    "fileName": "STB0003-半成品入库履历.xlsx",
+    "module": "ST-库存管理\\STB-胎胚半成品库存管理",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分  SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布 GT 胎胚",
+        "rule": "SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布 GT 胎胚",
+        "source": "comment"
+      }
+    ]
+  },
+  "STB0004": {
+    "tableName": "STB0004",
+    "fileName": "STB0004-半成品出库履历.xlsx",
+    "module": "ST-库存管理\\STB-胎胚半成品库存管理",
+    "rules": [
+      {
+        "column": "ITGRPCOD3",
+        "description": "产品小分类  SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布",
+        "rule": "SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布",
+        "source": "comment"
+      }
+    ]
+  },
+  "STB0006": {
+    "tableName": "STB0006",
+    "fileName": "STB0006-半成品余量登记.xlsx",
+    "module": "ST-库存管理\\STB-胎胚半成品库存管理",
+    "rules": [
+      {
+        "column": "ITGRPCOD3",
+        "description": "产品小分类",
+        "rule": "SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 \r\nPD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 \r\nNX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) \r\nBD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布",
+        "source": "comment"
+      },
+      {
+        "column": "LOTSTATUS",
+        "description": "半成品状态 1合格  2 不良",
+        "rule": "半成品状态 1合格  2 不良",
+        "source": "description"
+      },
+      {
+        "column": "ADIV",
+        "description": "登记形式 1 自动 2 手动",
+        "rule": "登记形式 1 自动 2 手动",
+        "source": "description"
+      }
+    ]
+  },
+  "STB0007": {
+    "tableName": "STB0007",
+    "fileName": "STB0007-胶料余量登记.xlsx",
+    "module": "ST-库存管理\\STB-胎胚半成品库存管理",
+    "rules": [
+      {
+        "column": "ITGRPCOD3",
+        "description": "产品小分类 JB 终炼胶  JA 母炼胶",
+        "rule": "产品小分类 JB 终炼胶  JA 母炼胶",
+        "source": "description"
+      },
+      {
+        "column": "LOTSTATUS",
+        "description": "状态 1合格  2 不良",
+        "rule": "状态 1合格  2 不良",
+        "source": "description"
+      }
+    ]
+  },
+  "STB0008": {
+    "tableName": "STB0008",
+    "fileName": "STB0008-胎胚库存删除履历.xlsx",
+    "module": "ST-库存管理\\STB-胎胚半成品库存管理",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态  0未到存放时间1正常2过期3修正4.报废5.不良",
+        "rule": "状态  0未到存放时间1正常2过期3修正4.报废5.不良",
+        "source": "description"
+      },
+      {
+        "column": "IS_LOCK",
+        "description": "是否锁定 Y锁定  N 可用",
+        "rule": "是否锁定 Y锁定  N 可用",
+        "source": "description"
+      }
+    ]
+  },
+  "STB0009": {
+    "tableName": "STB0009",
+    "fileName": "STB0009-半成品库存删除履历.xlsx",
+    "module": "ST-库存管理\\STB-胎胚半成品库存管理",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分-SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布",
+        "rule": "区分-SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布",
+        "source": "description"
+      },
+      {
+        "column": "STA",
+        "description": "状态  0未到存放时间1正常2过期3修正4.报废5.不良",
+        "rule": "状态  0未到存放时间1正常2过期3修正4.报废5.不良",
+        "source": "description"
+      },
+      {
+        "column": "STKSTS",
+        "description": "在库状态  10:生产完未入库  11：在库 12：在线边库",
+        "rule": "在库状态  10:生产完未入库  11：在库 12：在线边库",
+        "source": "description"
+      }
+    ]
+  },
+  "STB0010": {
+    "tableName": "STB0010",
+    "fileName": "STB0010-半成品库存状态变更履历.xlsx",
+    "module": "ST-库存管理\\STB-胎胚半成品库存管理",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分 SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布 GT 胎胚",
+        "rule": "区分 SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布 GT 胎胚",
+        "source": "description"
+      },
+      {
+        "column": "SCDSC",
+        "description": "报废原因描述",
+        "rule": "报废原因描述",
+        "source": "description"
+      }
+    ]
+  },
+  "STB0014": {
+    "tableName": "STB0014",
+    "fileName": "STB0014-半成品移库履历.xlsx",
+    "module": "ST-库存管理\\STB-胎胚半成品库存管理",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "物料区分  SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布 GT 胎胚",
+        "rule": "SC钢丝帘布 ZB零带束 TD胎面 SW胎侧 TR三角胶 PD垫胶 IL内衬层 TC薄胶片 SK贴边胶 BW钢丝圈 NX尼龙子口 NF包布宽 BF包布窄 CW钢丝圈(带包布) BD胎圈 SB钢丝带束 DE钢丝子口 CC胎体帘布 GT 胎胚",
+        "source": "comment"
+      }
+    ]
+  },
+  "STB0019": {
+    "tableName": "STB0019",
+    "fileName": "STB0019-半制品库存同步记录.xlsx",
+    "module": "ST-库存管理\\STB-胎胚半成品库存管理",
+    "rules": [
+      {
+        "column": "STOSTA",
+        "description": "区分",
+        "rule": "0 正常 1 在库 2 未在库 3 物料信息不符 4 工装状态差异",
+        "source": "comment"
+      },
+      {
+        "column": "DIV",
+        "description": "状态区分",
+        "rule": "F 有料 E 空工装",
+        "source": "comment"
+      }
+    ]
+  },
+  "STC0008": {
+    "tableName": "STC0008",
+    "fileName": "STC0008-货架设置.xlsx",
+    "module": "ST-库存管理\\STC-成品库",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态 A正常（空） B上架中  C装载完成  L 锁定",
+        "rule": "状态 A正常（空） B上架中  C装载完成  L 锁定",
+        "source": "description"
+      }
+    ]
+  },
+  "STD0002": {
+    "tableName": "STD0002",
+    "fileName": "STD0002-出库履历.xlsx",
+    "module": "ST-库存管理\\STD-原材料库存",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态",
+        "rule": "1正常  2不良 3保留 4报废",
+        "source": "comment"
+      }
+    ]
+  },
+  "STD0003": {
+    "tableName": "STD0003",
+    "fileName": "STD0003-退库履历.xlsx",
+    "module": "ST-库存管理\\STD-原材料库存",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态 1正常  2不良 3保留 4报废",
+        "rule": "1正常  2不良 3保留 4报废",
+        "source": "comment"
+      },
+      {
+        "column": "LOCKYN",
+        "description": "是否锁定 Y锁定  N 可用",
+        "rule": "是否锁定 Y锁定  N 可用",
+        "source": "description"
+      }
+    ]
+  },
+  "STD0004": {
+    "tableName": "STD0004",
+    "fileName": "STD0004-原材料检测结果.xlsx",
+    "module": "ST-库存管理\\STD-原材料库存",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "物料状态(质量状态)",
+        "rule": "1待检 2合格 3不合格",
+        "source": "comment"
+      }
+    ]
+  },
+  "STD0008": {
+    "tableName": "STD0008",
+    "fileName": "STD0008-原材料转库(SAP).xlsx",
+    "module": "ST-库存管理\\STD-原材料库存",
+    "rules": [
+      {
+        "column": "ZDocStat",
+        "description": "单据状态",
+        "rule": "N:新建；D：删除；C：冲销",
+        "source": "comment"
+      }
+    ]
+  },
+  "STD0010": {
+    "tableName": "STD0010",
+    "fileName": "STD0010-原材料采购收货信息.xlsx",
+    "module": "ST-库存管理\\STD-原材料库存",
+    "rules": [
+      {
+        "column": "BWART",
+        "description": "移动类型",
+        "rule": "101：采购订单收货\r\n102：收货冲销",
+        "source": "comment"
+      },
+      {
+        "column": "ZCODE",
+        "description": "状态码",
+        "rule": "1-合格,2-让步接收",
+        "source": "comment"
+      }
+    ]
+  },
+  "STD0010_LOG": {
+    "tableName": "STD0010_LOG",
+    "fileName": "STD0010_LOG-原材料采购收货信息操作履历.xlsx",
+    "module": "ST-库存管理\\STD-原材料库存",
+    "rules": [
+      {
+        "column": "BWART",
+        "description": "移动类型",
+        "rule": "101：采购订单收货\r\n102：收货冲销",
+        "source": "comment"
+      }
+    ]
+  },
+  "STD0011": {
+    "tableName": "STD0011",
+    "fileName": "STD0011-原材料入库履历.xlsx",
+    "module": "ST-库存管理\\STD-原材料库存",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态 1正常  2不良 3保留 4报废",
+        "rule": "状态 1正常  2不良 3保留 4报废",
+        "source": "description"
+      },
+      {
+        "column": "LOCKYN",
+        "description": "是否锁定 Y锁定  N 可用",
+        "rule": "是否锁定 Y锁定  N 可用",
+        "source": "description"
+      }
+    ]
+  },
+  "STD0013": {
+    "tableName": "STD0013",
+    "fileName": "STD0013-标签打印履历.xlsx",
+    "module": "ST-库存管理\\STD-原材料库存",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态 1正常  2不良 3保留 4报废",
+        "rule": "状态 1正常  2不良 3保留 4报废",
+        "source": "description"
+      },
+      {
+        "column": "LOCKYN",
+        "description": "是否锁定 Y锁定  N 可用",
+        "rule": "是否锁定 Y锁定  N 可用",
+        "source": "description"
+      }
+    ]
+  },
+  "STD0014": {
+    "tableName": "STD0014",
+    "fileName": "STD0014-生产缓存区库存现况.xlsx",
+    "module": "ST-库存管理\\STD-原材料库存",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态",
+        "rule": "0未到存放时间1正常2过期3修正4.报废5.不良",
+        "source": "comment"
+      }
+    ]
+  },
+  "STD0017": {
+    "tableName": "STD0017",
+    "fileName": "STD0017-烘胶出入库履历.xlsx",
+    "module": "ST-库存管理\\STD-原材料库存",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "出入库区分",
+        "rule": "0 进入  1 取出",
+        "source": "comment"
+      }
+    ]
+  },
+  "STD0020": {
+    "tableName": "STD0020",
+    "fileName": "STD0020-库存盘点明细.xlsx",
+    "module": "ST-库存管理\\STD-原材料库存",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态 1正常  2不良 3保留 4报废",
+        "rule": "1正常  2不良 3保留 4报废",
+        "source": "comment"
+      },
+      {
+        "column": "LOCKYN",
+        "description": "是否锁定 Y锁定  N 可用",
+        "rule": "是否锁定 Y锁定  N 可用",
+        "source": "description"
+      }
+    ]
+  },
+  "STD0021": {
+    "tableName": "STD0021",
+    "fileName": "STD0021-原材料PDA出入库登记.xlsx",
+    "module": "ST-库存管理\\STD-原材料库存",
+    "rules": [
+      {
+        "column": "BAN",
+        "description": "班次区分",
+        "rule": "EDA0004 DIV=Auxiliary_Materials",
+        "source": "comment"
+      }
+    ]
+  },
+  "STD1002": {
+    "tableName": "STD1002",
+    "fileName": "STD1002-原材料领料计划子表.xlsx",
+    "module": "ST-库存管理\\STD-原材料库存",
+    "rules": [
+      {
+        "column": "ZDocStat",
+        "description": "单据状态",
+        "rule": "N:新建；D：删除；C：冲销",
+        "source": "comment"
+      }
+    ]
+  },
+  "STE0003": {
+    "tableName": "STE0003",
+    "fileName": "STE0003-胶料退库履历.xlsx",
+    "module": "ST-库存管理\\STE-密炼库存",
+    "rules": [
+      {
+        "column": "STA",
+        "description": "状态 1正常  2不良 3保留 4报废",
+        "rule": "1正常  2不良 3保留 4报废",
+        "source": "comment"
+      }
+    ]
+  },
+  "STE0004": {
+    "tableName": "STE0004",
+    "fileName": "STE0004-胶料库存变更履历.xlsx",
+    "module": "ST-库存管理\\STE-密炼库存",
+    "rules": [
+      {
+        "column": "DIV",
+        "description": "区分 0 增加 1 修改 2 删除",
+        "rule": "区分 0 增加 1 修改 2 删除",
+        "source": "description"
+      }
+    ]
+  },
+  "XLSX": {
+    "tableName": "XLSX",
+    "fileName": "列表.xlsx",
+    "module": "",
+    "rules": [
+      {
+        "column": "LTD0040",
+        "description": "密炼生产车次报废履历",
+        "rule": "密炼生产车次报废履历",
+        "source": "description"
+      },
+      {
+        "column": "MDA0005",
+        "description": "模具报废原因管理",
+        "rule": "模具报废原因管理",
+        "source": "description"
+      },
+      {
+        "column": "MDA0006",
+        "description": "模具报废履历",
+        "rule": "模具报废履历",
+        "source": "description"
+      },
+      {
+        "column": "MDB0004",
+        "description": "胶囊报废原因管理",
+        "rule": "胶囊报废原因管理",
+        "source": "description"
+      },
+      {
+        "column": "MDB0006",
+        "description": "胶囊报废履历",
+        "rule": "胶囊报废履历",
+        "source": "description"
+      },
+      {
+        "column": "MP0007",
+        "description": "口型板报废履历",
+        "rule": "口型板报废履历",
+        "source": "description"
+      },
+      {
+        "column": "MP0008",
+        "description": "口型板报废出库履历",
+        "rule": "口型板报废出库履历",
+        "source": "description"
+      },
+      {
+        "column": "REGYC03",
+        "description": "胎面合格率统计",
+        "rule": "胎面合格率统计",
+        "source": "description"
+      }
+    ]
+  }
+}
