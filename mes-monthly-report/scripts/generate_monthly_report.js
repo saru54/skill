@@ -34,10 +34,14 @@ if (params.help || params.h) {
 =============================================================================
 MES 月报 PPT 动态解析与自动生成工具
 =============================================================================
+💡 数据源提示:
+  本工具所需的工作记录 JSON 数据来源于公司【日报系统 -> 我的日报】。
+  获取方法: 登录日报系统 -> 进入「我的日报」-> 筛选月份/日期 -> 复制接口响应 JSON 或导出文件。
+-----------------------------------------------------------------------------
 用法: node generate_monthly_report.js [参数]
 
 核心参数:
-  --input <path>          工作记录 JSON 文件路径 (必需或默认读取 sample_work_record.json)
+  --input <path>          工作记录 JSON 文件路径 (来源于【日报系统->我的日报】)
   --template <path>       企业月报 PPT 模板路径 (默认: Monthly_Report_202608_cyjiang.pptx)
   --output <path>         输出 PPTX 保存路径 (默认: 用户桌面)
   --name <string>         汇报人姓名 (默认: 自动从 JSON 解析)
@@ -171,6 +175,7 @@ if (rawData.slide4Items || rawData.slide5Items) {
     console.log(`• 本次锁定统计范围 : ${filterDesc}`);
     console.log(`• 纳入统计有效天数 : ${filteredRows.length} 天 (过滤掉 ${rows.length - filteredRows.length} 天跨期记录)`);
     console.log(`• 汇报人 / 部门   : ${reporterName} / ${reporterGroup}`);
+    console.log(`• 数据源业务系统   : 公司【日报系统 -> 我的日报】`);
     console.log('=============================================================================');
 
     if (filteredRows.length === 0) {
