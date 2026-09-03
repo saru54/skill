@@ -198,9 +198,10 @@ if (rawData.slide4Items || rawData.slide5Items) {
                     if (nc['项目名称']) projectName = nc['项目名称'];
                 } catch (e) {}
             }
-            // 文本清洗：去除 URL、换行符转换为中文分句
+            // 文本清洗：去除 URL、换行符转换为中文分句，修复不规范句读
             desc = desc.replace(/https?:\/\/\S+/gi, '').replace(/[\r\n]+/g, '，').trim();
-            desc = desc.replace(/^[，,\s]+|[，,\s]+$/g, '').trim();
+            desc = desc.replace(/中。新增/g, '中新增');
+            desc = desc.replace(/^[，,。\s]+|[，,。\s]+$/g, '').trim();
             if (!desc) continue;
 
             const isDone = item.progress === '100' || parseInt(item.progress || '100', 10) >= 100;
@@ -228,38 +229,72 @@ if (rawData.slide4Items || rawData.slide5Items) {
     }
     const cleanTasks = Array.from(uniqueMap.values());
 
+    // 计算技术权重：优先核心软件工程开发（PDA、接口、工控、数采、Skill、AI），降低行政培训活动优先级
+    const getTechScore = (task) => {
+        const txt = task.text;
+        if (/PDA|MUI|Vue|ASHX|BLL|DAL|接口/i.test(txt)) return 10;
+        if (/Skill.*Router|Router.*Skill/i.test(txt)) return 9.5;
+        if (/Kepware|POP|机台|点位/i.test(txt)) return 9;
+        if (/半成品|物料|流转|周期/i.test(txt)) return 9;
+        if (/Skill|工作流|Workflow|Agent|Hermes|MCP/i.test(txt)) return 8.5;
+        if (/质量|顾工|王处长|宋工|乔工|授权|权限/i.test(txt)) return 8;
+        if (/开发/i.test(task.type)) return 7.5;
+        if (/测试/i.test(task.type)) return 7;
+        if (/考试|知能|守护天使|人力/i.test(txt)) return 3;
+        return 5;
+    };
+
     // 业务分类逻辑 (MES管理端业务 vs PDA/架构/AI/工控)
     const isTechPdaAiOrTraining = (txt) => /PDA|MUI|Vue|ASHX|BLL|DAL|Skill|Workflow|工作流|Router|Kepware|OPC|POP|机台|点位|Agent|Hermes|MCP|考试|知能|守护天使|人力|培训/i.test(txt);
     const isMesBiz = (txt) => /MES|管理端|WinForms|半成品|物料|流转|周期|投入记录|质量|顾工|王处长|宋工|乔工|乔洪磊|界面|报表|权限|授权|业务|表单/i.test(txt);
 
     for (const t of cleanTasks) {
         if (isMesBiz(t.text) && !isTechPdaAiOrTraining(t.text)) {
-            slide4Items.push({ text: t.text, status: t.status });
+            slide4Items.push({ text: t.text, status: t.status, score: getTechScore(t) });
         } else if (isTechPdaAiOrTraining(t.text)) {
-            slide5Items.push({ text: t.text, status: t.status });
+            slide5Items.push({ text: t.text, status: t.status, score: getTechScore(t) });
         } else {
-            if (t.type === '开发') slide4Items.push({ text: t.text, status: t.status });
-            else slide5Items.push({ text: t.text, status: t.status });
+            if (t.type === '开发') slide4Items.push({ text: t.text, status: t.status, score: getTechScore(t) });
+            else slide5Items.push({ text: t.text, status: t.status, score: getTechScore(t) });
         }
     }
 
-    // 若某一类数量过多，适当截取高价值项防溢出 (Slide 4 最多 7 条，Slide 5 最多 9 条)
+    // 按技术价值降序排序
+    slide4Items.sort((a, b) => b.score - a.score);
+    slide5Items.sort((a, b) => b.score - a.score);
+
+    // 若某一类数量过多，按优先级截取防溢出 (Slide 4 最多 7 条，Slide 5 最多 9 条)
     if (slide4Items.length > 7) slide4Items = slide4Items.slice(0, 7);
     if (slide5Items.length > 9) slide5Items = slide5Items.slice(0, 9);
 
-    // 动态生成 Slide 3 总结 (日常工作总览)
+    // 动态生成 Slide 3 总结 (日常工作总览 - 提炼核心凝练表述，防文字溢出)
+    const cleanForSummary = (txt) => {
+        let t = txt.replace(/（.*$/, '').replace(/[。，,、\s]+$/g, '').trim();
+        if (t.includes('《半成品投入记录》') || t.includes('半成品生产时间')) return '全钢MES半成品投入记录新增生产时间属性';
+        if (t.includes('顾工') || (t.includes('质量') && t.includes('需求'))) return '质量处半成品停放需求沟通与确认';
+        if (t.includes('物料流转周期')) return '物料流转周期统计界面全栈开发';
+        if (t.includes('PDA前端') || (t.includes('MUI') && t.includes('Vue'))) return 'PDA前端框架开发与测试页面验证';
+        if (t.includes('PDA后端') || (t.includes('ASHX') && t.includes('BLL'))) return 'PDA后端BLL/DAL/ASHX接口开发';
+        if (t.includes('机台') || t.includes('点位') || t.includes('kepware')) return '机台点位交互与工控数采联调';
+        if (t.length > 22) return t.slice(0, 20) + '...';
+        return t;
+    };
+
     const topDone = [];
-    if (slide4Items.length > 0) topDone.push(slide4Items[0].text.replace(/（.*$/, ''));
-    if (slide4Items.length > 1) topDone.push(slide4Items[1].text.replace(/（.*$/, ''));
-    if (slide5Items.length > 0) topDone.push(slide5Items[0].text.replace(/（.*$/, ''));
+    if (slide4Items.length > 0) topDone.push(cleanForSummary(slide4Items[0].text));
+    if (slide4Items.length > 1) topDone.push(cleanForSummary(slide4Items[1].text));
+    if (slide5Items.length > 0) topDone.push(cleanForSummary(slide5Items[0].text));
     summaryText = '已完成：' + topDone.slice(0, 3).join('、') + '。未完成：无';
 
     // 动态生成 Slide 7 达成率 (选取 4~5 项重点完成成果)
     const candidates = [...slide4Items, ...slide5Items].filter(x => x.status === '完成');
-    rateTasks = candidates.slice(0, 5).map(c => ({
-        task: c.text.endsWith('。') ? c.text : c.text + '。',
-        status: '状态：完成。'
-    }));
+    rateTasks = candidates.slice(0, 5).map(c => {
+        const cleanT = c.text.replace(/[。，,、\s]+$/g, '').trim();
+        return {
+            task: cleanT + '。',
+            status: '状态：完成。'
+        };
+    });
 
     // 动态生成 Slide 9 计划 (优先延续进行中任务，辅以模块规划)
     planItems = [
@@ -304,12 +339,14 @@ fs.writeFileSync(slide1Path, slide1Xml, 'utf8');
 function createWorkItemParagraph(text, status, fontSize, lineSpacingPct) {
     const statusColor = 'FF0000'; // Prinx Chengshan Red
     const sz = fontSize || 1150;
+    const cleanText = String(text).replace(/[。，,、\s]+$/g, '').trim();
     const lnSpc = lineSpacingPct ? `<a:lnSpc><a:spcPct val="${lineSpacingPct}"/></a:lnSpc>` : '';
-    return `<a:p><a:pPr lvl="1">${lnSpc}</a:pPr><a:r><a:rPr lang="zh-CN" altLang="en-US" sz="${sz}" dirty="0"><a:solidFill><a:prstClr val="black"/></a:solidFill><a:latin typeface="微软雅黑"/><a:ea typeface="微软雅黑"/><a:cs typeface="Arial"/></a:rPr><a:t>${text}（</a:t></a:r><a:r><a:rPr lang="zh-CN" altLang="en-US" sz="${sz}" dirty="0"><a:solidFill><a:srgbClr val="${statusColor}"/></a:solidFill><a:latin typeface="微软雅黑"/><a:ea typeface="微软雅黑"/><a:cs typeface="Arial"/></a:rPr><a:t>${status}</a:t></a:r><a:r><a:rPr lang="zh-CN" altLang="en-US" sz="${sz}" dirty="0"><a:solidFill><a:prstClr val="black"/></a:solidFill><a:latin typeface="微软雅黑"/><a:ea typeface="微软雅黑"/><a:cs typeface="Arial"/></a:rPr><a:t>）</a:t></a:r><a:endParaRPr lang="en-US" altLang="zh-CN" sz="${sz}" dirty="0"><a:solidFill><a:prstClr val="black"/></a:solidFill><a:latin typeface="微软雅黑"/><a:ea typeface="微软雅黑"/><a:cs typeface="Arial"/></a:endParaRPr></a:p>`;
+    return `<a:p><a:pPr lvl="1">${lnSpc}</a:pPr><a:r><a:rPr lang="zh-CN" altLang="en-US" sz="${sz}" dirty="0"><a:solidFill><a:prstClr val="black"/></a:solidFill><a:latin typeface="微软雅黑"/><a:ea typeface="微软雅黑"/><a:cs typeface="Arial"/></a:rPr><a:t>${cleanText}（</a:t></a:r><a:r><a:rPr lang="zh-CN" altLang="en-US" sz="${sz}" dirty="0"><a:solidFill><a:srgbClr val="${statusColor}"/></a:solidFill><a:latin typeface="微软雅黑"/><a:ea typeface="微软雅黑"/><a:cs typeface="Arial"/></a:rPr><a:t>${status}</a:t></a:r><a:r><a:rPr lang="zh-CN" altLang="en-US" sz="${sz}" dirty="0"><a:solidFill><a:prstClr val="black"/></a:solidFill><a:latin typeface="微软雅黑"/><a:ea typeface="微软雅黑"/><a:cs typeface="Arial"/></a:rPr><a:t>）</a:t></a:r><a:endParaRPr lang="en-US" altLang="zh-CN" sz="${sz}" dirty="0"><a:solidFill><a:prstClr val="black"/></a:solidFill><a:latin typeface="微软雅黑"/><a:ea typeface="微软雅黑"/><a:cs typeface="Arial"/></a:endParaRPr></a:p>`;
 }
 
-function makeBulletPara(text) {
-    return `<a:p><a:pPr marL="114300" lvl="1" indent="-114300" algn="l" defTabSz="533400"><a:lnSpc><a:spcPct val="90000"/></a:lnSpc><a:spcBef><a:spcPct val="0"/></a:spcBef><a:spcAft><a:spcPct val="15000"/></a:spcAft><a:buChar char="•"/></a:pPr><a:r><a:rPr lang="zh-CN" altLang="en-US" sz="1200" kern="1200" dirty="0"><a:solidFill><a:prstClr val="black"/></a:solidFill><a:latin typeface="微软雅黑"/><a:ea typeface="微软雅黑"/><a:cs typeface="Arial"/></a:rPr><a:t>${text}</a:t></a:r><a:endParaRPr lang="zh-CN" altLang="en-US" sz="1200" b="0" kern="1200" dirty="0"><a:latin typeface="微软雅黑"/><a:ea typeface="微软雅黑"/></a:endParaRPr></a:p>`;
+function makeBulletPara(text, fontSize) {
+    const sz = fontSize || 1200;
+    return `<a:p><a:pPr marL="114300" lvl="1" indent="-114300" algn="l" defTabSz="533400"><a:lnSpc><a:spcPct val="90000"/></a:lnSpc><a:spcBef><a:spcPct val="0"/></a:spcBef><a:spcAft><a:spcPct val="15000"/></a:spcAft><a:buChar char="•"/></a:pPr><a:r><a:rPr lang="zh-CN" altLang="en-US" sz="${sz}" kern="1200" dirty="0"><a:solidFill><a:prstClr val="black"/></a:solidFill><a:latin typeface="微软雅黑"/><a:ea typeface="微软雅黑"/><a:cs typeface="Arial"/></a:rPr><a:t>${text}</a:t></a:r><a:endParaRPr lang="zh-CN" altLang="en-US" sz="${sz}" b="0" kern="1200" dirty="0"><a:latin typeface="微软雅黑"/><a:ea typeface="微软雅黑"/></a:endParaRPr></a:p>`;
 }
 
 function createRateTaskPair(taskName, statusText) {
@@ -346,6 +383,7 @@ fs.writeFileSync(slide5Path, slide5Xml, 'utf8');
 console.log('6. 更新 Slide 7 (计划达成率)...');
 const slide7Path = path.join(targetDir, 'ppt', 'slides', 'slide7.xml');
 let slide7Xml = fs.readFileSync(slide7Path, 'utf8');
+slide7Xml = slide7Xml.replace(/<a:t>问题及改善<\/a:t>/, '<a:t>重点计划达成情况</a:t>');
 const slide7Content = rateTasks.map(t => createRateTaskPair(t.task, t.status)).join('');
 slide7Xml = slide7Xml.replace(/(<p:cNvPr id="11" name="Rectangle 6"[\s\S]*?<p:txBody>[\s\S]*?<a:lstStyle>[\s\S]*?<\/a:lstStyle>)([\s\S]*?)(<\/p:txBody>)/, `$1${slide7Content}$3`);
 fs.writeFileSync(slide7Path, slide7Xml, 'utf8');
@@ -357,7 +395,7 @@ let drawing1Xml = fs.readFileSync(drawing1Path, 'utf8');
 const d1SpList = drawing1Xml.match(/<dsp:sp\b[\s\S]*?<\/dsp:sp>/g);
 if (d1SpList && d1SpList.length >= 8) {
     d1SpList[0] = d1SpList[0].replace(/<dsp:txBody>[\s\S]*?<\/dsp:txBody>/,
-        `<dsp:txBody><a:bodyPr spcFirstLastPara="0" vert="horz" wrap="square" lIns="638708" tIns="437388" rIns="324000" bIns="85344" numCol="1" spcCol="1270" anchor="t" anchorCtr="0"><a:noAutofit/></a:bodyPr><a:lstStyle/>${makeBulletPara(summaryText)}</dsp:txBody>`);
+        `<dsp:txBody><a:bodyPr spcFirstLastPara="0" vert="horz" wrap="square" lIns="638708" tIns="437388" rIns="324000" bIns="85344" numCol="1" spcCol="1270" anchor="t" anchorCtr="0"><a:noAutofit/></a:bodyPr><a:lstStyle/>${makeBulletPara(summaryText, 1150)}</dsp:txBody>`);
     drawing1Xml = drawing1Xml.substring(0, drawing1Xml.indexOf('<dsp:sp ')) + d1SpList.join('') + '</dsp:spTree></dsp:drawing>';
     fs.writeFileSync(drawing1Path, drawing1Xml, 'utf8');
 }
@@ -365,7 +403,7 @@ if (d1SpList && d1SpList.length >= 8) {
 const data1Path = path.join(targetDir, 'ppt', 'diagrams', 'data1.xml');
 let data1Xml = fs.readFileSync(data1Path, 'utf8');
 data1Xml = data1Xml.replace(/(<dgm:pt modelId="\{5157490D-1B52-4616-AD62-4BA390AF44B3\}"[\s\S]*?<dgm:t>)([\s\S]*?)(<\/dgm:t>)/,
-    `$1<a:bodyPr/><a:lstStyle/>${makeBulletPara(summaryText)}$3`);
+    `$1<a:bodyPr/><a:lstStyle/>${makeBulletPara(summaryText, 1150)}$3`);
 fs.writeFileSync(data1Path, data1Xml, 'utf8');
 
 // 更新 Slide 9 & SmartArt (工作计划)
