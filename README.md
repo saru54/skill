@@ -16,6 +16,7 @@
 | **`mes-admin-grid-config`** | [`mes-admin-grid-config/`](./mes-admin-grid-config/) | **管理端表格元数据配置**：`LSDataGrid` 和 `EditSerializable` 属性序列化、表格列绑定、字段对齐及 `.resx` 资源生成与校验。 |
 | **`mes-admin-public-dialog`** | [`mes-admin-public-dialog/`](./mes-admin-public-dialog/) | **公共对话框系统**：`IDIALOG` 的 Key 路由分析、View/Bus 映射、构造函数契约与自动化提取工具脚本。 |
 | **`mes-db-schema`** | [`mes-db-schema/`](./mes-db-schema/) | **数据库表结构与规则速查**：全量 1376 表 DDL、100+ 存储过程、70+ 视图接口与 500+ 字段枚举/计算规则检索 CLI。 |
+| **`mes-monthly-report`** | [`mes-monthly-report/`](./mes-monthly-report/) | **月报 PPT 自动化生成与排版**：基于日报/工作流 JSON 与企业 PPT 模板，执行 OpenXML 精准注入、红字状态/Wingdings 图标适配与无头渲染质检。 |
 
 ---
 
@@ -23,6 +24,13 @@
 
 在各技能目录的 `scripts/` 下提供了开箱即用的 Node.js / Python 脚本工具，可在终端直接执行：
 
+* **月报 PPT 一键生成与幻灯片无头导出工具**（`mes-monthly-report/scripts/`）：
+  ```bash
+  # 解析工作记录并基于企业模板快速生成月报 PPTX
+  node mes-monthly-report/scripts/generate_monthly_report.js --template Monthly_Report_Template.pptx --output ~/Desktop/Monthly_Report.pptx --name "裴子含"
+  # 调用 PowerPoint COM 无头导出全量高保真幻灯片 JPG 进行视觉质检
+  powershell -File mes-monthly-report/scripts/export_ppt_slides.ps1 -pptxPath ~/Desktop/Monthly_Report.pptx
+  ```
 * **全量数据库表结构、存储过程与规则速查 CLI**（`mes-db-schema/scripts/query_schema.js`）：
   ```bash
   # 查阅指定表全部字段、注释及内嵌业务枚举规则（自动展示字段枚举）

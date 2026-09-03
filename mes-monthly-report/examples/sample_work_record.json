@@ -1,0 +1,249 @@
+{
+    "total": 6,
+    "rows": [
+        {
+            "id": 18809,
+            "name": "裴子含",
+            "date": "20260902",
+            "group": "智能制造组",
+            "gmtCreate": "2026-09-02T17:15:05.637",
+            "jobNumber": "19260984",
+            "list": [
+                {
+                    "workType": "2",
+                    "content": "补充完善相关skill，增加db映射相关规则和查询脚本，更新readme介绍文件。\nhttps://gitlab.prinxchengshan.com/zhpei/skill-workflow",
+                    "type": "开发",
+                    "time": "3",
+                    "progress": "100",
+                    "nonCore": "{\"项目名称\":\"MES系统开发\",\"任务描述\":\"补充完善相关skill，增加db映射相关规则和查询脚本，更新readme介绍文件。\"}"
+                },
+                {
+                    "workType": "2",
+                    "content": "补充管理端skill 表格相关设计规范。",
+                    "type": "开发",
+                    "time": "2",
+                    "progress": "100",
+                    "nonCore": "{\"项目名称\":\"MES系统开发\",\"任务描述\":\"补充管理端skill 表格相关设计规范。\"}"
+                },
+                {
+                    "workType": "2",
+                    "content": "学习管理端授权流程并为质量部相关人员授权管理端页面权限",
+                    "type": "日常",
+                    "time": "1",
+                    "progress": "100",
+                    "nonCore": "{}"
+                },
+                {
+                    "workType": "2",
+                    "content": "学习自学习agent hermes相关内容和对应api。",
+                    "type": "学习",
+                    "time": "2",
+                    "progress": "100",
+                    "nonCore": "{\"学习目标\":\"学习自学习agent hermes相关内容和对应api。\"}"
+                }
+            ]
+        },
+        {
+            "id": 18747,
+            "name": "裴子含",
+            "date": "20260901",
+            "group": "智能制造组",
+            "gmtCreate": "2026-09-01T17:12:24.263",
+            "jobNumber": "19260984",
+            "list": [
+                {
+                    "workType": "2",
+                    "content": "在导师乔工带领下与宋工沟通需求细节。",
+                    "type": "日常",
+                    "time": "1",
+                    "progress": "100",
+                    "nonCore": "{}"
+                },
+                {
+                    "workType": "2",
+                    "content": "与王处长沟通物料流转周期统计界面的需求细节，实现方案。",
+                    "type": "开发",
+                    "time": "2",
+                    "progress": "100",
+                    "nonCore": "{\"项目名称\":\"MES系统开发\",\"任务描述\":\"与王处长沟通物料流转周期统计界面的需求细节，实现方案。\"}"
+                },
+                {
+                    "workType": "2",
+                    "content": "开发物料流转周期统计界面前端及后端代码，并与王处长沟通调整相应功能",
+                    "type": "开发",
+                    "time": "3",
+                    "progress": "100",
+                    "nonCore": "{\"项目名称\":\"MES系统开发\",\"任务描述\":\"开发物料流转周期统计界面前端及后端代码，并与王处长沟通调整相应功能\"}"
+                },
+                {
+                    "workType": "2",
+                    "content": "测试物料流转周期统计界面各项功能，并提交代码",
+                    "type": "测试",
+                    "time": "2",
+                    "progress": "100",
+                    "nonCore": "{\"项目名称\":\"MES系统开发\",\"任务描述\":\"测试物料流转周期统计界面各项功能，并提交代码\"}"
+                }
+            ]
+        },
+        {
+            "id": 18683,
+            "name": "裴子含",
+            "date": "20260831",
+            "group": "智能制造组",
+            "gmtCreate": "2026-08-31T17:09:34.18",
+            "jobNumber": "19260984",
+            "list": [
+                {
+                    "workType": "2",
+                    "content": "理解各机台的交互方式，点位定义的区别。",
+                    "type": "学习",
+                    "time": "2",
+                    "progress": "100",
+                    "nonCore": "{\"学习目标\":\"理解各机台的交互方式，点位定义的区别。\"}"
+                },
+                {
+                    "workType": "2",
+                    "content": "学习kepware的使用方式，和项目的结合方式，使用场所",
+                    "type": "学习",
+                    "time": "2",
+                    "progress": "100",
+                    "nonCore": "{\"学习目标\":\"学习kepware的使用方式，和项目的结合方式，使用场所\"}"
+                },
+                {
+                    "workType": "2",
+                    "content": "了解POP项目的作用和结构和与MES管理端的关系。",
+                    "type": "学习",
+                    "time": "2",
+                    "progress": "100",
+                    "nonCore": "{\"学习目标\":\"了解POP项目的作用和结构和与MES管理端的关系。\"}"
+                },
+                {
+                    "workType": "2",
+                    "content": "更新skill 补充db相关部分",
+                    "type": "日常",
+                    "time": "2",
+                    "progress": "100",
+                    "nonCore": "{}"
+                }
+            ]
+        },
+        {
+            "id": 18624,
+            "name": "裴子含",
+            "date": "20260828",
+            "group": "智能制造组",
+            "gmtCreate": "2026-08-28T17:00:58.577",
+            "jobNumber": "19260984",
+            "list": [
+                {
+                    "workType": "2",
+                    "content": "学习使用antigravity 通过mcp控制相关软件。",
+                    "type": "学习",
+                    "time": "2",
+                    "progress": "100",
+                    "nonCore": "{\"学习目标\":\"学习使用antigravity 通过mcp控制相关软件。\"}"
+                },
+                {
+                    "workType": "2",
+                    "content": "学习车间一线知能考试相关知识",
+                    "type": "学习",
+                    "time": "2",
+                    "progress": "100",
+                    "nonCore": "{\"学习目标\":\"学习车间一线知能考试相关知识\"}"
+                },
+                {
+                    "workType": "2",
+                    "content": "参加人力部门车间一线知能考试",
+                    "type": "日常",
+                    "time": "3",
+                    "progress": "100",
+                    "nonCore": "{}"
+                },
+                {
+                    "workType": "2",
+                    "content": "参加人力部门守护天使活动",
+                    "type": "日常",
+                    "time": "1",
+                    "progress": "100",
+                    "nonCore": "{}"
+                }
+            ]
+        },
+        {
+            "id": 18560,
+            "name": "裴子含",
+            "date": "20260827",
+            "group": "智能制造组",
+            "gmtCreate": "2026-08-27T17:11:04.587",
+            "jobNumber": "19260984",
+            "list": [
+                {
+                    "workType": "2",
+                    "content": "与顾工进行电话沟通确认实际需求。",
+                    "type": "开发",
+                    "time": "2",
+                    "progress": "100",
+                    "nonCore": "{\"项目名称\":\"MES系统开发\",\"任务描述\":\"与商用轮胎质量处顾工沟通需求确认实际目标\"}"
+                },
+                {
+                    "workType": "2",
+                    "content": "确认需求为半成品生产明细内属性，在导师乔洪磊的辅导下进行项目修改。",
+                    "type": "开发",
+                    "time": "2",
+                    "progress": "100",
+                    "nonCore": "{\"项目名称\":\"MES系统开发\",\"任务描述\":\"全钢MES的《半成品投入记录》中。新增一列LOTID的“半成品生产时间”，以便质量人员查询半成品停放时间。\"}"
+                },
+                {
+                    "workType": "2",
+                    "content": "将之前所做skill进行了整理并新增了工作流。新增了系统数据结构的辅助skill和脚本\nhttps://gitlab.prinxchengshan.com/zhpei/skill-workflow",
+                    "type": "日常",
+                    "time": "3",
+                    "progress": "100",
+                    "nonCore": "{}"
+                },
+                {
+                    "workType": "2",
+                    "content": "学习workflow工作流和skill的区别，以及如何制作工作流",
+                    "type": "学习",
+                    "time": "1",
+                    "progress": "100",
+                    "nonCore": "{\"学习目标\":\"学习workflow工作流和skill的区别，以及如何制作工作流\"}"
+                }
+            ]
+        },
+        {
+            "id": 18554,
+            "name": "裴子含",
+            "date": "20260826",
+            "group": "智能制造组",
+            "gmtCreate": "2026-08-27T08:15:55.767",
+            "jobNumber": "19260984",
+            "list": [
+                {
+                    "workType": "2",
+                    "content": "了解PDA前端所使用的MUI、VUE框架，后端使用ASHX交互方式和逻辑处理流程。开发两个独立测试页面检测成果。使用直接操控DOM的方式和套用VUE2两种开发方式开发测试页面了解差异。",
+                    "type": "学习",
+                    "time": "3",
+                    "progress": "100",
+                    "nonCore": "{\"学习目标\":\"学习PDA前端框架，熟悉PDA前端开发流程。\"}"
+                },
+                {
+                    "workType": "2",
+                    "content": "提取学习和开发测试阶段所有上下文整理提炼为SKILL，编写SKILL Router进行分项目技能路由，使用PDA SKILL进行开发测试页面并检查成果。",
+                    "type": "日常",
+                    "time": "2",
+                    "progress": "100",
+                    "nonCore": "{}"
+                },
+                {
+                    "workType": "2",
+                    "content": "了解后端整体开发流程如BLL、DAL、MODEL、ASHX分层设计，WEB请求处理流程与规范设计，开发测试请求接口。",
+                    "type": "学习",
+                    "time": "3",
+                    "progress": "100",
+                    "nonCore": "{\"学习目标\":\"学习PDA后端开发框架，熟悉开发流程。\"}"
+                }
+            ]
+        }
+    ]
+}
