@@ -200,6 +200,101 @@ private void InitializeComponent()
 **原因**: `Columns`的索引与`Cells`顺序不对应
 **解决**: 确保Columns条目与Cells条目按相同顺序排列
 
+## 表格值动态转换与格式化（★核心：GrdMain_OnFormat 与 OnQuerySet）
+
+`EditSerializable` 仅解决**列名与视觉布局绑定**。当数据库返回的是数字代码、状态标记或外键编码时，必须在 BUS 中通过事件进行动态转换与翻译。
+
+### 1. GrdMain_OnFormat 事件契约与机制
+
+- **触发时机**：单元格绘制渲染、`GrdMain.Excel()` 导出、`GrdMain.Print()` 打印预览时统一自动触发。
+- **命名规范**：`{GridName}_OnFormat(object sender, UserControls.LSFormatEventArgs e)`
+- **核心属性**：
+  - `e.ColName`：当前单元格绑定的数据列名（对应 `Cells.DataColumn`）。
+  - `e.Text`：当前单元格文本（输入为数据库原始值，修改后即为最终界面显示值）。
+  - `e.Row`：当前数据行（`DataRow`），可用于跨字段复合判断。
+
+### 2. 三大常用映射模式
+
+#### 模式 A：数据字典动态翻译（EDA0004 字典表）
+结合公共服务 `ICMNCODE`（或 `GetCmncode`）动态查询数据字典 `EDA0004`：
+
+```csharp
+GetCmncode CmnCode { get { return this.GetService(typeof(ICMNCODE)) as GetCmncode; } }
+
+// 推荐：在类变量或Form_Load中提前缓存字典表，避免在OnFormat循环中重复查库！
+DataTable dtRuleCode;
+
+public override void Form_Load(object sender, EventArgs e)
+{
+    dtRuleCode = CmnCode.GetCboCode("CKA_RULE"); // 获取 EDA0004 中 DIV='CKA_RULE' 的项
+    base.Form_Load(sender, e);
+}
+
+public void GrdMain_OnFormat(object sender, UserControls.LSFormatEventArgs e)
+{
+    if (e.ColName == "RULE2" || e.ColName == "RULE3")
+    {
+        if (dtRuleCode != null)
+        {
+            foreach (DataRow item in dtRuleCode.Rows)
+            {
+                if (e.Text == item["DCOD"].ToString())
+                {
+                    e.Text = item["DNAM"].ToString();
+                    break;
+                }
+            }
+        }
+    }
+}
+```
+
+#### 模式 B：硬编码枚举/状态映射
+适用于固定的系统状态码（如 1-自动 / 2-手动）：
+
+```csharp
+public void GrdMain_OnFormat(object sender, UserControls.LSFormatEventArgs e)
+{
+    if (e.ColName == "PRINTSETA")
+    {
+        switch (e.Text)
+        {
+            case "1": e.Text = "自动"; break;
+            case "2": e.Text = "手动"; break;
+            default:  e.Text = ""; break;
+        }
+    }
+}
+```
+
+#### 模式 C：机台主数据自动翻译（继承 NewBusniessClassBase）
+针对包含机台编号 `MCHID`、`AUMCH` 的页面，可直接继承 `NewBusniessClassBase`，基类已自动内置了 `EDA0001` 表将机台编码翻译为机台中文简称。
+
+### 3. 表头筛选下拉框同步映射（GrdMain_OnQuerySet）
+
+当表格启用了列头筛选漏斗时，如果只做了 `OnFormat`，用户点击筛选仍会看到原始编码。必须实现 `OnQuerySet` 事件同步映射：
+
+```csharp
+public void GrdMain_OnQuerySet(object sender, UserControls.LSQuerySetEventArgs e)
+{
+    if (e.ColName == "RULE2" || e.ColName == "RULE3")
+    {
+        DataTable dt = CmnCode.GetCboCode("CKA_RULE");
+        foreach (DataRow item in dt.Rows)
+        {
+            // Key: 实际过滤值(代码), Value: 下拉显示文本(中文名称)
+            e.DrowDownList.Add(item["DCOD"].ToString(), item["DNAM"].ToString());
+        }
+    }
+}
+```
+
+### 4. ★ 性能军规（必须遵守）
+> [!CAUTION]
+> **严禁在 `OnFormat` 中调用数据库查询！**
+> `OnFormat` 会对表格的每一行每一列执行（例如 1000 行 20 列，会触发数万次）。若在 `OnFormat` 内写 `Config.DataBase.GetTable(...)`，将导致界面严重卡死。
+> **正确做法**：一律在 `Form_Load` 或初始化时读取字典表到内存变量（如 `DataTable` 或 `Dictionary<string, string>`），在 `OnFormat` 中仅执行内存查找。
+
 ## 检查清单
 
 配置LSDataGrid时的检查项：
@@ -214,6 +309,8 @@ private void InitializeComponent()
 - [ ] XML格式有效（无转义错误）
 - [ ] 列宽度、可见性、表头文本合理
 - [ ] 数据类型匹配（Text、Number、Date等）
+- [ ] 状态/代码列已在 BUS 中实现 `GrdMain_OnFormat` 动态翻译（且字典数据已提前内存缓存，无 OnFormat 内查库）
+- [ ] 具备筛选需求的字典列已实现 `GrdMain_OnQuerySet`，确保下拉筛选展示中文名称
 
 ## 与其他技能的协作
 

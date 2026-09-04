@@ -57,18 +57,30 @@ namespace CKA_BUS
     {
         public CKA0003B(IConfig Config) : base(Config) { }
         
-        // 1. 控件实例化 - 使用GetControlByName获取VIEW中的控件
+        // 1. 控件与服务实例化
         LSDataGrid GrdMain { get { return GetControlByName("GrdMain") as LSDataGrid; } }
         TextBox txtStartDate { get { return GetControlByName("txtStartDate") as TextBox; } }
         ComboBox cmbStatus { get { return GetControlByName("cmbStatus") as ComboBox; } }
+        GetCmncode CmnCode { get { return this.GetService(typeof(ICMNCODE)) as GetCmncode; } }
+        DataTable dtStatusCode; // 缓存字典表，避免在 OnFormat 中高频查库
         
         // 2. 重载Form_Load - 初始化控件和数据
         public override void Form_Load(object sender, EventArgs e)
         {
             base.Form_Load(sender, e);
             
-            // 初始化下拉框等
-            cmbStatus.Items.Add("全部");
+            // 提前加载并缓存字典数据 (EDA0004)
+            dtStatusCode = CmnCode.GetCboCode("SYS_STATUS");
+            
+            // 初始化下拉框等 (★标准规范：向第0行注入“全部”，其值固化为 %%)
+            DataRow rowAll = dtStatusCode.NewRow();
+            rowAll["DCOD"] = "%%";
+            rowAll["DNAM"] = "全部";
+            dtStatusCode.Rows.InsertAt(rowAll, 0);
+
+            cmbStatus.DataSource = dtStatusCode;
+            cmbStatus.DisplayMember = "DNAM";
+            cmbStatus.ValueMember = "DCOD";
             cmbStatus.SelectedIndex = 0;
             
             // 加载初始数据
@@ -78,12 +90,13 @@ namespace CKA_BUS
         // 3. 获取数据源 - 查询数据并绑定到Grid
         public override void GetData()
         {
+            // 选“全部”时 SelectedValue 为 "%%"，自动通配全部数据
             string sql = @"SELECT ID, CODE, NAME, STATUS, CREATEDATE 
                           FROM TABLE_NAME 
-                          WHERE STATUS = @STATUS";
+                          WHERE STATUS LIKE @STATUS";
             
             DataTable dt = Config.DataBase.GetTable(sql, 
-                new { STATUS = cmbStatus.Text });
+                new { STATUS = cmbStatus.SelectedValue != null ? cmbStatus.SelectedValue.ToString() : "%%" });
             
             GrdMain.DataSource = dt;
         }
@@ -94,7 +107,35 @@ namespace CKA_BUS
             GetData();
         }
         
-        // Grid数据变更事件 - 新增/编辑/删除
+        // 5. 表格动态值转换与字典翻译 (单元格渲染、Excel导出、打印统一触发)
+        public void GrdMain_OnFormat(object sender, UserControls.LSFormatEventArgs e)
+        {
+            if (e.ColName == "STATUS" && dtStatusCode != null)
+            {
+                foreach (DataRow item in dtStatusCode.Rows)
+                {
+                    if (e.Text == item["DCOD"].ToString())
+                    {
+                        e.Text = item["DNAM"].ToString();
+                        break;
+                    }
+                }
+            }
+        }
+
+        // 6. 表头筛选下拉项映射 (让用户在筛选漏斗下拉中看到中文名而非原始编码)
+        public void GrdMain_OnQuerySet(object sender, UserControls.LSQuerySetEventArgs e)
+        {
+            if (e.ColName == "STATUS" && dtStatusCode != null)
+            {
+                foreach (DataRow item in dtStatusCode.Rows)
+                {
+                    e.DrowDownList.Add(item["DCOD"].ToString(), item["DNAM"].ToString());
+                }
+            }
+        }
+        
+        // 7. Grid数据变更事件 - 新增/编辑/删除
         public override void GrdMain_OnDataChange(object sender, UserControls.ChangeTypeEventArgs e)
         {
             if (e.ChangeType == UserControls.ChangeType.New || 
@@ -993,61 +1034,156 @@ LEFT JOIN EDA0004 D_NORM WITH(NOLOCK) ON A.NORMALSTA = D_NORM.DCOD AND D_NORM.DI
 
 ---
 
-### 3. 下拉筛选框标准构建规范（严格带“全部”首选项）
+### 3. 下拉筛选框标准构建规范（★严格固化【全部】对应 `%%`）
 
-所有筛选下拉框（ComboBox）初始化时必须满足以下规范：
-1. **严禁硬编码字符串简单追加**；
-2. **采用 DataTable 构建 `DisplayMember` 与 `ValueMember` 键值对**；
-3. **首行必须插入【全部】（值为 `%`），并设置 `SelectedIndex = 0` 作为默认值**。
+所有搜索栏与筛选下拉框（ComboBox）初始化时必须严格遵循以下规范：
+1. **严禁硬编码纯字符串简单追加**（如 `Items.Add("全部")`）；
+2. **统一采用 DataTable 构建 `DisplayMember` 与 `ValueMember` 键值对**；
+3. **首行必须插入【全部】，其 Value 必须统一固化为 `"%%"`（双百分号），并设置 `SelectedIndex = 0` 作为默认值**；
+4. **与 SQL 查询通配完美衔接**：在 SQL 查询中使用 `WHERE COL LIKE '{cmb.SelectedValue}'`，当用户选择【全部】时，生成的 SQL 自动为 `WHERE COL LIKE '%%'`，可直接匹配所有非 NULL 记录，无需编写繁琐的 `if-else` 条件拼接判断。
 
-**标准示例代码**：
+根据数据库配置表的情况，分为以下两种标准开发模式：
+
+#### 场景一：标准场景 —— 数据库配置表/字典表已有数据（查询返回 + 动态注入【全部】）
+* **适用场景**：数据在 `EDA0004`、业务主数据表（如机台表 `EDA0001`、库区表 `STA0111`、部门表）中已有完整维护。
+* **开发模式**：查询返回已有的业务明细 `DataTable`，在**第 0 行**动态插入虚拟的“全部”行（值固化为 `%%`）：
+
+```csharp
+// 1. 从数据字典表或业务表查出实际业务明细内容
+DataTable dtSHT = CmnCode.GetCboCode("SHT"); // 例如查出早班、中班、夜班等实际数据
+
+// 2. 向首行动态插入虚拟的“全部”行 (★必须使用 InsertAt 插入第 0 行，值固化为 %%)
+DataRow rowAll = dtSHT.NewRow();
+rowAll["DCOD"] = "%%";   // 代号设为通配符 %%
+rowAll["DNAM"] = "全部"; // 界面显示中文“全部”
+dtSHT.Rows.InsertAt(rowAll, 0);
+
+// 3. 绑定到 ComboBox 控件
+cboCUSHT.DataSource = dtSHT;
+cboCUSHT.DisplayMember = "DNAM"; // 界面显示字段
+cboCUSHT.ValueMember = "DCOD";   // 后台真实值字段
+cboCUSHT.SelectedValue = "%%";   // 默认选中全部
+```
+
+#### 场景二：特殊场景 —— 映射表/配置表中缺失数据（手动全量补充构建 DataTable）
+* **适用场景**：
+  * ① 字典表 `EDA0004` 中未录入该业务项或缺乏固定后台配置表支撑；
+  * ② 现场特定定制的业务选项（如班组字母 `A/B/C/D`、特定质检开关、固定状态标记 `1/0`）；
+  * ③ 需要自定义展示白名单或特殊排序的选项。
+* **开发模式**：代码中手动 `new DataTable()`，**首行必须首先写入【全部】（值为 `%%`），随后手动逐行补充业务所必需的全部数据行**：
+
 ```csharp
 private void FillShiftAndGroup()
 {
-    // 1. 班次下拉框 (全部 / 早班 / 中班 / 夜班)
-    DataTable dtSht = new DataTable();
-    dtSht.Columns.Add("Name", typeof(string));
-    dtSht.Columns.Add("Value", typeof(string));
-    dtSht.Rows.Add("全部", "%");
-    dtSht.Rows.Add("早班", "1");
-    dtSht.Rows.Add("中班", "2");
-    dtSht.Rows.Add("夜班", "3");
+    // 手动全量构建 DataTable（配置表无对应字典或特殊自定义时使用）
+    DataTable dtCustom = new DataTable();
+    dtCustom.Columns.Add("Name", typeof(string));
+    dtCustom.Columns.Add("Value", typeof(string));
 
-    CmbWSHT.DataSource = dtSht;
-    CmbWSHT.DisplayMember = "Name";
-    CmbWSHT.ValueMember = "Value";
-    CmbWSHT.SelectedIndex = 0;
+    // 1. 首行必须首先插入【全部】，值严格固化为 %%
+    dtCustom.Rows.Add("全部", "%%");
 
-    // 2. 班组下拉框 (全部 / A / B / C / D)
-    DataTable dtBan = new DataTable();
-    dtBan.Columns.Add("Name", typeof(string));
-    dtBan.Columns.Add("Value", typeof(string));
-    dtBan.Rows.Add("全部", "%");
-    dtBan.Rows.Add("A", "A");
-    dtBan.Rows.Add("B", "B");
-    dtBan.Rows.Add("C", "C");
-    dtBan.Rows.Add("D", "D");
+    // 2. 手动补充缺失的全部实际业务数据行
+    dtCustom.Rows.Add("启用", "1");
+    dtCustom.Rows.Add("停用", "0");
+    dtCustom.Rows.Add("待检", "2");
 
-    CmbWBAN.DataSource = dtBan;
-    CmbWBAN.DisplayMember = "Name";
-    CmbWBAN.ValueMember = "Value";
-    CmbWBAN.SelectedIndex = 0;
+    // 3. 绑定 ComboBox
+    CmbStatus.DataSource = dtCustom;
+    CmbStatus.DisplayMember = "Name";
+    CmbStatus.ValueMember = "Value";
+    CmbStatus.SelectedIndex = 0; // 默认选中“全部”
 }
 ```
 
-**SQL 查询条件过滤逻辑**：
+#### SQL 查询条件过滤逻辑（双模式兼容）：
 ```csharp
-// 当用户选择了非“全部”选项时，追加精确筛选或双向兼容过滤
-if (CmbWSHT != null && CmbWSHT.SelectedValue != null && CmbWSHT.SelectedValue.ToString() != "%")
+// 模式 A：直接利用 LIKE '{0}' 通配 (最精炼推荐模式)
+// 当选“全部”时直接生成 WHERE A.AUSHT LIKE '%%'，选具体项时匹配具体项
+string sql = "SELECT * FROM TABLE WHERE AUSHT LIKE '{0}'";
+string runSql = string.Format(sql, CmbWSHT.SelectedValue);
+
+// 模式 B：动态判断排除“全部”
+if (CmbWSHT != null && CmbWSHT.SelectedValue != null && CmbWSHT.SelectedValue.ToString() != "%%")
 {
     sbWhere.AppendFormat(" AND (A.AUSHT = '{0}' OR A.AUSHT = '{1}')", CmbWSHT.SelectedValue, CmbWSHT.Text);
 }
+```
 
-if (CmbWBAN != null && CmbWBAN.SelectedValue != null && CmbWBAN.SelectedValue.ToString() != "%")
+### 4. 表格事件层动态转换规范（★核心：GrdMain_OnFormat 与 OnQuerySet）
+
+当页面使用存储过程、`SELECT *` 或复用底层 SQL 查询，导致 SQL 结果集中包含原始业务代码（如 `1/2/3`、`0/1`、外键编码）时，**必须在 BUS 类中通过 `GrdMain_OnFormat` 事件进行动态值转换与字典翻译**。
+
+#### 1. GrdMain_OnFormat 契约与用法
+- **自动联动**：单元格渲染、`GrdMain.Excel()` 导出、`GrdMain.Print()` 打印时统一自动触发。
+- **命名规范**：`{GridName}_OnFormat(object sender, UserControls.LSFormatEventArgs e)`
+
+```csharp
+// 1. 服务引用与内存缓存变量
+GetCmncode CmnCode { get { return this.GetService(typeof(ICMNCODE)) as GetCmncode; } }
+DataTable dtRuleCode;
+
+// 2. 在 Form_Load 提前拉取字典数据
+public override void Form_Load(object sender, EventArgs e)
 {
-    sbWhere.AppendFormat(" AND A.AUBAN = '{0}'", CmbWBAN.SelectedValue);
+    base.Form_Load(sender, e);
+    // 提前缓存字典表，严禁在 OnFormat 中查库！
+    dtRuleCode = CmnCode.GetCboCode("CKA_RULE");
+    GetData();
+}
+
+// 3. 事件动态翻译
+public void GrdMain_OnFormat(object sender, UserControls.LSFormatEventArgs e)
+{
+    // A. 字典映射（EDA0004）
+    if (e.ColName == "RULE2" || e.ColName == "RULE3")
+    {
+        if (dtRuleCode != null)
+        {
+            foreach (DataRow item in dtRuleCode.Rows)
+            {
+                if (e.Text == item["DCOD"].ToString())
+                {
+                    e.Text = item["DNAM"].ToString();
+                    break;
+                }
+            }
+        }
+    }
+    // B. 固定状态映射（switch-case）
+    else if (e.ColName == "PRINTSETA")
+    {
+        switch (e.Text)
+        {
+            case "1": e.Text = "自动"; break;
+            case "2": e.Text = "手动"; break;
+            default:  e.Text = ""; break;
+        }
+    }
 }
 ```
+
+#### 2. 表头筛选下拉项同步映射（GrdMain_OnQuerySet）
+如果表格支持列头漏斗筛选，必须同时实现 `OnQuerySet` 事件，让用户在下拉框中看到中文名称：
+
+```csharp
+public void GrdMain_OnQuerySet(object sender, UserControls.LSQuerySetEventArgs e)
+{
+    if (e.ColName == "RULE2" && dtRuleCode != null)
+    {
+        foreach (DataRow item in dtRuleCode.Rows)
+        {
+            // Key: 实际过滤值(代码), Value: 下拉显示文本(中文名称)
+            e.DrowDownList.Add(item["DCOD"].ToString(), item["DNAM"].ToString());
+        }
+    }
+}
+```
+
+#### 3. ★ 性能军规
+> [!CAUTION]
+> **严禁在 `OnFormat` 中调用 `Config.DataBase.GetTable(...)` 或任何数据库查询！**
+> `OnFormat` 会针对可见区域及翻页的每个单元格高频触发（可能达数万次）。在 `OnFormat` 内执行 SQL 会导致界面严重卡死。必须在 `Form_Load` 时将字典表预先加载到内存变量中。
 
 ## 常见问题和注意事项
 
